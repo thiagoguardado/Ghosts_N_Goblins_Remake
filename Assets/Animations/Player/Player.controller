@@ -34,7 +34,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Armored
+    m_Name: Dressed
     m_StateMachine: {fileID: 1107483708290899212}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -52,19 +52,34 @@ AnimatorController:
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: 1102120588563421068}
-      m_Motion: {fileID: 7400000, guid: 2d58a3c46328675428d05900d0278c41, type: 2}
+      m_Motion: {fileID: 7400000, guid: ee796051bb28ef542a6beb506714f68f, type: 2}
     - serializedVersion: 2
       m_State: {fileID: 1102658319448108504}
-      m_Motion: {fileID: 7400000, guid: 74e98f6c5f61a1b46a2cdb5ca121feee, type: 2}
+      m_Motion: {fileID: 7400000, guid: 727cd4c4462b43b449eeb1ec099229fe, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 1102070046330865160}
+      m_Motion: {fileID: 7400000, guid: 6abcd478fb51deb49bd36cf13ad921e6, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 1102826835132959256}
+      m_Motion: {fileID: 7400000, guid: 6ac4b3b98534c8e429fc176fe1bb2f00, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 1102041936703255968}
+      m_Motion: {fileID: 7400000, guid: ae81fcad49ce5b64bba98e47cdc5b8d3, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 1102929633579890212}
+      m_Motion: {fileID: 7400000, guid: 579b0e327de85e54eb87470c68555dcd, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 1102866860829995540}
+      m_Motion: {fileID: 7400000, guid: 450415bbd96136a46a9b52d5031a55fd, type: 2}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 0
-    m_DefaultWeight: 1
+    m_DefaultWeight: 0
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: ArmoredGreen
+    m_Name: DressedGreen
     m_StateMachine: {fileID: 1107334217680184800}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -900,7 +915,7 @@ AnimatorStateMachine:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ArmoredGreen
+  m_Name: DressedGreen
   m_ChildStates: []
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
@@ -918,7 +933,7 @@ AnimatorStateMachine:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Armored
+  m_Name: Dressed
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102826835132959256}
@@ -946,9 +961,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 36, y: -84, z: 0}
-  m_EntryPosition: {x: 36, y: 0, z: 0}
-  m_ExitPosition: {x: 576, y: 180, z: 0}
+  m_AnyStatePosition: {x: -96, y: -264, z: 0}
+  m_EntryPosition: {x: -96, y: -180, z: 0}
+  m_ExitPosition: {x: -96, y: -84, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102070046330865160}
 --- !u!1107 &1107604889318939046
