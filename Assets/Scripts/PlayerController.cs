@@ -1,31 +1,105 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour {
 
+    public enum PlayerArmor
+    {
+        Armored,
+        Naked
+    }
+
+
+    // references
+    private Rigidbody2D playerRigidbody;
+
+    [Header("Grounding")]
+    public float groundingRayLength = 0.1f;
+
+
+    [Header("Weapon Throwing")]
+    [SerializeField] private PlayerWeapon currentWeapon;
+    public Transform weaponStandingSpawnPoint;
+    public Transform weaponCrouchedSpawnPoint;
+
+    [Header("Life and Armor")]
+    public PlayerArmor currentArmorStatus = PlayerArmor.Armored;
+    public int lifes = 3;
+
+    // control variables
+    private float horizontalAxis;
+    private float verticalAxis;
+    private bool throwButton;
+    private bool jumpButton;
+    private bool isGrounded;
+
+    // encapsulated variables
+    public float HorizontalAxis
+    {
+        get
+        {
+            return horizontalAxis;
+        }
+    }
+    public float VerticalAxis
+    {
+        get
+        {
+            return verticalAxis;
+        }
+    }
+    public bool ThrowButton
+    {
+        get
+        {
+            return throwButton;
+        }
+    }
+    public bool JumpButton
+    {
+        get
+        {
+            return jumpButton;
+        }
+    }
+    public bool IsGrounded
+    {
+        get
+        {
+            return isGrounded;
+        }
+    }
 
     
-
     private void Awake()
     {
-        // get references
-        animationController = GetComponent<PlayerAnimationController>();
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
 
-    void Update () {
-
-
-        CheckIfGrounded();
-
-        // Get Inputs
+    private void Update()
+    {
+        // get inputs
         ResolveInputs();
 
-	}
+        // check if grounded
+        CheckIfGrounded();
+
+
+        // ChangeArmorStatus
+    }
+
+    private void ResolveInputs()
+    {
+
+        horizontalAxis = Input.GetAxisRaw("Horizontal");
+        verticalAxis = Input.GetAxisRaw("Vertical");
+        throwButton = Input.GetButtonDown("Fire1");
+        jumpButton = Input.GetButtonDown("Jump");
+
+    }
 
     private void CheckIfGrounded()
     {
@@ -37,112 +111,34 @@ public class PlayerController : MonoBehaviour {
         if (hit.transform != null)
         {
 
-            Debug.Log(hit.transform.name);
-
-            if(hit.transform.gameObject.GetComponent<Floor>() != null)
+            if (hit.transform.gameObject.GetComponent<Floor>() != null && playerRigidbody.velocity.y <= 0)
             {
-
-                if (!isGrounded && isJumping)
-                {
-                    isJumping = false;
-                    animationController.isJumping = false;
-                }
-
                 isGrounded = true;
             }
         }
-        else {
+        else
+        {
             isGrounded = false;
         }
 
-
-
     }
 
-    private void ResolveInputs()
+    public void ShootStanding(Vector3 forward)
+    {
+        Shoot(weaponStandingSpawnPoint, forward);
+    }
+
+    public void ShootCrouched(Vector3 forward)
+    {
+        Shoot(weaponCrouchedSpawnPoint, forward);
+    }
+
+    private void Shoot(Transform spawnPoint, Vector3 forward)
     {
 
-        horizontalAxis = Input.GetAxisRaw("Horizontal");
-        verticalAxis = Input.GetAxisRaw("Vertical");
-        throwButton = Input.GetButtonDown("Fire1");
-        jumpButton = Input.GetButtonDown("Jump");
-
-
-        Crouch(verticalAxis);
-        Walk(horizontalAxis);
-        Jump(jumpButton);
-
-
+        var instantiated = Instantiate(currentWeapon.weaponPrefab, spawnPoint.position, Quaternion.identity);
+        instantiated.transform.right = forward;
+        instantiated.Shoot(currentWeapon.initialVelocity);
     }
-
-
-    // Crouch
-    private void Crouch(float verticalAxis)
-    {
-        if()
-    }
-
-
-    // Jump
-    private void Jump(bool jumpButton)
-    {
-        if (isGrounded && jumpButton)
-        {
-            playerRigidbody.AddForce(Vector3.up * jumpForce);
-            animationController.isJumping = true;
-            isJumping = true;
-        }
-    }
-
-
-
-
-    // Walk
-    private void Walk(float horizontalAxis)
-    {
-
-        if (horizontalAxis != 0 && !walkPaused)
-        {
-            // translate
-            transform.Translate(Vector3.right * horizontalAxis * horizontalSpeed * Time.deltaTime);
-
-            // turn
-            if (horizontalAxis > 0 && currentDirection == Direction.Left)
-            {
-                // turn to right
-                Vector3 scale = spriteTransform.localScale;
-                scale.x = 1;
-                spriteTransform.localScale = scale;
-                currentDirection = Direction.Right;
-
-            }
-            else if (horizontalAxis < 0 && currentDirection == Direction.Right)
-            {
-                // turn to left
-                Vector3 scale = spriteTransform.localScale;
-                scale.x = -1;
-                spriteTransform.localScale = scale;
-                currentDirection = Direction.Left;
-            }
-
-            // update animation
-            animationController.isRunning = true;
-        }
-        else
-        {
-            // update animation
-            animationController.isRunning = false;
-        }
-
-
-       
-    }
-
-
-    // Jump
-
-    // Ladder
-
 
 }
- **/

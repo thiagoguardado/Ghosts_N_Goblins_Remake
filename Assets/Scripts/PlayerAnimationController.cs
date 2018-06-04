@@ -4,34 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+[RequireComponent(typeof(PlayerController))]
 public class PlayerAnimationController : MonoBehaviour {
 
     // possible player states
     public enum AnimationLayer
     {
-        Dressed,
+        Armored,
         Naked,
-        DressedGreen,
+        ArmoredGreen,
         NakedGreen
     }
 
-    public Animator playerAnimator;                                 //animator attached to player
+    private PlayerController playerController;
 
+    
 
     [Header("Animator Control")]
-    public AnimationLayer currentLayer = AnimationLayer.Dressed;    // current layer playing
+    public Animator playerAnimator; //animator attached to player
     public bool isRunning = false;
     public bool isCrouched = false;
     public bool isJumping = false;
     public bool throwSomething = false;
 
-    private AnimationLayer previousLayer = AnimationLayer.Dressed;  // previous layer playing
+    // animation layer
+    private AnimationLayer previousLayer = AnimationLayer.Armored;  // previous layer playing
+    private AnimationLayer currentLayer = AnimationLayer.Armored;    // current layer playing
     private Dictionary<AnimationLayer, int> animationLayerNameToInt = new Dictionary<AnimationLayer, int>();    // layer name to int dictionay
-    
+    private PlayerController.PlayerArmor previousPlayerArmor;
 
     private void Awake()
     {
+
+        playerController = GetComponent<PlayerController>();
+
+        previousPlayerArmor = playerController.currentArmorStatus;
+
         FillDictionary();
     }
 
@@ -44,6 +52,29 @@ public class PlayerAnimationController : MonoBehaviour {
     // listens to a layer change
     private void ListenToCurrentLayerChange()
     {
+
+        // change animation layer depending on player armor status
+        if (previousPlayerArmor != playerController.currentArmorStatus)
+        {
+
+            switch (playerController.currentArmorStatus)
+            {
+                case PlayerController.PlayerArmor.Armored:
+                    currentLayer = AnimationLayer.Armored;
+                    break;
+                case PlayerController.PlayerArmor.Naked:
+                    currentLayer = AnimationLayer.Naked;
+                    break;
+                default:
+                    break;
+            }
+
+            previousPlayerArmor = playerController.currentArmorStatus;
+
+        }
+
+
+
         if (currentLayer != previousLayer)
         {
             ChangeAnimatorLayer(currentLayer);
