@@ -20,10 +20,16 @@ public class PlayerFSM : MonoBehaviour {
         CrouchedAttack
     }
 
-    private enum Direction
+    private enum LookingDirection
     {
         Left,
         Right
+    }
+
+    private enum TranslatingAxis
+    {
+        Horizontal,
+        Vertical
     }
 
     // input
@@ -76,15 +82,18 @@ public class PlayerFSM : MonoBehaviour {
     public Transform spriteTransform;
     public float horizontalSpeed = 5;
     private bool isRunning;
-    private Direction currentDirection = Direction.Right;
+    private LookingDirection currentDirection = LookingDirection.Right;
     private Vector3 currentWorldDirection
     {
         get
         {
-            return currentDirection == Direction.Right ? Vector3.right : Vector3.left;
+            return currentDirection == LookingDirection.Right ? Vector3.right : Vector3.left;
         }
     }
     private bool walkPaused = false;
+    private bool isTranslating = false;
+    private float fixedMoveSpeed;
+    private TranslatingAxis fixedMoveAxis;
 
     [Header("Vertical Translation")]
     public float verticalSpeed = 5;
@@ -123,7 +132,7 @@ public class PlayerFSM : MonoBehaviour {
     }
 
 
-    private void LateUpdate()
+    private void Update()
     {
 
         // update fsm state
@@ -132,8 +141,21 @@ public class PlayerFSM : MonoBehaviour {
 
     }
 
+    private void FixedUpdate()
+    {
+        // move horizontally
+        FixedMoveHorizontal();
+    }
 
 
+    private void FixedMoveHorizontal()
+    {
+        if (isTranslating)
+        {
+            transform.Translate((fixedMoveAxis==TranslatingAxis.Horizontal? Vector3.right:Vector3.up) * fixedMoveSpeed * Time.fixedDeltaTime);
+            isTranslating = false;
+        }
+    }
 
     private void ChangeState(PlayerFSMState state)
     {
@@ -157,16 +179,20 @@ public class PlayerFSM : MonoBehaviour {
 
 
     // walk
-    private void Translate(float horizontalAxis)
+    private void TranslateIntention(TranslatingAxis axis, float speed)
     {
 
         if (!walkPaused)
         {
             // translate
-            transform.Translate(Vector3.right * horizontalAxis * horizontalSpeed * Time.deltaTime);
-            
+            isTranslating = true;
+            fixedMoveSpeed = speed;
+            fixedMoveAxis = axis;
+            return;
         }
 
+        isTranslating = false;
+        fixedMoveSpeed = 0f;
 
     }
 
@@ -174,22 +200,22 @@ public class PlayerFSM : MonoBehaviour {
     private void CheckDirection()
     {
         // turn
-        if (horizontalAxis > 0 && currentDirection == Direction.Left)
+        if (horizontalAxis > 0 && currentDirection == LookingDirection.Left)
         {
             // turn to right
             Vector3 scale = spriteTransform.localScale;
             scale.x = 1;
             spriteTransform.localScale = scale;
-            currentDirection = Direction.Right;
+            currentDirection = LookingDirection.Right;
 
         }
-        else if (horizontalAxis < 0 && currentDirection == Direction.Right)
+        else if (horizontalAxis < 0 && currentDirection == LookingDirection.Right)
         {
             // turn to left
             Vector3 scale = spriteTransform.localScale;
             scale.x = -1;
             spriteTransform.localScale = scale;
-            currentDirection = Direction.Left;
+            currentDirection = LookingDirection.Left;
         }
     }
 
@@ -333,7 +359,7 @@ public class PlayerFSM : MonoBehaviour {
         public override void UpdateState()
         {
             // move and change direction
-            owner.Translate(owner.horizontalAxis);
+            owner.TranslateIntention(TranslatingAxis.Horizontal, owner.horizontalAxis * owner.horizontalSpeed);
             owner.CheckDirection();
 
             //check throw
@@ -396,7 +422,7 @@ public class PlayerFSM : MonoBehaviour {
             // move and change direction
             if (owner.isRunning)
             {
-                owner.Translate(runningHorizontalAxisValue);
+                owner.TranslateIntention(TranslatingAxis.Horizontal, runningHorizontalAxisValue * owner.horizontalSpeed);
             }
             owner.CheckDirection();
 
