@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class WeaponBehavior : MonoBehaviour
 {
 
+    public int damage;
+
     public abstract void Shoot(float shootSpeed);
     protected abstract void CollidedWith(GameObject go);
     protected abstract void Move();

@@ -26,6 +26,8 @@ public class PlayerAnimationController : MonoBehaviour {
     public bool isCrouched = false;
     public bool isJumping = false;
     public bool throwSomething = false;
+    public bool isClimbing = false;
+    public bool isOnEndOfLadder = false;
 
     // animation layer
     private AnimationLayer previousLayer = AnimationLayer.Armored;  // previous layer playing
@@ -111,6 +113,21 @@ public class PlayerAnimationController : MonoBehaviour {
 
     }
 
+    public void StartClimbingLadder(bool isOnTop)
+    {
+        isClimbing = true;
+        isOnEndOfLadder = !isOnTop;
+        playerAnimator.ResetTrigger("FinishedLadder");
+    }
+
+    public void FinishClimbingLadder(bool finishedOnTop)
+    {
+        if(finishedOnTop)
+            playerAnimator.SetTrigger("FinishedLadder");
+        isClimbing = false;
+        isOnEndOfLadder = false;
+    }
+
     private void UpdateAnimatorValues()
     {
         playerAnimator.SetBool("isRunning", isRunning);
@@ -121,6 +138,8 @@ public class PlayerAnimationController : MonoBehaviour {
             playerAnimator.SetTrigger("throw");
             throwSomething = false;
         }
+        playerAnimator.SetBool("isClimbing", isClimbing);
+        playerAnimator.SetBool("isOnEndOfLadder", isOnEndOfLadder);
 
     }
 

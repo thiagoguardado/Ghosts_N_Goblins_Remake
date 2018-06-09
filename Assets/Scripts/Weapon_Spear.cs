@@ -13,13 +13,21 @@ public class Weapon_Spear : WeaponBehavior {
 
     protected override void CollidedWith(GameObject go)
     {
-        Debug.Log(go.tag);
+        // look for hittable implementation
+        var hitComponent = go.GetComponent<IWeaponHittable>();
+        if (hitComponent != null)
+        {
+            hitComponent.Hit(damage);
+            Destroy(gameObject);
+        }
     }
 
     protected override void Move()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
+
+
 
 
 }
