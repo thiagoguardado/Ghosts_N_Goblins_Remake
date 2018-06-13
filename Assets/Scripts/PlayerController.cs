@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,15 @@ public class PlayerController : MonoBehaviour {
         Naked
     }
 
+    // singleton
+    private static PlayerController instance;
+    public static PlayerController Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
 
     // references
     private Rigidbody2D playerRigidbody;
@@ -21,12 +31,18 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Weapon Throwing")]
     [SerializeField] private PlayerWeapon currentWeapon;
+    public PlayerWeapon CurrentWeapon
+    {
+        get
+        {
+            return currentWeapon;
+        }
+    }
     public Transform weaponStandingSpawnPoint;
     public Transform weaponCrouchedSpawnPoint;
 
     [Header("Life and Armor")]
     public PlayerArmor currentArmorStatus = PlayerArmor.Armored;
-    public int lifes = 3;
 
     // control variables
     private float horizontalAxis;
@@ -72,10 +88,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    
+
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+
+        instance = this;
     }
 
 
@@ -98,15 +116,28 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    private void ResetButtons()
+    {
+        throwButton = false;
+        jumpButton = false;
+    }
+
     private void ResolveInputs()
     {
-
-        horizontalAxis = Input.GetAxisRaw("Horizontal");
-        verticalAxis = Input.GetAxisRaw("Vertical");
-        throwButton = Input.GetButtonDown("Fire1");
-        jumpButton = Input.GetButtonDown("Jump");
-
+        if (GameController.Instance.InLevel)
+        {
+            horizontalAxis = Input.GetAxisRaw("Horizontal");
+            verticalAxis = Input.GetAxisRaw("Vertical");
+            throwButton = Input.GetButtonDown("Fire1");
+            jumpButton = Input.GetButtonDown("Jump");
+        }
+        else {
+            ResetAxis();
+            ResetButtons();
+        }
     }
+
+
 
     private void CheckIfGrounded()
     {

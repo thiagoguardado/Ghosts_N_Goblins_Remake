@@ -4,7 +4,7 @@ timeCreated: 1527648113
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: spritesheet_hud_0
+    21300000: weapon_border
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -101,13 +101,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet_hud_0
+      name: weapon_border
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 380
-        height: 244
+        x: 1
+        y: 184
+        width: 30
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
