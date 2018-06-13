@@ -131,13 +131,14 @@ public class PlayerFSM : MonoBehaviour {
         statesDictionary.Add(PlayerFSMState.Running, new PlayerState_Running(this, PlayerFSMState.Running));
         statesDictionary.Add(PlayerFSMState.Jumping, new PlayerState_Jumping(this, PlayerFSMState.Jumping));
         statesDictionary.Add(PlayerFSMState.Crouched, new PlayerState_Crouched(this, PlayerFSMState.Crouched));
-        statesDictionary.Add(PlayerFSMState.Climbing, new PlayerState_ClimbingLadder(this, PlayerFSMState.Climbing));
+        statesDictionary.Add(PlayerFSMState.Climbing, new PlayerState_Climbing(this, PlayerFSMState.Climbing));
 
         // assign initial state
         currentPlayerState = statesDictionary[PlayerFSMState.Idle];
 
         // save start y position of sprite object
         spriteObjectStartYPosition = spriteTransform.localPosition.y;
+
     }
 
 
@@ -279,6 +280,14 @@ public class PlayerFSM : MonoBehaviour {
     }
 
 
+    // collider
+    private void ChangeColliders(bool standingCollider, bool crouchedCollider)
+    {
+        this.standingCollider.enabled = standingCollider;
+        this.crouchedCollider.enabled = crouchedCollider;
+    }
+
+
     #region PlayerState Classes
     public abstract class PlayerState
     {
@@ -329,18 +338,30 @@ public class PlayerFSM : MonoBehaviour {
                 return;
             }
 
-            if (owner.verticalAxis < 0f)
+
+            if (owner.verticalAxis < 0f && owner.isInsideLadder)
             {
-                owner.ChangeState(PlayerFSMState.Crouched);
-                return;
+                if (owner.transform.position.y >= owner.currentLadder.startEndOfLadder.position.y)
+                {
+                    owner.ChangeState(PlayerFSMState.Climbing);
+                    return;
+                }
             }
+
 
             if (owner.verticalAxis > 0f && owner.isInsideLadder)
             {
                 if (owner.transform.position.y <= owner.currentLadder.startEndOfLadder.position.y)
                 {
                     owner.ChangeState(PlayerFSMState.Climbing);
+                    return;
                 }
+            }
+
+            if (owner.verticalAxis < 0f && owner.isGrounded)
+            {
+                owner.ChangeState(PlayerFSMState.Crouched);
+                return;
             }
 
         }
@@ -371,21 +392,38 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.horizontalAxis == 0)
             {
                 owner.ChangeState(PlayerFSM.PlayerFSMState.Idle);
+                return;
             }
 
             if (owner.jumpButton)
             {
                 owner.ChangeState(PlayerFSMState.Jumping);
+                return;
             }
 
-            if (owner.verticalAxis < 0f)
-            {
-                owner.ChangeState(PlayerFSMState.Crouched);
-            }
 
             if (owner.verticalAxis > 0f && owner.isInsideLadder)
             {
-                owner.ChangeState(PlayerFSMState.Climbing);
+                if (owner.transform.position.y <= owner.currentLadder.startEndOfLadder.position.y)
+                {
+                    owner.ChangeState(PlayerFSMState.Climbing);
+                    return;
+                }
+            }
+
+            if (owner.verticalAxis < 0f && owner.isInsideLadder)
+            {
+                if (owner.transform.position.y >= owner.currentLadder.startEndOfLadder.position.y)
+                {
+                    owner.ChangeState(PlayerFSMState.Climbing);
+                    return;
+                }
+            }
+
+            if (owner.verticalAxis < 0f && owner.isGrounded)
+            {
+                owner.ChangeState(PlayerFSMState.Crouched);
+                return;
             }
 
         }
@@ -438,6 +476,7 @@ public class PlayerFSM : MonoBehaviour {
                 if ((owner.isGrounded && owner.playerRigidbody.velocity.y <= 0) || owner.playerRigidbody.velocity.y == 0)
                 {
                     owner.ChangeState(PlayerFSMState.Idle);
+                    return;
                 }
             }
     }
@@ -501,12 +540,14 @@ public class PlayerFSM : MonoBehaviour {
             if (notHoldingDownTimer >= owner.waitToExitCrouched)
             {
                 owner.ChangeState(PlayerFSMState.Idle);
+                return;
             }
 
 
             if (owner.verticalAxis >= 0 && owner.horizontalAxis != 0)
             {
                 owner.ChangeState(PlayerFSMState.Running);
+                return;
             }
         }
 
@@ -524,10 +565,11 @@ public class PlayerFSM : MonoBehaviour {
             notHoldingDownTimer = 0f;
 
             // change collliders
-            owner.standingCollider.enabled = false;
-            owner.crouchedCollider.enabled = true;
+            owner.ChangeColliders(false,true);
 
         }
+
+
 
         public override void DoBeforeLeave()
         {
@@ -536,8 +578,8 @@ public class PlayerFSM : MonoBehaviour {
 
 
             // change collliders
-            owner.standingCollider.enabled = true;
-            owner.crouchedCollider.enabled = false;
+            owner.ChangeColliders(true, false);
+          
 
         }
 
@@ -577,14 +619,14 @@ public class PlayerFSM : MonoBehaviour {
     }
 
 
-    public class PlayerState_ClimbingLadder : PlayerState
+    public class PlayerState_Climbing : PlayerState
     {
 
         private float groundY;
         private Ladder ladder;
         private bool isOnEndOfLadder;
 
-        public PlayerState_ClimbingLadder(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
+        public PlayerState_Climbing(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
         {
             
         }
@@ -598,20 +640,45 @@ public class PlayerFSM : MonoBehaviour {
                 owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
                 owner.animationController.FinishClimbingLadder(true);
                 owner.ChangeState(PlayerFSMState.Idle);
+                return;
             }
+
+            // rechaed bottom
+            if (owner.transform.position.y <= ladder.baseOfLadder.position.y && owner.verticalAxis < 0f)
+            {
+                owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
+                owner.animationController.FinishClimbingLadder(false);
+                owner.ChangeState(PlayerFSMState.Idle);
+                owner.playerController.ResetAxis();
+                return;
+
+            }
+
         }
 
 
 
         public override void DoBeforeEntering()
         {
-            groundY = owner.transform.position.y;
+            // set ladder and base height
             this.ladder = owner.currentLadder;
-            owner.transform.position = new Vector3(ladder.transform.position.x, owner.transform.position.y, owner.transform.position.z);
-            owner.animationController.StartClimbingLadder(true);
+            groundY = ladder.baseOfLadder.position.y;
 
             // deactivate gravity
             owner.playerRigidbody.gravityScale = 0;
+
+            // turn off ladder upperfloorCollision
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Floor"), true);
+
+            // update position on ladder
+            CheckPositionOnLadder();
+
+
+            // align player on center
+            owner.transform.position = new Vector3(ladder.transform.position.x, owner.transform.position.y, owner.transform.position.z);
+
+            // change animator
+            owner.animationController.StartClimbingLadder(isOnEndOfLadder);
         }
 
         public override void DoBeforeLeave()
@@ -622,6 +689,12 @@ public class PlayerFSM : MonoBehaviour {
 
             // reset sprite object height
             owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
+
+            // turn on ladder upperfloorCollision
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Floor"), false);
+
+            //change colliders
+            owner.ChangeColliders(true, false);
         }
 
         public override void UpdateState()
@@ -644,7 +717,11 @@ public class PlayerFSM : MonoBehaviour {
 
                 owner.animationController.isOnEndOfLadder = true;
 
+                // update position
                 owner.spriteTransform.position = ladder.finishEndOfLadder.position;
+
+                //change colliders
+                owner.ChangeColliders(false, true);
 
             }
             else
@@ -655,6 +732,9 @@ public class PlayerFSM : MonoBehaviour {
                 owner.animationController.isOnEndOfLadder = false;
 
                 owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
+
+                //change colliders
+                owner.ChangeColliders(true, false);
 
             }
         }

@@ -116,7 +116,7 @@ public class PlayerAnimationController : MonoBehaviour {
     public void StartClimbingLadder(bool isOnTop)
     {
         isClimbing = true;
-        isOnEndOfLadder = !isOnTop;
+        isOnEndOfLadder = isOnTop;
         playerAnimator.ResetTrigger("FinishedLadder");
     }
 

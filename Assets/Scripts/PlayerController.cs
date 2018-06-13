@@ -91,6 +91,13 @@ public class PlayerController : MonoBehaviour {
         // ChangeArmorStatus
     }
 
+    public void ResetAxis() {
+
+        horizontalAxis = 0f;
+        verticalAxis = 0f;
+
+    }
+
     private void ResolveInputs()
     {
 
@@ -104,7 +111,7 @@ public class PlayerController : MonoBehaviour {
     private void CheckIfGrounded()
     {
 
-        int layerMask = ~LayerMask.GetMask("Player");
+        int layerMask = ~LayerMask.GetMask( new string[] {"Player","Ladder"});
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundingRayLength, layerMask);
         Debug.DrawRay(transform.position, Vector3.down * groundingRayLength);
 
