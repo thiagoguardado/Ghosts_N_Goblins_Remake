@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, IEnemyHittable
+{
 
     public enum PlayerArmor
     {
         Armored,
-        Naked
+        Naked,
+        Dead
     }
 
     // singleton
@@ -43,6 +45,9 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Life and Armor")]
     public PlayerArmor currentArmorStatus = PlayerArmor.Armored;
+    public float afterDamageInvincibleDUration = 0.5f;
+    private bool isReceivingDamage = true;
+    
 
     // control variables
     private float horizontalAxis;
@@ -105,8 +110,6 @@ public class PlayerController : MonoBehaviour {
         // check if grounded
         CheckIfGrounded();
 
-
-        // ChangeArmorStatus
     }
 
     public void ResetAxis() {
@@ -177,6 +180,53 @@ public class PlayerController : MonoBehaviour {
         var instantiated = Instantiate(currentWeapon.weaponPrefab, spawnPoint.position, Quaternion.identity);
         instantiated.transform.right = forward;
         instantiated.Shoot(currentWeapon.initialVelocity);
+    }
+
+    public void ReceiveDamage() {
+
+        isReceivingDamage = false;
+
+        switch (currentArmorStatus)
+        {
+            case PlayerArmor.Armored:
+                currentArmorStatus = PlayerArmor.Naked;
+                GameEvents.PlayerTookDamage.SafeCall();
+                StartCoroutine(WaitAndAct(afterDamageInvincibleDUration, () => isReceivingDamage = true));
+                break;
+            case PlayerArmor.Naked:
+                currentArmorStatus = PlayerArmor.Dead;
+                GameEvents.PlayerTookDamage.SafeCall();
+                GameEvents.PlayerDied();
+                break;
+            default:
+                break;
+        }
+
+        
+
+    }
+
+
+    public void Hit(int hitDamage)
+    {
+
+        if(isReceivingDamage)
+        {
+
+            ReceiveDamage();
+
+            Debug.Log("Player Hit");
+
+        }
+
+    }
+
+    private IEnumerator WaitAndAct(float wait, Action action)
+    {
+        yield return new WaitForSeconds(wait);
+
+        action.Invoke();
+        
     }
 
 }

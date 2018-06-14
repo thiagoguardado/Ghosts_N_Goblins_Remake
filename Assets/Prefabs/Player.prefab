@@ -324,6 +324,7 @@ MonoBehaviour:
   weaponStandingSpawnPoint: {fileID: 4731901508064238}
   weaponCrouchedSpawnPoint: {fileID: 4379725981845562}
   currentArmorStatus: 0
+  afterDamageInvincibleDUration: 3
 --- !u!114 &114474017056605774
 MonoBehaviour:
   m_ObjectHideFlags: 1
