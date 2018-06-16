@@ -17,7 +17,8 @@ public class PlayerFSM : MonoBehaviour {
         Crouched,
         Climbing,
         StandupAttack,
-        CrouchedAttack
+        CrouchedAttack,
+        Died
     }
 
     private enum LookingDirection
@@ -116,6 +117,17 @@ public class PlayerFSM : MonoBehaviour {
     private bool isInsideLadder = false;
     private Ladder currentLadder;
 
+    [Header("Die")]
+    public Vector3 dieForceDirection;
+    public float dieForce;
+    public float timeBeforeDismount = 1f;
+    private bool isDead
+    {
+        get
+        {
+            return playerController.currentArmorStatus == PlayerController.PlayerArmor.Dead;
+        }
+    }
 
     private void Awake()
     {
@@ -132,6 +144,7 @@ public class PlayerFSM : MonoBehaviour {
         statesDictionary.Add(PlayerFSMState.Jumping, new PlayerState_Jumping(this, PlayerFSMState.Jumping));
         statesDictionary.Add(PlayerFSMState.Crouched, new PlayerState_Crouched(this, PlayerFSMState.Crouched));
         statesDictionary.Add(PlayerFSMState.Climbing, new PlayerState_Climbing(this, PlayerFSMState.Climbing));
+        statesDictionary.Add(PlayerFSMState.Died, new PlayerState_Died(this, PlayerFSMState.Died));
 
         // assign initial state
         currentPlayerState = statesDictionary[PlayerFSMState.Idle];
@@ -326,38 +339,50 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void CheckTransition()
         {
+
+            // check if is dead
+            if (owner.isDead)
+            {
+                owner.ChangeState(PlayerFSMState.Died);
+            }
+
+            // if run
             if (owner.horizontalAxis != 0)
             {
                 owner.ChangeState(PlayerFSM.PlayerFSMState.Running);
                 return;
             }
 
+            // if jump
             if (owner.jumpButton)
             {
                 owner.ChangeState(PlayerFSMState.Jumping);
                 return;
             }
 
-
-            if (owner.verticalAxis < 0f && owner.isInsideLadder)
+            // if start climbing ladder
+            if (owner.isInsideLadder)
             {
-                if (owner.transform.position.y >= owner.currentLadder.startEndOfLadder.position.y)
+                
+                if (owner.verticalAxis < 0f)    // climbin down
                 {
-                    owner.ChangeState(PlayerFSMState.Climbing);
-                    return;
+                    if (owner.transform.position.y >= owner.currentLadder.startEndOfLadder.position.y)
+                    {
+                        owner.ChangeState(PlayerFSMState.Climbing);
+                        return;
+                    }
+                }
+                else if (owner.verticalAxis > 0f)   // climbing up
+                {
+                    if (owner.transform.position.y <= owner.currentLadder.startEndOfLadder.position.y)
+                    {
+                        owner.ChangeState(PlayerFSMState.Climbing);
+                        return;
+                    }
                 }
             }
 
-
-            if (owner.verticalAxis > 0f && owner.isInsideLadder)
-            {
-                if (owner.transform.position.y <= owner.currentLadder.startEndOfLadder.position.y)
-                {
-                    owner.ChangeState(PlayerFSMState.Climbing);
-                    return;
-                }
-            }
-
+            // if crouch
             if (owner.verticalAxis < 0f && owner.isGrounded)
             {
                 owner.ChangeState(PlayerFSMState.Crouched);
@@ -389,37 +414,49 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void CheckTransition()
         {
+
+            // check if is dead
+            if (owner.isDead)
+            {
+                owner.ChangeState(PlayerFSMState.Died);
+            }
+
+            // if stop walking
             if (owner.horizontalAxis == 0)
             {
                 owner.ChangeState(PlayerFSM.PlayerFSMState.Idle);
                 return;
             }
 
+            // if jump
             if (owner.jumpButton)
             {
                 owner.ChangeState(PlayerFSMState.Jumping);
                 return;
             }
 
-
-            if (owner.verticalAxis > 0f && owner.isInsideLadder)
+            // if climb ladder
+            if (owner.isInsideLadder)
             {
-                if (owner.transform.position.y <= owner.currentLadder.startEndOfLadder.position.y)
+                if (owner.verticalAxis > 0f)    // climbing up
                 {
-                    owner.ChangeState(PlayerFSMState.Climbing);
-                    return;
+                    if (owner.transform.position.y <= owner.currentLadder.startEndOfLadder.position.y)
+                    {
+                        owner.ChangeState(PlayerFSMState.Climbing);
+                        return;
+                    }
+                }
+                else if (owner.verticalAxis < 0f)   // climbing down
+                {
+                    if (owner.transform.position.y >= owner.currentLadder.startEndOfLadder.position.y)
+                    {
+                        owner.ChangeState(PlayerFSMState.Climbing);
+                        return;
+                    }
                 }
             }
 
-            if (owner.verticalAxis < 0f && owner.isInsideLadder)
-            {
-                if (owner.transform.position.y >= owner.currentLadder.startEndOfLadder.position.y)
-                {
-                    owner.ChangeState(PlayerFSMState.Climbing);
-                    return;
-                }
-            }
-
+            // if crouch
             if (owner.verticalAxis < 0f && owner.isGrounded)
             {
                 owner.ChangeState(PlayerFSMState.Crouched);
@@ -471,6 +508,14 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void CheckTransition()
         {
+
+            // check if is dead
+            if (owner.isDead)
+            {
+                owner.ChangeState(PlayerFSMState.Died);
+            }
+
+            // check if touches ground (consider a minimum time to not leave immediately
             if (timer >= owner.minTimeToExitJump)
             {
                 if ((owner.isGrounded && owner.playerRigidbody.velocity.y <= 0) || owner.playerRigidbody.velocity.y == 0)
@@ -537,13 +582,21 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void CheckTransition()
         {
+
+            // check if is dead
+            if (owner.isDead)
+            {
+                owner.ChangeState(PlayerFSMState.Died);
+            }
+
+            // if get up
             if (notHoldingDownTimer >= owner.waitToExitCrouched)
             {
                 owner.ChangeState(PlayerFSMState.Idle);
                 return;
             }
 
-
+            // if start running
             if (owner.verticalAxis >= 0 && owner.horizontalAxis != 0)
             {
                 owner.ChangeState(PlayerFSMState.Running);
@@ -625,6 +678,8 @@ public class PlayerFSM : MonoBehaviour {
         private float groundY;
         private Ladder ladder;
         private bool isOnEndOfLadder;
+        private bool isLeavingLadder;
+        private Vector3 enterStateSpriteScale;
 
         public PlayerState_Climbing(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
         {
@@ -634,9 +689,16 @@ public class PlayerFSM : MonoBehaviour {
         public override void CheckTransition()
         {
 
+            // check if is dead
+            if (owner.isDead)
+            {
+                owner.ChangeState(PlayerFSMState.Died);
+            }
+
             // reached top of ladder
             if (CheckTopOfLadder())
             {
+                owner.transform.position = ladder.finishOfLadder.position;
                 owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
                 owner.animationController.FinishClimbingLadder(true);
                 owner.ChangeState(PlayerFSMState.Idle);
@@ -660,6 +722,9 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void DoBeforeEntering()
         {
+            // save sprite direction
+            enterStateSpriteScale = owner.spriteTransform.localScale;
+
             // set ladder and base height
             this.ladder = owner.currentLadder;
             groundY = ladder.baseOfLadder.position.y;
@@ -695,6 +760,9 @@ public class PlayerFSM : MonoBehaviour {
 
             //change colliders
             owner.ChangeColliders(true, false);
+
+            // set sprite direction
+            owner.spriteTransform.localScale = enterStateSpriteScale;
         }
 
         public override void UpdateState()
@@ -713,12 +781,19 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.transform.position.y > ladder.startEndOfLadder.position.y)
             {
 
-                isOnEndOfLadder = true;
-
-                owner.animationController.isOnEndOfLadder = true;
+                if (owner.transform.position.y > ladder.startLeavingLadder.position.y)
+                {
+                    isLeavingLadder = true;
+                    isOnEndOfLadder = true;
+                }
+                else
+                {
+                    isOnEndOfLadder = true;
+                    isLeavingLadder = false;
+                }
 
                 // update position
-                owner.spriteTransform.position = ladder.finishEndOfLadder.position;
+                owner.spriteTransform.position = ladder.finishOfLadder.position;
 
                 //change colliders
                 owner.ChangeColliders(false, true);
@@ -728,8 +803,7 @@ public class PlayerFSM : MonoBehaviour {
             {
 
                 isOnEndOfLadder = false;
-
-                owner.animationController.isOnEndOfLadder = false;
+                isLeavingLadder = false;
 
                 owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
 
@@ -737,6 +811,11 @@ public class PlayerFSM : MonoBehaviour {
                 owner.ChangeColliders(true, false);
 
             }
+
+            // uodate animator
+            owner.animationController.isOnEndOfLadder = isOnEndOfLadder;
+            owner.animationController.isLeavingLadder = isLeavingLadder;
+
         }
 
         private void CheckSpriteFlipping()
@@ -753,10 +832,46 @@ public class PlayerFSM : MonoBehaviour {
 
         private bool CheckTopOfLadder()
         {
-            return owner.transform.position.y >= ladder.finishEndOfLadder.position.y;
+            return owner.transform.position.y > ladder.finishOfLadder.position.y + 0.015f;
         }
     }
 
+
+    public class PlayerState_Died : PlayerState
+    {
+
+        public PlayerState_Died(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
+        {
+        }
+
+        public override void CheckTransition()
+        {
+            return;
+        }
+
+        public override void DoBeforeEntering()
+        {
+            // change animator
+            owner.animationController.TriggerDie();
+
+            owner.playerRigidbody.AddForce(owner.dieForceDirection.normalized * owner.dieForce);
+
+            // wait and change animator
+            owner.WaitAndAct(owner.timeBeforeDismount, () => owner.animationController.TriggerDismount());
+        }
+
+        public override void DoBeforeLeave()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void UpdateState()
+        {
+            return;
+        }
+
+
+    }
 
     #endregion
 }

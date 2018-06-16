@@ -13,7 +13,7 @@ public abstract class WeaponBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        CollidedWith(collider.gameObject);
+        CollidedWith(collider.attachedRigidbody.gameObject);
     }
 
     private void Update()

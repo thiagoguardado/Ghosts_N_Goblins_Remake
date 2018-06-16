@@ -50,6 +50,15 @@ public class GameController: MonoBehaviour
     private Coroutine timerRunning;
 
 
+    void OnEnable()
+    {
+        GameEvents.PlayerDied += EndLevel;
+    }
+
+    void OnDisable()
+    {
+        GameEvents.PlayerDied -= EndLevel;
+    }
 
     private void Awake()
     {
@@ -113,6 +122,12 @@ public class GameController: MonoBehaviour
             yield return null;
         }
 
+    }
+
+    public void IncrementScore(int scoreIncrement)
+    {
+        score += scoreIncrement;
+        GameEvents.ScoreIncremented.SafeCall();
     }
 
 }

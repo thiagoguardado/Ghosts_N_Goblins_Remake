@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class HudView : MonoBehaviour {
 
     public Text time;
+    public Text score;
     public Text lifes;
     public Image weapon;
 
@@ -16,6 +17,7 @@ public class HudView : MonoBehaviour {
         GameEvents.PlayerPickedWeapon += ChangeWeapon;
         GameEvents.PlayerDied += UpdateLifes;
         GameEvents.LevelStarted += UpdateLifes;
+        GameEvents.ScoreIncremented += IncrementScore;
     }
 
     private void OnDisable()
@@ -23,6 +25,7 @@ public class HudView : MonoBehaviour {
         GameEvents.PlayerPickedWeapon -= ChangeWeapon;
         GameEvents.PlayerDied -= UpdateLifes;
         GameEvents.LevelStarted -= UpdateLifes;
+        GameEvents.ScoreIncremented += IncrementScore;
     }
 
     private void Start()
@@ -61,6 +64,12 @@ public class HudView : MonoBehaviour {
     private void UpdateLifes()
     {
         lifes.text = GameController.Instance.Lifes.ToString();
+    }
+
+    // update life display
+    private void IncrementScore()
+    {
+        score.text = GameController.Instance.Score.ToString();
     }
 
 

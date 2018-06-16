@@ -11,16 +11,7 @@ public static class GameEvents {
     public static Action PlayerReachedEnd;
     public static Action TimeEnded;
 
+    public static Action ScoreIncremented;
 }
 
-public static class MyExtensions
-{
-    public static void SafeCall(this Action action)
-    {
-        if (action != null)
-        {
-            action();
-        }
-    }
 
-}

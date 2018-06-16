@@ -189,14 +189,10 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         switch (currentArmorStatus)
         {
             case PlayerArmor.Armored:
-                currentArmorStatus = PlayerArmor.Naked;
-                GameEvents.PlayerTookDamage.SafeCall();
-                StartCoroutine(WaitAndAct(afterDamageInvincibleDUration, () => isReceivingDamage = true));
+                LoseArmor();
                 break;
             case PlayerArmor.Naked:
-                currentArmorStatus = PlayerArmor.Dead;
-                GameEvents.PlayerTookDamage.SafeCall();
-                GameEvents.PlayerDied();
+                Die();
                 break;
             default:
                 break;
@@ -206,6 +202,19 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     }
 
+    private void LoseArmor()
+    {
+        currentArmorStatus = PlayerArmor.Naked;
+        GameEvents.PlayerTookDamage.SafeCall();
+        StartCoroutine(WaitAndAct(afterDamageInvincibleDUration, () => isReceivingDamage = true));
+    }
+
+    private void Die()
+    {
+        currentArmorStatus = PlayerArmor.Dead;
+        GameEvents.PlayerTookDamage.SafeCall();
+        GameEvents.PlayerDied.SafeCall();
+    }
 
     public void Hit(int hitDamage)
     {

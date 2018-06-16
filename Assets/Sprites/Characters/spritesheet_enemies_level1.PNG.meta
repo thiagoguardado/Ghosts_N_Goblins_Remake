@@ -1,0 +1,2052 @@
+fileFormatVersion: 2
+guid: 786c4952807f12a4e8fa60ad5b0bd7b1
+timeCreated: 1529107951
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: zombi_0
+    21300002: zombi_1
+    21300004: zombi_2
+    21300006: zombi_3
+    21300008: zombi_4
+    21300010: zombi_5
+    21300012: zombi_6
+    21300014: zombi_7
+    21300016: zombi_8
+    21300018: zombi_9
+    21300020: spritesheet_enemies_level1_11
+    21300022: spritesheet_enemies_level1_12
+    21300024: spritesheet_enemies_level1_13
+    21300026: spritesheet_enemies_level1_14
+    21300028: spritesheet_enemies_level1_15
+    21300030: spritesheet_enemies_level1_16
+    21300032: spritesheet_enemies_level1_17
+    21300034: spritesheet_enemies_level1_18
+    21300036: spritesheet_enemies_level1_19
+    21300038: spritesheet_enemies_level1_20
+    21300040: spritesheet_enemies_level1_21
+    21300042: spritesheet_enemies_level1_22
+    21300044: spritesheet_enemies_level1_23
+    21300046: spritesheet_enemies_level1_24
+    21300048: spritesheet_enemies_level1_25
+    21300050: spritesheet_enemies_level1_26
+    21300052: spritesheet_enemies_level1_27
+    21300054: spritesheet_enemies_level1_28
+    21300056: spritesheet_enemies_level1_29
+    21300058: spritesheet_enemies_level1_30
+    21300060: spritesheet_enemies_level1_31
+    21300062: spritesheet_enemies_level1_32
+    21300064: spritesheet_enemies_level1_33
+    21300066: spritesheet_enemies_level1_34
+    21300068: spritesheet_enemies_level1_35
+    21300070: spritesheet_enemies_level1_36
+    21300072: spritesheet_enemies_level1_37
+    21300074: spritesheet_enemies_level1_38
+    21300076: spritesheet_enemies_level1_39
+    21300078: spritesheet_enemies_level1_40
+    21300080: spritesheet_enemies_level1_41
+    21300082: spritesheet_enemies_level1_42
+    21300084: spritesheet_enemies_level1_43
+    21300086: spritesheet_enemies_level1_44
+    21300088: spritesheet_enemies_level1_45
+    21300090: spritesheet_enemies_level1_46
+    21300092: spritesheet_enemies_level1_47
+    21300094: spritesheet_enemies_level1_48
+    21300096: spritesheet_enemies_level1_49
+    21300098: spritesheet_enemies_level1_50
+    21300100: spritesheet_enemies_level1_51
+    21300102: spritesheet_enemies_level1_52
+    21300104: spritesheet_enemies_level1_53
+    21300106: spritesheet_enemies_level1_54
+    21300108: spritesheet_enemies_level1_55
+    21300110: spritesheet_enemies_level1_56
+    21300112: spritesheet_enemies_level1_57
+    21300114: spritesheet_enemies_level1_58
+    21300116: spritesheet_enemies_level1_59
+    21300118: spritesheet_enemies_level1_60
+    21300120: spritesheet_enemies_level1_61
+    21300122: spritesheet_enemies_level1_62
+    21300124: spritesheet_enemies_level1_63
+    21300126: spritesheet_enemies_level1_64
+    21300128: spritesheet_enemies_level1_65
+    21300130: spritesheet_enemies_level1_66
+    21300132: spritesheet_enemies_level1_67
+    21300134: spritesheet_enemies_level1_68
+    21300136: spritesheet_enemies_level1_69
+    21300138: spritesheet_enemies_level1_70
+    21300140: spritesheet_enemies_level1_71
+    21300142: spritesheet_enemies_level1_72
+    21300144: spritesheet_enemies_level1_73
+    21300146: spritesheet_enemies_level1_74
+    21300148: spritesheet_enemies_level1_75
+    21300150: spritesheet_enemies_level1_76
+    21300152: spritesheet_enemies_level1_77
+    21300154: spritesheet_enemies_level1_78
+    21300156: spritesheet_enemies_level1_79
+    21300158: spritesheet_enemies_level1_80
+    21300160: spritesheet_enemies_level1_81
+    21300162: spritesheet_enemies_level1_82
+    21300164: spritesheet_enemies_level1_83
+    21300166: spritesheet_enemies_level1_84
+    21300168: spritesheet_enemies_level1_85
+    21300170: spritesheet_enemies_level1_86
+    21300172: spritesheet_enemies_level1_87
+    21300174: spritesheet_enemies_level1_88
+    21300176: spritesheet_enemies_level1_89
+    21300178: spritesheet_enemies_level1_90
+    21300180: spritesheet_enemies_level1_91
+    21300182: spritesheet_enemies_level1_92
+    21300184: spritesheet_enemies_level1_93
+    21300186: spritesheet_enemies_level1_94
+    21300188: spritesheet_enemies_level1_95
+    21300190: spritesheet_enemies_level1_96
+    21300192: spritesheet_enemies_level1_97
+    21300194: spritesheet_enemies_level1_98
+    21300196: spritesheet_enemies_level1_99
+    21300198: spritesheet_enemies_level1_100
+    21300200: spritesheet_enemies_level1_101
+    21300202: spritesheet_enemies_level1_102
+    21300204: spritesheet_enemies_level1_103
+    21300206: spritesheet_enemies_level1_104
+    21300208: spritesheet_enemies_level1_105
+    21300210: spritesheet_enemies_level1_106
+    21300212: spritesheet_enemies_level1_107
+    21300214: spritesheet_enemies_level1_108
+    21300216: spritesheet_enemies_level1_109
+    21300218: spritesheet_enemies_level1_110
+    21300220: spritesheet_enemies_level1_111
+    21300222: spritesheet_enemies_level1_112
+    21300224: spritesheet_enemies_level1_113
+    21300226: spritesheet_enemies_level1_114
+    21300228: spritesheet_enemies_level1_115
+    21300230: spritesheet_enemies_level1_116
+    21300232: spritesheet_enemies_level1_117
+    21300234: spritesheet_enemies_level1_118
+    21300236: spritesheet_enemies_level1_119
+    21300238: spritesheet_enemies_level1_120
+    21300240: spritesheet_enemies_level1_121
+    21300242: spritesheet_enemies_level1_122
+    21300244: spritesheet_enemies_level1_123
+    21300246: spritesheet_enemies_level1_124
+    21300248: spritesheet_enemies_level1_125
+    21300250: spritesheet_enemies_level1_126
+    21300252: spritesheet_enemies_level1_127
+    21300254: spritesheet_enemies_level1_128
+    21300256: spritesheet_enemies_level1_129
+    21300258: spritesheet_enemies_level1_130
+    21300260: spritesheet_enemies_level1_131
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: zombi_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 376
+        width: 14
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 376
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 376
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_3
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 376
+        width: 25
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_4
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 376
+        width: 17
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_5
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 376
+        width: 18
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 376
+        width: 20
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_7
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 376
+        width: 18
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_8
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 376
+        width: 21
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zombi_9
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 376
+        width: 18
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_11
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 349
+        width: 41
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_12
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 349
+        width: 16
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_13
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 349
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_14
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 349
+        width: 16
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_15
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 349
+        width: 16
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_16
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 349
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_17
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 349
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_18
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 349
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_19
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 349
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_20
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 307
+        width: 13
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_21
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 307
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_22
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 307
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_23
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 307
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_24
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 314
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_25
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 314
+        width: 17
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_26
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 313
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_27
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 314
+        width: 17
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_28
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 314
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_29
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 307
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_30
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 280
+        width: 12
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_31
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 280
+        width: 16
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_32
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 280
+        width: 16
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_33
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 280
+        width: 12
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_34
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 283
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_35
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 284
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_36
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 284
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_37
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 283
+        width: 16
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_38
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 284
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_39
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 284
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_40
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 280
+        width: 16
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_41
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 259
+        width: 12
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_42
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 259
+        width: 16
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_43
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 259
+        width: 16
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_44
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 259
+        width: 16
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_45
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 263
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_46
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 263
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_47
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 262
+        width: 16
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_48
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 263
+        width: 16
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_49
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 263
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_50
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 263
+        width: 10
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_51
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 259
+        width: 14
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_52
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 210
+        width: 16
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_53
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 210
+        width: 16
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_54
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 210
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_55
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 210
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_56
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 210
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_57
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 210
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_58
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 210
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_59
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 210
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_60
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 183
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_61
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 183
+        width: 14
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_62
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 183
+        width: 16
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_63
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 183
+        width: 16
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_64
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 183
+        width: 6
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_65
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 183
+        width: 6
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_66
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 183
+        width: 6
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_67
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 183
+        width: 6
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_68
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 136
+        width: 43
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_69
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 136
+        width: 32
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_70
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 136
+        width: 41
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_71
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 136
+        width: 32
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_72
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 136
+        width: 32
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_73
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 136
+        width: 27
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_74
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 136
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_75
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 136
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_76
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 136
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_77
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 136
+        width: 24
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_78
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 136
+        width: 24
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_79
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 136
+        width: 22
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_80
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 136
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_81
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 136
+        width: 9
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_82
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 109
+        width: 32
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_83
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 109
+        width: 24
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_84
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 109
+        width: 30
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_85
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 109
+        width: 24
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_86
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 109
+        width: 24
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_87
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 109
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_88
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 109
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_89
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 109
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_90
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 109
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_91
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 109
+        width: 16
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_92
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 109
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_93
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 109
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_94
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 109
+        width: 8
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_95
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 109
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_96
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 82
+        width: 32
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_97
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 82
+        width: 24
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_98
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 82
+        width: 30
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_99
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 82
+        width: 24
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_100
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 82
+        width: 24
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_101
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 82
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_102
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 82
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_103
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 82
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_104
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 82
+        width: 16
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_105
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 82
+        width: 16
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_106
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 82
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_107
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 82
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_108
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 43
+        width: 28
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_109
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 44
+        width: 20
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_110
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 44
+        width: 24
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_111
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 44
+        width: 31
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_112
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 45
+        width: 31
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_113
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 45
+        width: 23
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_114
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 44
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_115
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 46
+        width: 24
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_116
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 39
+        width: 4
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_117
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 48
+        width: 22
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_118
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 10
+        width: 24
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_119
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 18
+        width: 14
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_120
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 10
+        width: 18
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_121
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 10
+        width: 20
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_122
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 14
+        width: 24
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_123
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 14
+        width: 22
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_124
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 14
+        width: 20
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_125
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 10
+        width: 16
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_126
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 16
+        width: 14
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_127
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 10
+        width: 41
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_128
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 10
+        width: 18
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_129
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 10
+        width: 22
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_130
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 10
+        width: 18
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_enemies_level1_131
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 10
+        width: 29
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

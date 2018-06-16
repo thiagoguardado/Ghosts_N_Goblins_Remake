@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(ObjectScore))]
 public class Enemy : MonoBehaviour {
 
     public int damageOnHit;
@@ -45,5 +45,14 @@ public class Enemy : MonoBehaviour {
 
     }
 
+    protected virtual void Kill()
+    {
+        // icrement score
+        GameController.Instance.IncrementScore(GetComponent<ObjectScore>().score);
+
+        // kill object
+        Destroy(gameObject);
+
+    }
 
 }

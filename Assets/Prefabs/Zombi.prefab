@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4616006236738674}
   - component: {fileID: 50376346505610526}
   - component: {fileID: 114347360259090158}
+  - component: {fileID: 114384480248026712}
   m_Layer: 0
   m_Name: Zombi
   m_TagString: Untagged
@@ -54,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 1752275290094980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7619048, y: 0.516129, z: 1}
   m_Children: []
   m_Father: {fileID: 4616006236738674}
   m_RootOrder: 0
@@ -99,24 +100,24 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752275290094980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0028464422, y: 0.08020879}
+  m_Offset: {x: 0.009191452, y: 0.15893772}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.21, y: 0.31}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.14, y: 0.05}
+    newSize: {x: 0.14, y: 0.05}
     adaptiveTilingThreshold: 0.5
-    drawMode: 1
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13533081, y: 0.15879896}
+  m_Size: {x: 0.13347882, y: 0.31625682}
   m_EdgeRadius: 0
 --- !u!95 &95679570916686078
 Animator:
@@ -152,6 +153,18 @@ MonoBehaviour:
   collidingLayers:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &114384480248026712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637877261045534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b3483feade4d04c99df98a4a56ddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 100
 --- !u!212 &212289542722174682
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -186,12 +199,12 @@ SpriteRenderer:
   m_SortingLayerID: -1652373999
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: d65cbbf6d917b63419cbb8c3d37df917, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 786c4952807f12a4e8fa60ad5b0bd7b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
-  m_Size: {x: 0.16, y: 0.16}
+  m_DrawMode: 0
+  m_Size: {x: 0.14, y: 0.05}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
