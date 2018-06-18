@@ -2,18 +2,32 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class WeaponBehavior : MonoBehaviour
 {
 
     public int damage;
 
-    public abstract void Shoot(float shootSpeed);
-    protected abstract void CollidedWith(GameObject go);
-    protected abstract void Move();
+    protected Rigidbody2D rigidbody2d;
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public abstract void Shoot(float shootSpeed, LookingDirection direction);
+    protected abstract void CollidedWith(GameObject go, Vector2 onPoint);
+    protected abstract void Move();
+    protected abstract void Setup();
+
+    private void Awake()
     {
-        CollidedWith(collider.attachedRigidbody.gameObject);
+        rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        Setup();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CollidedWith(collision.gameObject, collision.contacts[0].point);
     }
 
     private void Update()

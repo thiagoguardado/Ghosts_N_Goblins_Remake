@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(PlayerAnimationController))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -19,12 +20,6 @@ public class PlayerFSM : MonoBehaviour {
         StandupAttack,
         CrouchedAttack,
         Died
-    }
-
-    private enum LookingDirection
-    {
-        Left,
-        Right
     }
 
     private enum TranslatingAxis
@@ -84,12 +79,12 @@ public class PlayerFSM : MonoBehaviour {
     public Transform spriteTransform;
     public float horizontalSpeed = 5;
     private bool isRunning;
-    private LookingDirection currentDirection = LookingDirection.Right;
+    
     private Vector3 currentWorldDirection
     {
         get
         {
-            return currentDirection == LookingDirection.Right ? Vector3.right : Vector3.left;
+            return playerController.currentDirection == LookingDirection.Right ? Vector3.right : Vector3.left;
         }
     }
     private bool walkPaused = false;
@@ -248,22 +243,22 @@ public class PlayerFSM : MonoBehaviour {
     private void CheckDirection()
     {
         // turn
-        if (horizontalAxis > 0 && currentDirection == LookingDirection.Left)
+        if (horizontalAxis > 0 && playerController.currentDirection == LookingDirection.Left)
         {
             // turn to right
             Vector3 scale = spriteTransform.localScale;
             scale.x = 1;
             spriteTransform.localScale = scale;
-            currentDirection = LookingDirection.Right;
+            playerController.currentDirection = LookingDirection.Right;
 
         }
-        else if (horizontalAxis < 0 && currentDirection == LookingDirection.Right)
+        else if (horizontalAxis < 0 && playerController.currentDirection == LookingDirection.Right)
         {
             // turn to left
             Vector3 scale = spriteTransform.localScale;
             scale.x = -1;
             spriteTransform.localScale = scale;
-            currentDirection = LookingDirection.Left;
+            playerController.currentDirection = LookingDirection.Left;
         }
     }
 
@@ -281,11 +276,11 @@ public class PlayerFSM : MonoBehaviour {
         // make controller shoot
         if (isCrouched)
         {
-            playerController.ShootCrouched(currentWorldDirection);
+            playerController.ShootCrouched();
         }
         else
         {
-            playerController.ShootStanding(currentWorldDirection);
+            playerController.ShootStanding();
         } 
 
         // update animator
@@ -862,7 +857,7 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void DoBeforeLeave()
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public override void UpdateState()

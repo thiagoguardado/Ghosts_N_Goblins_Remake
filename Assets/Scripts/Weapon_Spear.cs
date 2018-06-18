@@ -5,29 +5,49 @@ using UnityEngine;
 public class Weapon_Spear : WeaponBehavior {
 
     private float speed;
+    private Vector2 direction;
 
-    public override void Shoot(float shootSpeed)
+    public override void Shoot(float speed, LookingDirection direction)
     {
-        speed = shootSpeed;
+        this.speed = speed;
+
+        switch (direction)
+        {
+            case LookingDirection.Left:
+                transform.localScale = new Vector3(-1, 1, 1);
+                this.direction = new Vector2(-1, 0) ;
+                break;
+            case LookingDirection.Right:
+                transform.localScale = new Vector3(1, 1, 1);
+                this.direction = new Vector2(1, 0);
+                break;
+            default:
+                break;
+        }
+
     }
 
-    protected override void CollidedWith(GameObject go)
+    protected override void CollidedWith(GameObject go, Vector2 onPoint)
     {
         // look for hittable implementation
         var hitComponent = go.GetComponent<IWeaponHittable>();
         if (hitComponent != null)
         {
-            hitComponent.Hit(damage);
+            hitComponent.Hit(damage, onPoint);
             Destroy(gameObject);
         }
     }
 
     protected override void Move()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        return;
+        
     }
 
+    protected override void Setup()
+    {
 
-
-
+        // setup velocity
+        rigidbody2d.velocity = direction * speed;
+    }
 }

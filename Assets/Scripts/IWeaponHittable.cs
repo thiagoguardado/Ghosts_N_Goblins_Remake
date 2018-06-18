@@ -1,5 +1,7 @@
-﻿public interface IWeaponHittable {
+﻿using UnityEngine;
 
-    void Hit(float damageTaken);
+public interface IWeaponHittable {
+
+    void Hit(int damageTaken, Vector2 hitPoint);
 
 }

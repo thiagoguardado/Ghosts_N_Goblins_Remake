@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+public enum LookingDirection
+{
+    Left,
+    Right
+}
+
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour, IEnemyHittable
 {
@@ -55,6 +64,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     private bool throwButton;
     private bool jumpButton;
     private bool isGrounded;
+    public LookingDirection currentDirection = LookingDirection.Right;
 
     // encapsulated variables
     public float HorizontalAxis
@@ -93,6 +103,17 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         }
     }
 
+
+    private void OnEnable()
+    {
+        GameEvents.TimeEnded += Die;
+    }
+
+
+    private void OnDisable()
+    {
+        GameEvents.TimeEnded -= Die;
+    }
 
     private void Awake()
     {
@@ -164,22 +185,19 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     }
 
-    public void ShootStanding(Vector3 forward)
+    public void ShootStanding()
     {
-        Shoot(weaponStandingSpawnPoint, forward);
+        Shoot(weaponStandingSpawnPoint);
     }
 
-    public void ShootCrouched(Vector3 forward)
+    public void ShootCrouched()
     {
-        Shoot(weaponCrouchedSpawnPoint, forward);
+        Shoot(weaponCrouchedSpawnPoint);
     }
 
-    private void Shoot(Transform spawnPoint, Vector3 forward)
+    private void Shoot(Transform spawnPoint)
     {
-
-        var instantiated = Instantiate(currentWeapon.weaponPrefab, spawnPoint.position, Quaternion.identity);
-        instantiated.transform.right = forward;
-        instantiated.Shoot(currentWeapon.initialVelocity);
+        currentWeapon.ShootWeapon(spawnPoint.position, currentDirection);
     }
 
     public void ReceiveDamage() {

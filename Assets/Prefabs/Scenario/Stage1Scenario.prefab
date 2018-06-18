@@ -1547,7 +1547,7 @@ MonoBehaviour:
     - {fileID: 4177081754351706}
     - {fileID: 4685079496036926}
     - {fileID: 4427828533399986}
-    prefab: {fileID: 114407733687553368, guid: 88b2190c9721bfc4f89dd83c72588298, type: 2}
+    prefab: {fileID: 114407733687553368, guid: d92e1eff99394c14791e01104d875a28, type: 2}
   - name: Tall
     positions:
     - {fileID: 4222130788519792}
@@ -1557,7 +1557,7 @@ MonoBehaviour:
     - {fileID: 4772108374918934}
     - {fileID: 4321492296273582}
     - {fileID: 4405054870229786}
-    prefab: {fileID: 114813210159264596, guid: 58b78c1e24fa0ac4fb576dc67bf3afa4, type: 2}
+    prefab: {fileID: 114606580314052544, guid: 938cfb3af21ce554a9a2cd2ac58db6ed, type: 2}
 --- !u!114 &114761103359237582
 MonoBehaviour:
   m_ObjectHideFlags: 1
