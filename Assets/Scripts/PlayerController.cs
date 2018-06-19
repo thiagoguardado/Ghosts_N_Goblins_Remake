@@ -133,6 +133,15 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IPlayerTouchable playerTouchable = collision.GetComponentInParent<IPlayerTouchable>();
+        if (playerTouchable != null)
+            playerTouchable.WasTouchesByPlayer();
+
+    }
+
     public void ResetAxis() {
 
         horizontalAxis = 0f;

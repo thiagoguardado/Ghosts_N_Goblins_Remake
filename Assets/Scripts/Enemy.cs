@@ -58,8 +58,8 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
 
     protected virtual void Kill()
     {
-        // icrement score
-        GameController.Instance.IncrementScore(GetComponent<ObjectScore>().score);
+        // add score to game controller
+        GetComponent<ObjectScore>().IncrementGameScore();
 
         // kill object
         Destroy(gameObject);

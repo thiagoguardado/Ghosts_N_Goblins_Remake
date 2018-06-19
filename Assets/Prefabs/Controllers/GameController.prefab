@@ -53,3 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialTimer: 120
   initialLifes: 3
+  floatingScoreManager: {fileID: 11400000, guid: 664db5f00852b0d48a967a73cc851ca2,
+    type: 2}

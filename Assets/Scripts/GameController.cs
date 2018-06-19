@@ -19,6 +19,8 @@ public class GameController: MonoBehaviour
     public int initialTimer = 120;
     public int initialLifes = 3;
 
+    public FloatingScoreManager floatingScoreManager;
+
     private int lifes = 0;
     private int score = 0;
     private float timer = 0f;
