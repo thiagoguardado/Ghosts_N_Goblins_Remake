@@ -18,17 +18,24 @@ public class PlayerAnimationController : MonoBehaviour {
 
     private PlayerController playerController;
 
-    
-
     [Header("Animator Control")]
     public Animator playerAnimator; //animator attached to player
+
     public bool isRunning = false;
     public bool isCrouched = false;
     public bool isJumping = false;
+    private bool isDead
+    {
+        get
+        {
+            return playerController.currentArmorStatus == PlayerController.PlayerArmor.Dead;
+        }
+    }
     public bool throwSomething = false;
     public bool isClimbing = false;
     public bool isOnEndOfLadder = false;
     public bool isLeavingLadder = false;
+    public bool isInvincible { get { return !playerController.isReceivingDamage; } }
 
     // animation layer
     private AnimationLayer previousLayer = AnimationLayer.Armored;  // previous layer playing
@@ -133,27 +140,29 @@ public class PlayerAnimationController : MonoBehaviour {
 
     private void UpdateAnimatorValues()
     {
+        playerAnimator.SetBool("isDead", isDead);
         playerAnimator.SetBool("isRunning", isRunning);
         playerAnimator.SetBool("isCrouched", isCrouched);
         playerAnimator.SetBool("isJumping", isJumping);
         if (throwSomething)
         {
-            playerAnimator.SetTrigger("throw");
+            playerAnimator.SetTrigger("Throw");
             throwSomething = false;
         }
         playerAnimator.SetBool("isClimbing", isClimbing);
         playerAnimator.SetBool("isOnEndOfLadder", isOnEndOfLadder);
         playerAnimator.SetBool("isLeavingLadder", isLeavingLadder);
+        playerAnimator.SetBool("isInvincible", isInvincible);
 
     }
 
-    public void TriggerDie()
+    public void TriggerHit()
     {
-        playerAnimator.SetTrigger("Die");
+        playerAnimator.SetTrigger("Hit");
     }
 
-    public void TriggerDismount()
+    public void LeaveHitState()
     {
-        playerAnimator.SetTrigger("Dismount");
+        playerAnimator.SetTrigger("FinishHit");
     }
 }

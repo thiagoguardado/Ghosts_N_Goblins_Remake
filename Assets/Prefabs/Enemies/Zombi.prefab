@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 50376346505610526}
   - component: {fileID: 114347360259090158}
   - component: {fileID: 114384480248026712}
+  - component: {fileID: 114934739668792964}
   m_Layer: 12
   m_Name: Zombi
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 1752275290094980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7619048, y: 0.516129, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4616006236738674}
   m_RootOrder: 0
@@ -67,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637877261045534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.751, y: -0.719, z: 0}
-  m_LocalScale: {x: 1, y: 1.5799999, z: 1}
+  m_LocalPosition: {x: 0.369, y: -0.733, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4228025343332120}
   m_Father: {fileID: 0}
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b405c0be2af4244900c66309242294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
   collider: {fileID: 61448312289218134}
@@ -157,6 +158,13 @@ MonoBehaviour:
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114534560851743402, guid: e19fca69d3dfd9643948ef7605304043,
     type: 2}
+  lookingDirection: 1
+  speed: 0.5
+  spriteTransform: {fileID: 4228025343332120}
+  animator: {fileID: 95679570916686078}
+  timeEmerging: 0.5
+  timeWalking: 3
+  timeSinking: 0.5
 --- !u!114 &114384480248026712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,7 +176,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b3483feade4d04c99df98a4a56ddca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 100
+  score: 200
+--- !u!114 &114934739668792964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637877261045534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58596fe7bd9c0984297fdd57e0407e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212289542722174682
 SpriteRenderer:
   m_ObjectHideFlags: 1

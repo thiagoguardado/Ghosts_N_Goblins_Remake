@@ -7,18 +7,6 @@ public class Coin : MonoBehaviour, IPlayerTouchable {
 
     public Transform coinSprite;
 
-    public bool play = false;
-
-
-    private void Update()
-    {
-        if (play)
-        {
-            WasTouchesByPlayer();
-            play = false;
-        }
-    }
-
     public void WasTouchesByPlayer()
     {
 
@@ -30,7 +18,5 @@ public class Coin : MonoBehaviour, IPlayerTouchable {
         Destroy(gameObject);
 
     }
-
-
 
 }

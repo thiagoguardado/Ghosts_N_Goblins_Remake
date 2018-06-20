@@ -54,9 +54,10 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     [Header("Life and Armor")]
     public PlayerArmor currentArmorStatus = PlayerArmor.Armored;
-    public float afterDamageInvincibleDUration = 0.5f;
-    private bool isReceivingDamage = true;
-    
+    public float afterDamageInvincibleDuration = 0.5f;
+    public bool isReceivingDamage { get; private set; }
+    public BreakableArmor breakableArmor;
+
 
     // control variables
     private float horizontalAxis;
@@ -120,6 +121,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         playerRigidbody = GetComponent<Rigidbody2D>();
 
         instance = this;
+
+        isReceivingDamage = true;
     }
 
 
@@ -231,14 +234,23 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     private void LoseArmor()
     {
+        // remove armor
         currentArmorStatus = PlayerArmor.Naked;
+        breakableArmor.Break();
+
+        // call event
         GameEvents.PlayerTookDamage.SafeCall();
-        StartCoroutine(WaitAndAct(afterDamageInvincibleDUration, () => isReceivingDamage = true));
+
+        // make invincible
+        this.WaitAndAct(afterDamageInvincibleDuration, () => isReceivingDamage = true);
     }
 
     private void Die()
     {
+        // change sprites
         currentArmorStatus = PlayerArmor.Dead;
+
+        // call events
         GameEvents.PlayerTookDamage.SafeCall();
         GameEvents.PlayerDied.SafeCall();
     }
@@ -255,14 +267,6 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
         }
 
-    }
-
-    private IEnumerator WaitAndAct(float wait, Action action)
-    {
-        yield return new WaitForSeconds(wait);
-
-        action.Invoke();
-        
     }
 
 }

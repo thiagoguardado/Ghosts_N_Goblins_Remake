@@ -19,6 +19,7 @@ public class PlayerFSM : MonoBehaviour {
         Climbing,
         StandupAttack,
         CrouchedAttack,
+        Hit,
         Died
     }
 
@@ -112,10 +113,9 @@ public class PlayerFSM : MonoBehaviour {
     private bool isInsideLadder = false;
     private Ladder currentLadder;
 
-    [Header("Die")]
-    public Vector3 dieForceDirection;
-    public float dieForce;
-    public float timeBeforeDismount = 1f;
+    [Header("Hit")]
+    public Vector3 hitForceDirection;
+    public float hitForce;
     private bool isDead
     {
         get
@@ -123,6 +123,7 @@ public class PlayerFSM : MonoBehaviour {
             return playerController.currentArmorStatus == PlayerController.PlayerArmor.Dead;
         }
     }
+    private float minTimeToExitHit { get { return minTimeToExitJump; } }
 
     private void Awake()
     {
@@ -139,6 +140,7 @@ public class PlayerFSM : MonoBehaviour {
         statesDictionary.Add(PlayerFSMState.Jumping, new PlayerState_Jumping(this, PlayerFSMState.Jumping));
         statesDictionary.Add(PlayerFSMState.Crouched, new PlayerState_Crouched(this, PlayerFSMState.Crouched));
         statesDictionary.Add(PlayerFSMState.Climbing, new PlayerState_Climbing(this, PlayerFSMState.Climbing));
+        statesDictionary.Add(PlayerFSMState.Hit, new PlayerState_Hit(this, PlayerFSMState.Hit));
         statesDictionary.Add(PlayerFSMState.Died, new PlayerState_Died(this, PlayerFSMState.Died));
 
         // assign initial state
@@ -147,16 +149,27 @@ public class PlayerFSM : MonoBehaviour {
         // save start y position of sprite object
         spriteObjectStartYPosition = spriteTransform.localPosition.y;
 
+
     }
 
+    private void OnEnable()
+    {
+        // add listener to hit state
+        GameEvents.PlayerTookDamage += GetHit;
+
+    }
+
+    private void OnDisable()
+    {
+        // add listener to hit state
+        GameEvents.PlayerTookDamage -= GetHit;
+    }
 
     private void Update()
     {
-
         // update fsm state
         currentPlayerState.UpdateState();
         currentPlayerState.CheckTransition();
-
     }
 
     private void FixedUpdate()
@@ -164,6 +177,8 @@ public class PlayerFSM : MonoBehaviour {
         // move horizontally
         FixedTranslate();
     }
+
+
 
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -287,6 +302,12 @@ public class PlayerFSM : MonoBehaviour {
         animationController.throwSomething = true;
     }
 
+    // hit
+    private void GetHit()
+    {
+        ChangeState(PlayerFSMState.Hit);
+    }
+
 
     // collider
     private void ChangeColliders(bool standingCollider, bool crouchedCollider)
@@ -335,7 +356,7 @@ public class PlayerFSM : MonoBehaviour {
         public override void CheckTransition()
         {
 
-            // check if is dead
+            // check if was hit
             if (owner.isDead)
             {
                 owner.ChangeState(PlayerFSMState.Died);
@@ -815,7 +836,6 @@ public class PlayerFSM : MonoBehaviour {
 
         private void CheckSpriteFlipping()
         {
-            Debug.Log(owner.transform.position.y - groundY);
 
             if (((owner.transform.position.y - groundY) / owner.flippingInterval) % 2 > 1)
             {
@@ -828,6 +848,60 @@ public class PlayerFSM : MonoBehaviour {
         private bool CheckTopOfLadder()
         {
             return owner.transform.position.y > ladder.finishOfLadder.position.y + 0.015f;
+        }
+    }
+
+    public class PlayerState_Hit : PlayerState
+    {
+
+        private float timer = 0f;
+
+        public PlayerState_Hit(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
+        {
+        }
+
+        public override void CheckTransition()
+        {
+
+            if (owner.isGrounded && timer >= owner.minTimeToExitHit)
+            {
+                if (owner.isDead)
+                {
+                    owner.ChangeState(PlayerFSMState.Died);
+                }
+                else
+                {
+                    owner.ChangeState(PlayerFSMState.Idle);
+                }
+
+            }
+
+        }
+
+        public override void DoBeforeEntering()
+        {
+
+            // change animator
+            owner.animationController.TriggerHit();
+
+            // apply force
+            owner.playerRigidbody.velocity = Vector2.zero;
+            owner.playerRigidbody.AddForce(owner.hitForceDirection.normalized * owner.hitForce,ForceMode2D.Impulse);
+
+            // set timer
+            timer = 0f;
+        }
+
+        public override void DoBeforeLeave()
+        {
+            // change animator
+            owner.animationController.LeaveHitState();
+            return;
+        }
+
+        public override void UpdateState()
+        {
+            timer += Time.deltaTime;
         }
     }
 
@@ -846,13 +920,7 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void DoBeforeEntering()
         {
-            // change animator
-            owner.animationController.TriggerDie();
-
-            owner.playerRigidbody.AddForce(owner.dieForceDirection.normalized * owner.dieForce);
-
-            // wait and change animator
-            owner.WaitAndAct(owner.timeBeforeDismount, () => owner.animationController.TriggerDismount());
+            return;
         }
 
         public override void DoBeforeLeave()
