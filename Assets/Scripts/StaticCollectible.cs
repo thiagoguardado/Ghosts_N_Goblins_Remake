@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ObjectScore))]
-public class Coin : MonoBehaviour, IPlayerTouchable {
+public class StaticCollectible : MonoBehaviour, IPlayerTouchable {
 
-    public Transform coinSprite;
+    public Transform spriteTransform;
 
     public void WasTouchesByPlayer()
     {
 
         // add score to game controller
-        GetComponent<ObjectScore>().IncrementGameScore(coinSprite.position);
+        GetComponent<ObjectScore>().IncrementGameScore(spriteTransform.position);
 
 
         // destroy object
