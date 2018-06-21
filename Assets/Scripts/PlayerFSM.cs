@@ -210,7 +210,8 @@ public class PlayerFSM : MonoBehaviour {
     {
         if (isTranslating)
         {
-            transform.Translate((fixedMoveAxis==TranslatingAxis.Horizontal? Vector3.right:Vector3.up) * fixedMoveSpeed * Time.fixedDeltaTime);
+            transform.localPosition += (fixedMoveAxis == TranslatingAxis.Horizontal ? Vector3.right : Vector3.up) * fixedMoveSpeed * Time.fixedDeltaTime;
+            //transform.Translate((fixedMoveAxis==TranslatingAxis.Horizontal? Vector3.right:Vector3.up) * fixedMoveSpeed * Time.fixedDeltaTime);
             isTranslating = false;
         }
     }
@@ -440,7 +441,7 @@ public class PlayerFSM : MonoBehaviour {
             // if stop walking
             if (owner.horizontalAxis == 0)
             {
-                owner.ChangeState(PlayerFSM.PlayerFSMState.Idle);
+                owner.ChangeState(PlayerFSMState.Idle);
                 return;
             }
 

@@ -64,7 +64,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     private float verticalAxis;
     private bool throwButton;
     private bool jumpButton;
-    private bool isGrounded;
+    private bool isGrounded = false;
+    private bool wasGrounded = false;
     public LookingDirection currentDirection = LookingDirection.Right;
 
     // encapsulated variables
@@ -184,16 +185,38 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
         if (hit.transform != null)
         {
-
-            if (hit.transform.gameObject.GetComponent<Floor>() != null && playerRigidbody.velocity.y <= 0)
+            Floor floor = hit.transform.gameObject.GetComponent<Floor>();
+            if (floor != null && playerRigidbody.velocity.y <= 0)
             {
+
+                if (!wasGrounded)
+                    Ground(floor);
+
                 isGrounded = true;
             }
         }
         else
         {
+
+            if (wasGrounded)
+                UnGround();
+
             isGrounded = false;
         }
+
+        wasGrounded = isGrounded;
+
+    }
+
+    private void UnGround()
+    {
+        transform.parent = null;
+    }
+
+    private void Ground(Floor floor)
+    {
+
+        transform.parent = floor.transform;
 
     }
 
