@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinSprite: {fileID: 4207171149880822}
-  play: 0
 --- !u!212 &212383878449298442
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -172,7 +171,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1652373999
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 883d6b945d1524a4b8498153b423733c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

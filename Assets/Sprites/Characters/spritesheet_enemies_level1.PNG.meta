@@ -59,10 +59,10 @@ TextureImporter:
     21300104: spritesheet_enemies_level1_53
     21300106: spritesheet_enemies_level1_54
     21300108: spritesheet_enemies_level1_55
-    21300110: spritesheet_enemies_level1_56
-    21300112: spritesheet_enemies_level1_57
-    21300114: spritesheet_enemies_level1_58
-    21300116: spritesheet_enemies_level1_59
+    21300110: plant_projectile_0
+    21300112: plant_projectile_1
+    21300114: plant_projectile_2
+    21300116: plant_projectile_3
     21300118: spritesheet_enemies_level1_60
     21300120: spritesheet_enemies_level1_61
     21300122: spritesheet_enemies_level1_62
@@ -981,57 +981,57 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_56
+      name: plant_projectile_0
       rect:
         serializedVersion: 2
         x: 119
         y: 210
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_57
+      name: plant_projectile_1
       rect:
         serializedVersion: 2
         x: 144
         y: 210
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_58
+      name: plant_projectile_2
       rect:
         serializedVersion: 2
         x: 169
         y: 210
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_59
+      name: plant_projectile_3
       rect:
         serializedVersion: 2
         x: 194
         y: 210
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

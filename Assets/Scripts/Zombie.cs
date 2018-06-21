@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zombie : Enemy, IWeaponHittable
+public class Zombie : Enemy
 {
     [Header("Movement")]
-    public LookingDirection lookingDirection;
     public float speed;
     public Transform spriteTransform;
+    private LookingDirection lookingDirection;
 
     [Header("Animation")]
     public Animator animator;
@@ -17,6 +17,22 @@ public class Zombie : Enemy, IWeaponHittable
     public float timeEmerging;
     public float timeWalking;
     public float timeSinking;
+
+
+    protected override void Start()
+    {
+        base.Start();
+
+        // Start Looking To Player
+        if ((PlayerController.Instance.transform.position.x - transform.position.x) > 0)
+        {
+            lookingDirection = LookingDirection.Right;
+        }
+        else
+        {
+            lookingDirection = LookingDirection.Left;
+        }
+    }
 
 
     public void Move()

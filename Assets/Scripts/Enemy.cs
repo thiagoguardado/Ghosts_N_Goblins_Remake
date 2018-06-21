@@ -26,6 +26,12 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
     }
 
 
+    protected virtual void Start()
+    {
+        
+    }
+
+
     protected virtual void Update()
     {
 

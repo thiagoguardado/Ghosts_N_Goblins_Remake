@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114920904033163108}
   - component: {fileID: 50133875722531330}
   - component: {fileID: 114606580314052544}
+  - component: {fileID: 251377360110120760}
   m_Layer: 0
   m_Name: GravestoneTall
   m_TagString: Untagged
@@ -73,7 +74,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.08652794}
   m_SpriteTilingProperty:
@@ -113,3 +114,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036168b5c5cecb941a6c271c5eeb56b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!251 &251377360110120760
+PlatformEffector2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037513269879372}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

@@ -27,7 +27,9 @@ public abstract class WeaponBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        CollidedWith(collision.gameObject, collision.contacts[0].point);
+
+        if (collision.contacts.Length>0)
+            CollidedWith(collision.gameObject, collision.contacts[0].point);
     }
 
     private void Update()
