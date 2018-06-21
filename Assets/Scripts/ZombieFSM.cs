@@ -6,7 +6,6 @@ using UnityEngine;
 public class ZombieFSM : FSM<Zombie>{
 
 
-
     private void Awake()
     {
         Init(new System.Type[] { typeof(Zombi_Emerging), typeof(Zombi_Walking), typeof(Zombi_Sinking) }, GetComponent<Zombie>());
@@ -16,15 +15,16 @@ public class ZombieFSM : FSM<Zombie>{
     {
         private float timer = 0f;
 
-        public Zombi_Emerging(FSM<Zombie> owner) : base(owner)
+
+        public Zombi_Emerging(FSM<Zombie> fsm, Zombie fsm_holder) : base(fsm, fsm_holder)
         {
         }
 
         public override void CheckTransition()
         {
-            if (timer >= owner.holder.timeEmerging)
+            if (timer >= fsm_holder.timeEmerging)
             {
-                owner.ChangeState(typeof(Zombi_Walking));
+                fsm.ChangeState(typeof(Zombi_Walking));
             }
         }
 
@@ -45,20 +45,19 @@ public class ZombieFSM : FSM<Zombie>{
         }
     }
 
-
     class Zombi_Walking : FSMState<Zombie>
     {
         private float timer = 0f;
 
-        public Zombi_Walking(FSM<Zombie> owner) : base(owner)
+        public Zombi_Walking(FSM<Zombie> fsm, Zombie fsm_holder) : base(fsm, fsm_holder)
         {
         }
 
         public override void CheckTransition()
         {
-            if (timer >= owner.holder.timeWalking)
+            if (timer >= fsm_holder.timeWalking)
             {
-                owner.ChangeState(typeof(Zombi_Sinking));
+                fsm.ChangeState(typeof(Zombi_Sinking));
             }
         }
 
@@ -78,14 +77,15 @@ public class ZombieFSM : FSM<Zombie>{
             timer += Time.deltaTime;
 
 
-            owner.holder.Move();
+            fsm_holder.Move();
 
         }
     }
 
     class Zombi_Sinking : FSMState<Zombie>
     {
-        public Zombi_Sinking(FSM<Zombie> owner) : base(owner)
+
+        public Zombi_Sinking(FSM<Zombie> fsm, Zombie fsm_holder) : base(fsm, fsm_holder)
         {
         }
 
@@ -93,9 +93,9 @@ public class ZombieFSM : FSM<Zombie>{
 
         public override void CheckTransition()
         {
-            if (timer >= owner.holder.timeSinking)
+            if (timer >= fsm_holder.timeSinking)
             {
-                owner.holder.Destroy();
+                fsm_holder.Destroy();
             }
         }
 
@@ -104,7 +104,7 @@ public class ZombieFSM : FSM<Zombie>{
 
             timer = 0f;
 
-            owner.holder.StartSink();
+            fsm_holder.StartSink();
         }
 
         public override void DoBeforeLeave()

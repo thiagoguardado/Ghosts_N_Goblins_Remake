@@ -6,7 +6,6 @@ using UnityEngine;
 
 public abstract class FSM<T> : MonoBehaviour where T : MonoBehaviour
 {
-    public T holder { get; private set; }
 
     protected FSMState<T> currentState;
 
@@ -26,12 +25,11 @@ public abstract class FSM<T> : MonoBehaviour where T : MonoBehaviour
             }
 
 
-            var obj = Activator.CreateInstance(types[i], new object[] {this} );
+            var obj = Activator.CreateInstance(types[i], new object[] {this, holder} );
             statesList.Add(types[i],  obj as FSMState<T>);
         }
 
         currentState = statesList[types[0]];
-        this.holder = holder;
 
     }
 
@@ -71,11 +69,13 @@ public abstract class FSM<T> : MonoBehaviour where T : MonoBehaviour
 public abstract class FSMState<T> where T : MonoBehaviour
 {
 
-    protected FSM<T> owner;
+    protected FSM<T> fsm;
+    protected T fsm_holder;
 
-    public FSMState(FSM<T> owner)
+    public FSMState(FSM<T> fsm, T fsm_holder)
     {
-        this.owner = owner;
+        this.fsm = fsm;
+        this.fsm_holder = fsm_holder;
     }
 
     public abstract void UpdateState();
