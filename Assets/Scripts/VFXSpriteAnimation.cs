@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class VFXSpriteAnimation : MonoBehaviour {
 
+    public enum InstantiationPoint
+    {
+        WeaponHit,
+        EnemyTransform
+    }
+
+    public InstantiationPoint instantiationPoint;
 
     public void Destroy()
     {

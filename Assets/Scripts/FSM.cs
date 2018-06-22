@@ -30,6 +30,7 @@ public abstract class FSM<T> : MonoBehaviour where T : MonoBehaviour
         }
 
         currentState = statesList[types[0]];
+        currentState.DoBeforeEntering();
 
     }
 

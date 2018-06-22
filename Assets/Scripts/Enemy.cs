@@ -55,11 +55,24 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
     }
 
 
-    protected virtual void PlayHitAnimation(VFXSpriteAnimation hitAnimation, Vector2 hitPoint)
+    protected virtual void PlayHitAnimation(VFXSpriteAnimation hitAnimation, Vector2 hitPoint, Vector3 enemyPosition)
     {
         // Instantiate kill effect
-        if(hitAnimation!=null)
-            Instantiate(hitAnimation, hitPoint, Quaternion.identity);
+        if (hitAnimation != null)
+        {
+            switch (hitAnimation.instantiationPoint)
+            {
+                case VFXSpriteAnimation.InstantiationPoint.WeaponHit:
+                    Instantiate(hitAnimation, hitPoint, Quaternion.identity);
+                    break;
+                case VFXSpriteAnimation.InstantiationPoint.EnemyTransform:
+                    Instantiate(hitAnimation, enemyPosition, Quaternion.identity);
+                    break;
+                default:
+                    break;
+            }
+           
+        }
     }
 
     protected virtual void Kill()
@@ -72,7 +85,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
 
     }
 
-    public void Hit(int damageTaken, Vector2 hitPoint)
+    public virtual void Hit(int damageTaken, Vector2 hitPoint)
     {
 
         // decrease life
@@ -82,11 +95,11 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
         // kill object if life less than zero
         if (health > 0)
         {
-            PlayHitAnimation(hitSpriteAnimation, hitPoint);
+            PlayHitAnimation(hitSpriteAnimation, hitPoint, transform.position);
         }
         else
         {
-            PlayHitAnimation(destroySpriteAnimation, hitPoint);
+            PlayHitAnimation(destroySpriteAnimation, hitPoint,transform.position);
             Kill();
         }
 
