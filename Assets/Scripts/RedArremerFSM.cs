@@ -120,11 +120,15 @@ public class RedArremerFSM : FSM<RedArremer> {
         public override void UpdateState()
         {
             fsm_holder.Ascend();
+
         }
     }
 
     class RedArremer_Fly : FSMState<RedArremer>
     {
+
+        private float timer = 0f;
+
         public RedArremer_Fly(FSM<RedArremer> fsm, RedArremer fsm_holder) : base(fsm, fsm_holder)
         {
         }
@@ -140,6 +144,8 @@ public class RedArremerFSM : FSM<RedArremer> {
         public override void DoBeforeEntering()
         {
             fsm_holder.animator.SetBool("isFlying", true);
+
+            timer = 0f;
         }
 
         public override void DoBeforeLeave()
@@ -150,6 +156,14 @@ public class RedArremerFSM : FSM<RedArremer> {
         public override void UpdateState()
         {
             // fly
+            fsm_holder.Fly();
+
+            // timer
+            timer += Time.deltaTime;
+            if (timer > fsm_holder.timeFlying)
+            {
+                fsm_holder.StartToDescend();
+            }
         }
     }
 
@@ -163,6 +177,7 @@ public class RedArremerFSM : FSM<RedArremer> {
         {
             if(fsm_holder.isGrounded)
             {
+                fsm_holder.Ground();
                 fsm.ChangeState(typeof(RedArremer_Grounded));
             }
         }
@@ -180,12 +195,16 @@ public class RedArremerFSM : FSM<RedArremer> {
         public override void UpdateState()
         {
             fsm_holder.Descend();
+
         }
     }
 
 
     class RedArremer_Grounded : FSMState<RedArremer>
     {
+
+        private float timer = 0f;
+
         public RedArremer_Grounded(FSM<RedArremer> fsm, RedArremer fsm_holder) : base(fsm, fsm_holder)
         {
         }
@@ -206,6 +225,8 @@ public class RedArremerFSM : FSM<RedArremer> {
         public override void DoBeforeEntering()
         {
             fsm_holder.animator.SetBool("isGrounded", true);
+
+            timer = 0f;
         }
 
         public override void DoBeforeLeave()
@@ -215,12 +236,21 @@ public class RedArremerFSM : FSM<RedArremer> {
 
         public override void UpdateState()
         {
-            return;
+            timer += Time.deltaTime;
+
+            if (timer >= fsm_holder.timeWalking)
+            {
+                fsm_holder.StartWalking();
+            }
+
         }
     }
 
     class RedArremer_Walking : FSMState<RedArremer>
     {
+
+        private float timer = 0f;
+
         public RedArremer_Walking(FSM<RedArremer> fsm, RedArremer fsm_holder) : base(fsm, fsm_holder)
         {
         }
@@ -242,6 +272,10 @@ public class RedArremerFSM : FSM<RedArremer> {
         {
             fsm_holder.animator.SetBool("isGrounded", true);
             fsm_holder.animator.SetBool("isWalking", true);
+
+            fsm_holder.ChangeWalkingDirection();
+
+            timer = 0f;
         }
 
         public override void DoBeforeLeave()
@@ -252,7 +286,14 @@ public class RedArremerFSM : FSM<RedArremer> {
 
         public override void UpdateState()
         {
-            return;
+            fsm_holder.MoveOnGround();
+
+            timer += Time.deltaTime;
+
+            if (timer >= fsm_holder.timeWalking)
+            {
+                fsm_holder.StopWalking();
+            }
         }
     }
 

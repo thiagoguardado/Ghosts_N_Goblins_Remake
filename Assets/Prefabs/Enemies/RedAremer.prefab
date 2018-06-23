@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114440027410045948}
   - component: {fileID: 114859510203792776}
   - component: {fileID: 114303546272122036}
+  - component: {fileID: 114108226060443166}
   m_Layer: 12
   m_Name: RedAremer
   m_TagString: Untagged
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151066623856918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.369, y: -0.733, z: 0}
+  m_LocalPosition: {x: 0.71, y: -0.733, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4301585676504404}
@@ -89,12 +90,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61302617322941162
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -137,6 +138,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114108226060443166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151066623856918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d2a739468842644baa9cbce4e2b7bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 4301585676504404}
+  startLookingLeft: 1
 --- !u!114 &114303546272122036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,12 +197,19 @@ MonoBehaviour:
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
     type: 2}
   animator: {fileID: 95637362851208436}
+  maxHeightWhenAscending: 0.7
+  ascendingDescendingVerticalSpeed: 1
+  ascendingDescendingHorizontalSpeed: 0.5
+  movingOnGroundSpeed: 0.2
+  startWalkingDirection: 0
+  distanceFromPlayerToStartMovement: 1.2
+  timePreparingToFly: 0.25
+  timeFlying: 1.5
+  timeWalking: 0.5
+  timeStopped: 0.5
+  timeGrounded: 3
   isFlying: 0
   isWalking: 0
-  maxHeightWhenAscending: 0.7
-  timePreparingToFly: 0.25
-  ascendingDescendingSpeed: 1.5
-  raycastLenght: 0.02
 --- !u!212 &212708240953082844
 SpriteRenderer:
   m_ObjectHideFlags: 1
