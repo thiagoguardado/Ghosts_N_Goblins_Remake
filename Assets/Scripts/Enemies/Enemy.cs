@@ -6,13 +6,19 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectScore))]
 public class Enemy : MonoBehaviour, IWeaponHittable {
 
+    [Header("Health and Direction")]
+    public SpriteDirection spriteDirection;
     public int health;
+
+    [Header("Check Overlapping Collision")]
     public int damageOnHit;
     public int maxNumberOfCollisionsPerFrame = 10;
     public Collider2D enemyCollider;
     private Collider2D[] overlapingColliders;
     private ContactFilter2D contactFilter;
     public LayerMask overlappingCollidingLayers;
+
+    [Header("VFX")]
     public VFXSpriteAnimation hitSpriteAnimation;
     public VFXSpriteAnimation destroySpriteAnimation;
 
@@ -48,12 +54,20 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
             {
                 IEnemyHittable enemyHittable = overlapingColliders[i].attachedRigidbody.GetComponent<IEnemyHittable>();
                 if (enemyHittable != null)
+                {
                     enemyHittable.Hit(damageOnHit);
+                    HitSomething();
+                }
+                
             }
         }
 
     }
 
+    protected virtual void HitSomething()
+    {
+        return;
+    }
 
     protected virtual void PlayHitAnimation(VFXSpriteAnimation hitAnimation, Vector2 hitPoint, Vector3 enemyPosition)
     {

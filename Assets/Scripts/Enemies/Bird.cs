@@ -54,7 +54,7 @@ public class Bird : Enemy
             startHeight = transform.position.y;
         }
 
-        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, startHeight + (Mathf.Sin((Time.time - startFlyingTime ) * osclilationFrequency - Mathf.PI/2) + 1 ) * oscillationAmplitude, transform.position.z);
+        transform.position = new Vector3(transform.position.x + spriteDirection.WorldLookingDirection.x * speed * Time.deltaTime, startHeight + (Mathf.Sin((Time.time - startFlyingTime ) * osclilationFrequency - Mathf.PI/2) + 1 ) * oscillationAmplitude, transform.position.z);
 
     }
 

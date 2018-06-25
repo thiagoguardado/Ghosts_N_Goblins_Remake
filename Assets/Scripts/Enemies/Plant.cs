@@ -31,7 +31,7 @@ public class Plant : Enemy
     private void SpitProjectile()
     {
         PlantProjectile projectile = Instantiate(projectilePrefab, projectileInstantiationAnchor.position, Quaternion.identity);
-        projectile.Init(Vector3.left);
+        projectile.Init(spriteDirection.lookingDirection);
 
         animator.SetTrigger("Spit");
     }

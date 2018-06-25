@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour {
 
-    public Transform spriteObject;
-    public bool startLookingLeft;
-
-    private Vector3 normalScale = new Vector3(1, 1, 1);
-    private Vector3 flippedScale = new Vector3(-1, 1, 1);
-
-
+    public SpriteDirection spriteDirection;
+ 
     void Update () {
 
         TurnToPlayer();
@@ -19,13 +14,20 @@ public class LookAtPlayer : MonoBehaviour {
 
     private void TurnToPlayer()
     {
-        if ((transform.position.x - PlayerController.Instance.transform.position.x) > 0 && startLookingLeft)
+
+        spriteDirection.FaceDirection(LookToPlayerDirection(transform.position));
+    }
+
+
+    public static LookingDirection LookToPlayerDirection(Vector3 currentPosition)
+    {
+        if ((currentPosition.x - PlayerController.Instance.transform.position.x) > 0)
         {
-            spriteObject.transform.localScale = normalScale;
+            return LookingDirection.Left;
         }
         else
         {
-            spriteObject.transform.localScale = flippedScale;
+            return LookingDirection.Right;
         }
     }
 }

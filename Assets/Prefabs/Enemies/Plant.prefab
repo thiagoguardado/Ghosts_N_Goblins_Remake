@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 212221896796272312}
   - component: {fileID: 95740494241400442}
   - component: {fileID: 61866175863794590}
+  - component: {fileID: 114552487633799368}
   m_Layer: 12
   m_Name: PlantSprite
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   - component: {fileID: 114579394373595306}
   - component: {fileID: 50390170896749106}
   - component: {fileID: 114197990243439542}
+  - component: {fileID: 114546873755062816}
   m_Layer: 12
   m_Name: Plant
   m_TagString: Untagged
@@ -95,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1949218409986668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.861, y: 0.059, z: 0}
+  m_LocalPosition: {x: 6.79, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4813374394801728}
@@ -177,6 +179,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 100
+--- !u!114 &114546873755062816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949218409986668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d2a739468842644baa9cbce4e2b7bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteDirection: {fileID: 114552487633799368}
+--- !u!114 &114552487633799368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1618390056765008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630086f2a10bf479b87e40dfdcd3932f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLookingDirection: 1
 --- !u!114 &114579394373595306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f739b8b97e7f13044a6ddce23d65c128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteDirection: {fileID: 114552487633799368}
   health: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5

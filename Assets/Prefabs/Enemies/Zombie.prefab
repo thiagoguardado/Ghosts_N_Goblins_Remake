@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 212289542722174682}
   - component: {fileID: 61448312289218134}
   - component: {fileID: 95679570916686078}
+  - component: {fileID: 114226904629478342}
   m_Layer: 12
   m_Name: ZombiSprite
   m_TagString: Untagged
@@ -137,6 +138,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114226904629478342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752275290094980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630086f2a10bf479b87e40dfdcd3932f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLookingDirection: 1
 --- !u!114 &114347360259090158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b405c0be2af4244900c66309242294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteDirection: {fileID: 114226904629478342}
   health: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5

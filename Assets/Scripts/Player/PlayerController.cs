@@ -4,14 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-public enum LookingDirection
-{
-    Left,
-    Right
-}
-
-
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour, IEnemyHittable
 {
@@ -66,7 +58,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     private bool jumpButton;
     private bool isGrounded = false;
     private bool wasGrounded = false;
-    public LookingDirection currentDirection = LookingDirection.Right;
+    public SpriteDirection spriteDirection;
+    //public LookingDirection currentDirection = LookingDirection.Right;
 
     // encapsulated variables
     public float HorizontalAxis
@@ -232,7 +225,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     private void Shoot(Transform spawnPoint)
     {
-        currentWeapon.ShootWeapon(spawnPoint.position, currentDirection);
+        currentWeapon.ShootWeapon(spawnPoint.position, spriteDirection.lookingDirection);
     }
 
     public void ReceiveDamage() {

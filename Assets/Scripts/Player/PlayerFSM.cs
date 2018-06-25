@@ -85,7 +85,7 @@ public class PlayerFSM : MonoBehaviour {
     {
         get
         {
-            return playerController.currentDirection == LookingDirection.Right ? Vector3.right : Vector3.left;
+            return playerController.spriteDirection.WorldLookingDirection;
         }
     }
     private bool walkPaused = false;
@@ -259,22 +259,15 @@ public class PlayerFSM : MonoBehaviour {
     private void CheckDirection()
     {
         // turn
-        if (horizontalAxis > 0 && playerController.currentDirection == LookingDirection.Left)
-        {
-            // turn to right
-            Vector3 scale = spriteTransform.localScale;
-            scale.x = 1;
-            spriteTransform.localScale = scale;
-            playerController.currentDirection = LookingDirection.Right;
-
-        }
-        else if (horizontalAxis < 0 && playerController.currentDirection == LookingDirection.Right)
+        if (horizontalAxis > 0 && playerController.spriteDirection.lookingDirection == LookingDirection.Left)
         {
             // turn to left
-            Vector3 scale = spriteTransform.localScale;
-            scale.x = -1;
-            spriteTransform.localScale = scale;
-            playerController.currentDirection = LookingDirection.Left;
+            playerController.spriteDirection.FlipDirectionY();
+        }
+        else if (horizontalAxis < 0 && playerController.spriteDirection.lookingDirection == LookingDirection.Right)
+        {
+            // turn to left
+            playerController.spriteDirection.FlipDirectionY();
         }
     }
 

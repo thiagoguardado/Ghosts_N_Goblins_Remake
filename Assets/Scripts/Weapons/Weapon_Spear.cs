@@ -11,19 +11,7 @@ public class Weapon_Spear : WeaponBehavior {
     {
         this.speed = speed;
 
-        switch (direction)
-        {
-            case LookingDirection.Left:
-                transform.localScale = new Vector3(-1, 1, 1);
-                this.direction = new Vector2(-1, 0) ;
-                break;
-            case LookingDirection.Right:
-                transform.localScale = new Vector3(1, 1, 1);
-                this.direction = new Vector2(1, 0);
-                break;
-            default:
-                break;
-        }
+        spriteDirection.FaceDirection(direction);
 
     }
 
@@ -48,6 +36,6 @@ public class Weapon_Spear : WeaponBehavior {
     {
 
         // setup velocity
-        rigidbody2d.velocity = direction * speed;
+        rigidbody2d.velocity = spriteDirection.WorldLookingDirection * speed;
     }
 }

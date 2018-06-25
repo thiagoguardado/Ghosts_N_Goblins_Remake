@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 212708240953082844}
   - component: {fileID: 61302617322941162}
   - component: {fileID: 95637362851208436}
+  - component: {fileID: 114298886896160632}
   m_Layer: 12
   m_Name: RedArremerSprite
   m_TagString: Untagged
@@ -151,6 +152,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteObject: {fileID: 4301585676504404}
   startLookingLeft: 1
+--- !u!114 &114298886896160632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825635829095126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630086f2a10bf479b87e40dfdcd3932f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLookingDirection: 1
 --- !u!114 &114303546272122036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebebd09904214ee5af0ac4b8dc8de52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteDirection: {fileID: 114298886896160632}
   health: 5
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
@@ -201,7 +215,6 @@ MonoBehaviour:
   ascendingDescendingVerticalSpeed: 1
   ascendingDescendingHorizontalSpeed: 0.5
   movingOnGroundSpeed: 0.2
-  startWalkingDirection: 0
   distanceFromPlayerToStartMovement: 1.2
   timePreparingToFly: 0.25
   timeFlying: 1.5

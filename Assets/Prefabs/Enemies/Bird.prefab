@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212298742392262558}
   - component: {fileID: 95059904237703252}
   - component: {fileID: 61125722369177434}
+  - component: {fileID: 114242630460388544}
   m_Layer: 12
   m_Name: BirdSprite
   m_TagString: Untagged
@@ -149,6 +150,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 100
+--- !u!114 &114242630460388544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1292459740337546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630086f2a10bf479b87e40dfdcd3932f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLookingDirection: 1
 --- !u!114 &114310991074273822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9163dd2f08577a54fbcad40e25589bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteDirection: {fileID: 114242630460388544}
   health: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5

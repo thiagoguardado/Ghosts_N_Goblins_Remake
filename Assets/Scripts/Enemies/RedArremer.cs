@@ -12,7 +12,6 @@ public class RedArremer : Enemy
     public float ascendingDescendingVerticalSpeed;
     public float ascendingDescendingHorizontalSpeed;
     public float movingOnGroundSpeed;
-    public LookingDirection startWalkingDirection;
 
     [Header("FSM Behavior")]
     public float distanceFromPlayerToStartMovement;
@@ -28,7 +27,6 @@ public class RedArremer : Enemy
     private Collider2D[] overlappingColliders;
     public bool isGrounded { get; private set; }
 
-    private Vector3 movingDirection;
     [HideInInspector] public bool isFlying;
     [HideInInspector] public bool isWalking;
 
@@ -43,18 +41,6 @@ public class RedArremer : Enemy
         floorContactFilter.layerMask = 1 << LayerMask.NameToLayer("Floor");
         overlappingColliders = new Collider2D[5];
 
-        // start moving direction
-        switch (startWalkingDirection)
-        {
-            case LookingDirection.Left:
-                movingDirection = Vector3.left;
-                break;
-            case LookingDirection.Right:
-                movingDirection = Vector3.right;
-                break;
-            default:
-                break;
-        }
     }
 
     protected override void Update()
@@ -127,7 +113,7 @@ public class RedArremer : Enemy
 
     public void MoveOnGround()
     {
-        MoveLinearly(movingDirection, movingOnGroundSpeed);
+        MoveLinearly(spriteDirection.WorldLookingDirection, movingOnGroundSpeed);
     }
 
     private void MoveLinearly(Vector3 direction, float speed)
@@ -146,12 +132,13 @@ public class RedArremer : Enemy
 
     public void Ground()
     {
-        groundedTimer = 0f;
+        return;
     }
 
     public void StartToAscend()
     {
         isFlying = true;
+        groundedTimer = 0f;
     }
 
     public void StartToDescend()
@@ -177,14 +164,14 @@ public class RedArremer : Enemy
 
     public void ChangeWalkingDirection()
     {
-        if (UnityEngine.Random.Range(0, 1) > 0.5f)
+        if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
         {
-            movingDirection = Vector3.left;
+            spriteDirection.FaceDirection(LookingDirection.Left);
         }
         else {
-            movingDirection = Vector3.right;
+            spriteDirection.FaceDirection(LookingDirection.Right);
         }
-        movingDirection = movingDirection == Vector3.left ? Vector3.right : Vector3.left;
+
     }
 
 
