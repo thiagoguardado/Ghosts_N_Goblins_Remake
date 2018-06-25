@@ -87,7 +87,6 @@ public class RedArremerFSM : FSM<RedArremer> {
     {
 
         private float initialHeight;
-        private float timer = 0f;
 
         public RedArremer_Ascending(FSM<RedArremer> fsm, RedArremer fsm_holder) : base(fsm, fsm_holder)
         {
@@ -108,7 +107,6 @@ public class RedArremerFSM : FSM<RedArremer> {
 
             initialHeight = fsm_holder.transform.position.y;
 
-            timer = 0f;
         }
 
         public override void DoBeforeLeave()

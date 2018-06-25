@@ -191,7 +191,7 @@ MonoBehaviour:
   health: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
-  collider: {fileID: 61866175863794590}
+  enemyCollider: {fileID: 61866175863794590}
   overlappingCollidingLayers:
     serializedVersion: 2
     m_Bits: 512

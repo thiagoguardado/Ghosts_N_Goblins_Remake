@@ -91,7 +91,7 @@ public class RedArremer : Enemy
     private void CheckGround()
     {
         overlappingColliders = new Collider2D[5];
-        collider.OverlapCollider(floorContactFilter, overlappingColliders);
+        enemyCollider.OverlapCollider(floorContactFilter, overlappingColliders);
         
         for (int i = 0; i < overlappingColliders.Length; i++)
         {

@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
     public int health;
     public int damageOnHit;
     public int maxNumberOfCollisionsPerFrame = 10;
-    public Collider2D collider;
+    public Collider2D enemyCollider;
     private Collider2D[] overlapingColliders;
     private ContactFilter2D contactFilter;
     public LayerMask overlappingCollidingLayers;
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
 
     private void CheckCollidersOverlap()
     {
-        int collisionsCount = collider.OverlapCollider(contactFilter, overlapingColliders);
+        int collisionsCount = enemyCollider.OverlapCollider(contactFilter, overlapingColliders);
         for (int i = 0; i < collisionsCount; i++)
         {
             if (overlapingColliders[i] != null)
