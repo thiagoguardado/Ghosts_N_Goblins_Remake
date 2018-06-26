@@ -32,4 +32,4 @@ MonoBehaviour:
     sprite: {fileID: 21300010, guid: e2b55f0b4796f1c458abaf8fee933c51, type: 3}
   floatingScore: {fileID: 114159846828821466, guid: e29118fddc0fcdb4c9aa231e0016db84,
     type: 2}
-  timeOnDisplay: 2
+  timeOnDisplay: 3
