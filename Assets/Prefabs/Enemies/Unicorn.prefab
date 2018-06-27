@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 50060760573931504}
   - component: {fileID: 114790401362808236}
   - component: {fileID: 114400743673644054}
+  - component: {fileID: 114738397426218922}
+  - component: {fileID: 114809428248723260}
   m_Layer: 12
   m_Name: Unicorn
   m_TagString: Untagged
@@ -170,14 +172,14 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127533519724640}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.75
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -249,6 +251,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 2000
+--- !u!114 &114738397426218922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127533519724640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69042f34fcfb0494ca0ffd4cb1b98963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114790401362808236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -270,7 +283,26 @@ MonoBehaviour:
     m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 0}
+  walkingSpeed: 0.1
+  timeGroundedBeforeJump: 2.5
+  jumpForce: 3.5
+  minJumpDuration: 0.5
+  jump: 0
   scoreAnchor: {fileID: 4780104753619662}
+  animator: {fileID: 95760322502459426}
+--- !u!114 &114809428248723260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127533519724640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2cfb6f673274704a45ca767ff94210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCollider: {fileID: 61790108670562458}
+  rayLenght: 0.03
 --- !u!212 &212526287939563206
 SpriteRenderer:
   m_ObjectHideFlags: 1

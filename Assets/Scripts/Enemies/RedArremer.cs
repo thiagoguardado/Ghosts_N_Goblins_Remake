@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GroundedCheck))]
 public class RedArremer : Enemy
 {
 
@@ -25,16 +26,24 @@ public class RedArremer : Enemy
     // floor detection
     private ContactFilter2D floorContactFilter;
     private Collider2D[] overlappingColliders;
-    public bool isGrounded { get; private set; }
+    public bool isGrounded { 
+        get
+        {
+            return gc.isGrounded;
+        }
+    }
 
     [HideInInspector] public bool isFlying;
     [HideInInspector] public bool isWalking;
 
     private float groundedTimer = 0f;
+    private GroundedCheck gc;
 
     protected override void Awake()
     {
         base.Awake();
+
+        gc = GetComponent<GroundedCheck>();
 
         // configure grounding contact filter
         floorContactFilter = new ContactFilter2D();
@@ -46,8 +55,6 @@ public class RedArremer : Enemy
     protected override void Update()
     {
         base.Update();
-
-        CheckGround();
 
         if (!sawPlayer)
         {
@@ -72,28 +79,6 @@ public class RedArremer : Enemy
             sawPlayer = true;
             isFlying = true;
         }
-    }
-
-    private void CheckGround()
-    {
-        overlappingColliders = new Collider2D[5];
-        enemyCollider.OverlapCollider(floorContactFilter, overlappingColliders);
-        
-        for (int i = 0; i < overlappingColliders.Length; i++)
-        {
-            if (overlappingColliders[i] == null)
-            {
-                break;
-            }
-
-            if (overlappingColliders[i].GetComponent<Floor>() != null)
-            {
-                isGrounded = true;
-                return;
-            }
-        }
-
-        isGrounded = false;
     }
 
     public void Ascend()
