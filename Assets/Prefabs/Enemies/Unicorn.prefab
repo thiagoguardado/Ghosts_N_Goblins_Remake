@@ -184,7 +184,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &61790108670562458
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -281,8 +281,10 @@ MonoBehaviour:
   overlappingCollidingLayers:
     serializedVersion: 2
     m_Bits: 512
-  hitSpriteAnimation: {fileID: 0}
-  destroySpriteAnimation: {fileID: 0}
+  hitSpriteAnimation: {fileID: 114428617497553218, guid: 8dbbbd034176e9448b6da8a05fa153f9,
+    type: 2}
+  destroySpriteAnimation: {fileID: 114419141850067080, guid: 9350d017e0e531a46b42f505eca0ca90,
+    type: 2}
   walkingSpeed: 0.1
   timeGroundedBeforeJump: 2.5
   jumpForce: 3.5
