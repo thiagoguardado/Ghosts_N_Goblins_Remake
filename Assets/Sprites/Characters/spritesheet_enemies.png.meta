@@ -27,6 +27,10 @@ TextureImporter:
     21300040: plant_2
     21300042: plant_3
     21300044: plant_4
+    21300046: flying_knight_0
+    21300048: flying_knight_1
+    21300050: flying_knight_2
+    21300052: flying_knight_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -448,6 +452,62 @@ TextureImporter:
         y: 364
         width: 16
         height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_knight_0
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 57
+        width: 16
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_knight_1
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 57
+        width: 17
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_knight_2
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 57
+        width: 15
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: flying_knight_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 57
+        width: 16
+        height: 27
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

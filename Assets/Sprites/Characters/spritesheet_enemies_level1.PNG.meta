@@ -71,18 +71,18 @@ TextureImporter:
     21300128: spritesheet_enemies_level1_65
     21300130: spritesheet_enemies_level1_66
     21300132: spritesheet_enemies_level1_67
-    21300134: spritesheet_enemies_level1_68
-    21300136: spritesheet_enemies_level1_69
-    21300138: spritesheet_enemies_level1_70
-    21300140: spritesheet_enemies_level1_71
-    21300142: spritesheet_enemies_level1_72
-    21300144: spritesheet_enemies_level1_73
+    21300134: RedArremer_0
+    21300136: RedArremer_1
+    21300138: RedArremer_2
+    21300140: RedArremer_3
+    21300142: RedArremer_4
+    21300144: RedArremer_5
     21300146: spritesheet_enemies_level1_74
-    21300148: spritesheet_enemies_level1_75
+    21300148: RedArremer_6
     21300150: spritesheet_enemies_level1_76
-    21300152: spritesheet_enemies_level1_77
-    21300154: spritesheet_enemies_level1_78
-    21300156: spritesheet_enemies_level1_79
+    21300152: RedArremer_7
+    21300154: RedArremer_8
+    21300156: RedArremer_9
     21300158: spritesheet_enemies_level1_80
     21300160: spritesheet_enemies_level1_81
     21300162: spritesheet_enemies_level1_82
@@ -111,16 +111,16 @@ TextureImporter:
     21300208: spritesheet_enemies_level1_105
     21300210: spritesheet_enemies_level1_106
     21300212: spritesheet_enemies_level1_107
-    21300214: spritesheet_enemies_level1_108
-    21300216: spritesheet_enemies_level1_109
-    21300218: spritesheet_enemies_level1_110
-    21300220: spritesheet_enemies_level1_111
-    21300222: spritesheet_enemies_level1_112
-    21300224: spritesheet_enemies_level1_113
-    21300226: spritesheet_enemies_level1_114
-    21300228: spritesheet_enemies_level1_115
-    21300230: spritesheet_enemies_level1_116
-    21300232: spritesheet_enemies_level1_117
+    21300214: WoodyPig_0
+    21300216: WoodyPig_1
+    21300218: WoodyPig_2
+    21300220: WoodyPig_3
+    21300222: WoodyPig_4
+    21300224: WoodyPig_5
+    21300226: WoodyPig_6
+    21300228: WoodyPig_7
+    21300230: WoodyPigSpear_Vertical
+    21300232: WoodyPigSpear_Horizontal
     21300234: spritesheet_enemies_level1_118
     21300236: spritesheet_enemies_level1_119
     21300238: spritesheet_enemies_level1_120
@@ -135,6 +135,7 @@ TextureImporter:
     21300256: spritesheet_enemies_level1_129
     21300258: spritesheet_enemies_level1_130
     21300260: spritesheet_enemies_level1_131
+    21300262: WoodyPig_8
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -1169,7 +1170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_68
+      name: RedArremer_0
       rect:
         serializedVersion: 2
         x: 9
@@ -1183,7 +1184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_69
+      name: RedArremer_1
       rect:
         serializedVersion: 2
         x: 54
@@ -1197,7 +1198,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_70
+      name: RedArremer_2
       rect:
         serializedVersion: 2
         x: 88
@@ -1211,7 +1212,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_71
+      name: RedArremer_3
       rect:
         serializedVersion: 2
         x: 131
@@ -1225,7 +1226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_72
+      name: RedArremer_4
       rect:
         serializedVersion: 2
         x: 165
@@ -1239,7 +1240,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_73
+      name: RedArremer_5
       rect:
         serializedVersion: 2
         x: 200
@@ -1267,7 +1268,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_75
+      name: RedArremer_6
       rect:
         serializedVersion: 2
         x: 257
@@ -1295,7 +1296,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_77
+      name: RedArremer_7
       rect:
         serializedVersion: 2
         x: 312
@@ -1309,7 +1310,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_78
+      name: RedArremer_8
       rect:
         serializedVersion: 2
         x: 338
@@ -1323,7 +1324,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_79
+      name: RedArremer_9
       rect:
         serializedVersion: 2
         x: 364
@@ -1729,7 +1730,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_108
+      name: WoodyPig_0
       rect:
         serializedVersion: 2
         x: 14
@@ -1743,7 +1744,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_109
+      name: WoodyPig_1
       rect:
         serializedVersion: 2
         x: 44
@@ -1757,7 +1758,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_110
+      name: WoodyPig_2
       rect:
         serializedVersion: 2
         x: 66
@@ -1771,7 +1772,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_111
+      name: WoodyPig_3
       rect:
         serializedVersion: 2
         x: 92
@@ -1785,7 +1786,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_112
+      name: WoodyPig_4
       rect:
         serializedVersion: 2
         x: 125
@@ -1799,7 +1800,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_113
+      name: WoodyPig_5
       rect:
         serializedVersion: 2
         x: 158
@@ -1813,7 +1814,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_114
+      name: WoodyPig_6
       rect:
         serializedVersion: 2
         x: 188
@@ -1827,12 +1828,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_115
+      name: WoodyPig_7
       rect:
         serializedVersion: 2
         x: 212
         y: 46
-        width: 24
+        width: 11
         height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1841,7 +1842,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_116
+      name: WoodyPigSpear_Vertical
       rect:
         serializedVersion: 2
         x: 253
@@ -1855,7 +1856,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_enemies_level1_117
+      name: WoodyPigSpear_Horizontal
       rect:
         serializedVersion: 2
         x: 272
@@ -2058,6 +2059,20 @@ TextureImporter:
         y: 10
         width: 29
         height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: WoodyPig_8
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 46
+        width: 7
+        height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
