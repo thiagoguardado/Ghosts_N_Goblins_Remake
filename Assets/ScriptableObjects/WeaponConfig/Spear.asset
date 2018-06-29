@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ea65dcc5315ca4bb46badd6016381e, type: 3}
   m_Name: Spear
   m_EditorClassIdentifier: 
-  weaponSprite: {fileID: 21300172, guid: 6c3feab4c3d7dcb48a013fedc26e8112, type: 3}
+  weaponSprite: {fileID: 21300030, guid: 3066daeac2a3312488a1641df30c3a07, type: 3}
   initialVelocity: 3
   weaponDamage: 1
   weaponPrefab: {fileID: 114508811228731838, guid: 6c84098d6579dba4cafbe6a0d5fa22d9,
