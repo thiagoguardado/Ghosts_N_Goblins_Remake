@@ -613,12 +613,12 @@ public class PlayerFSM : MonoBehaviour {
                 return;
             }
 
-            // if start running
-            if (owner.verticalAxis >= 0 && owner.horizontalAxis != 0)
-            {
-                owner.ChangeState(PlayerFSMState.Running);
-                return;
-            }
+            //// if start running
+            //if (owner.verticalAxis >= 0 && owner.horizontalAxis != 0)
+            //{
+            //    owner.ChangeState(PlayerFSMState.Running);
+            //    return;
+            //}
         }
 
         public override void DoBeforeEntering()
@@ -661,8 +661,11 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.throwButton)
             {
                 owner.Throw(true);
+                notHoldingDownTimer = 0f; // resets timer
 
             }
+
+            owner.CheckDirection();
 
         }
 

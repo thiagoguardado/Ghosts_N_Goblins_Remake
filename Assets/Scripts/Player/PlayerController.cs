@@ -184,7 +184,9 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
             {
 
                 if (!wasGrounded)
-                    Ground(floor);
+                {
+                    Ground(floor, hit.point);
+                }
 
                 isGrounded = true;
             }
@@ -207,10 +209,13 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         transform.parent = null;
     }
 
-    private void Ground(Floor floor)
+    private void Ground(Floor floor, Vector2 attachingPoint)
     {
 
         transform.parent = floor.transform;
+        Vector3 pos = transform.position;
+        pos.y = attachingPoint.y;
+        transform.position = pos;
 
     }
 
