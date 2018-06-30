@@ -282,18 +282,25 @@ public class PlayerFSM : MonoBehaviour {
     // Throw
     private void Throw(bool isCrouched)
     {
-        // make controller shoot
-        if (isCrouched)
-        {
-            playerController.ShootCrouched();
-        }
-        else
-        {
-            playerController.ShootStanding();
-        } 
+
+        bool shot = isCrouched ? playerController.ShootCrouched() : playerController.ShootStanding();
 
         // update animator
-        animationController.throwSomething = true;
+        if (shot)
+            animationController.throwSomething = true;
+
+
+        //// make controller shoot
+        //if (isCrouched)
+        //{
+        //    ;
+        //}
+        //else
+        //{
+        //    ;
+        //} 
+
+
     }
 
     // hit

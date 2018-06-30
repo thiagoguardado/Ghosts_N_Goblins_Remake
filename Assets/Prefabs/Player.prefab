@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4091101297815140}
   - component: {fileID: 212766390618048640}
   - component: {fileID: 95519019242410138}
+  - component: {fileID: 114467915770609404}
   m_Layer: 9
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -154,6 +155,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1570078980954974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4099987206553644}
+  m_Layer: 0
+  m_Name: WeaponsShot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1627904423556762
 GameObject:
   m_ObjectHideFlags: 1
@@ -236,6 +252,19 @@ Transform:
   - {fileID: 4001285324039738}
   m_Father: {fileID: 4790734681317932}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4099987206553644
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1570078980954974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4790734681317932}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4243450270482440
 Transform:
@@ -350,12 +379,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905705391459602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.221, y: -0.711, z: 0}
+  m_LocalPosition: {x: -0.32, y: -0.711, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4091101297815140}
   - {fileID: 4731901508064238}
   - {fileID: 4379725981845562}
+  - {fileID: 4099987206553644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -491,10 +521,23 @@ MonoBehaviour:
   currentWeapon: {fileID: 11400000, guid: 8fc551dda6420af4caa6d8fcc880ae13, type: 2}
   weaponStandingSpawnPoint: {fileID: 4731901508064238}
   weaponCrouchedSpawnPoint: {fileID: 4379725981845562}
+  weaponsShotParent: {fileID: 4099987206553644}
   currentArmorStatus: 0
   afterDamageInvincibleDuration: 2
   breakableArmor: {fileID: 114597777754878852}
-  currentDirection: 1
+  spriteDirection: {fileID: 114467915770609404}
+--- !u!114 &114467915770609404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063291436986776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630086f2a10bf479b87e40dfdcd3932f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLookingDirection: 2
 --- !u!114 &114474017056605774
 MonoBehaviour:
   m_ObjectHideFlags: 1

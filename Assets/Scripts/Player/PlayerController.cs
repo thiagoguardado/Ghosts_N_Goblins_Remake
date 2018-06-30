@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     }
     public Transform weaponStandingSpawnPoint;
     public Transform weaponCrouchedSpawnPoint;
+    public Transform weaponsShotParent;
 
     [Header("Life and Armor")]
     public PlayerArmor currentArmorStatus = PlayerArmor.Armored;
@@ -213,19 +214,25 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     }
 
-    public void ShootStanding()
+    public bool ShootStanding()
     {
-        Shoot(weaponStandingSpawnPoint);
+        return Shoot(weaponStandingSpawnPoint);
     }
 
-    public void ShootCrouched()
+    public bool ShootCrouched()
     {
-        Shoot(weaponCrouchedSpawnPoint);
+        return Shoot(weaponCrouchedSpawnPoint);
     }
 
-    private void Shoot(Transform spawnPoint)
+    private bool Shoot(Transform spawnPoint)
     {
-        currentWeapon.ShootWeapon(spawnPoint.position, spriteDirection.lookingDirection);
+        if (currentWeapon.maxWeaponsOnScreen > weaponsShotParent.childCount)
+        {
+            currentWeapon.ShootWeapon(spawnPoint.position, weaponsShotParent, spriteDirection.lookingDirection);
+            return true;
+        }
+
+        return false;
     }
 
     public void ReceiveDamage() {

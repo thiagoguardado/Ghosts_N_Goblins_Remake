@@ -200,7 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitCount: 0
-  hitApriteAnimator: {fileID: 0}
+  hitSpriteVFXPrefab: {fileID: 114288232091754024, guid: fea66d8fe46ae494ebcb99ccfdca5998,
+    type: 2}
   hitCountText: {fileID: 114006982582908404}
 --- !u!222 &222410898130269832
 CanvasRenderer:
