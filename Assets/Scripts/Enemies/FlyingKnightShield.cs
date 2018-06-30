@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlyingKnightShield : MonoBehaviour, IWeaponHittable {
    
 
-    public void Hit(int damageTaken, Vector2 hitPoint)
+    public void Hit(int damageTaken, Vector2 hitPoint, LookingDirection hitDirection)
     {
         // do nothing
         return;

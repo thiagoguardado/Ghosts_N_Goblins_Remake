@@ -108,9 +108,9 @@ public class RedArremer : Enemy
 
 
 
-	public override void Hit(int damageTaken, Vector2 hitPoint)
+	public override void Hit(int damageTaken, Vector2 hitPoint, LookingDirection hitDirection)
 	{
-        base.Hit(damageTaken, hitPoint);
+        base.Hit(damageTaken, hitPoint, hitDirection);
 
         animator.SetTrigger("Hurt");
 	}

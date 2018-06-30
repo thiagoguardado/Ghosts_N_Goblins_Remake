@@ -742,12 +742,14 @@ public class PlayerFSM : MonoBehaviour {
             // deactivate gravity
             owner.playerRigidbody.gravityScale = 0;
 
+            // reset rigidbody velocity
+            owner.playerRigidbody.velocity = Vector2.zero;
+
             // turn off ladder upperfloorCollision
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Floor"), true);
 
             // update position on ladder
             CheckPositionOnLadder();
-
 
             // align player on center
             owner.transform.position = new Vector3(ladder.transform.position.x, owner.transform.position.y, owner.transform.position.z);

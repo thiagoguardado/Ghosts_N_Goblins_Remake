@@ -37,6 +37,8 @@ public class SpriteDirection : MonoBehaviour {
             }
         }
     }
+
+
     Dictionary<LookingDirection, Vector3> scalingValues = new Dictionary<LookingDirection, Vector3>();
 
 
@@ -46,28 +48,28 @@ public class SpriteDirection : MonoBehaviour {
         if (lookingDirection == LookingDirection.Left || lookingDirection == LookingDirection.Right)
         {
             scalingValues.Add(startLookingDirection, new Vector3(1, 1, 1));
-            scalingValues.Add(OtherDirectionY(), new Vector3(-1, 1, 1));
+            scalingValues.Add(OtherDirectionY(lookingDirection), new Vector3(-1, 1, 1));
         }
 	}
 
 
-    public LookingDirection OtherDirectionY()
+    public static LookingDirection OtherDirectionY(LookingDirection direction)
     {
-        switch (lookingDirection)
+        switch (direction)
         {
             case LookingDirection.Left:
                 return LookingDirection.Right;
             case LookingDirection.Right:
                 return LookingDirection.Left;
             default:
-                return lookingDirection;
+                return direction;
         }
 
     }
 
     public void FlipDirectionY()
     {
-        FaceDirection(OtherDirectionY());
+        FaceDirection(OtherDirectionY(lookingDirection));
     }
 
     public void FaceDirection(LookingDirection newDirection)
@@ -77,6 +79,44 @@ public class SpriteDirection : MonoBehaviour {
         {
             transform.localScale = scalingValues[lookingDirection];
         }
+    }
+
+    public static LookingDirection ConvertVectorToLookingDirection(Vector2 vector)
+    {
+
+        float horizontal = Vector2.Dot(vector, Vector2.right);
+        float vertical = Vector2.Dot(vector, Vector2.up);
+
+        if (horizontal == vertical && horizontal == 0)
+        {
+            return LookingDirection.None;
+        }
+
+
+        if (Mathf.Abs(horizontal) >= Mathf.Abs(vertical))
+        {
+            if (Mathf.Sign(horizontal) > 0)
+            {
+                return LookingDirection.Right;
+            }
+            else
+            {
+                return LookingDirection.Left;
+            }
+        }
+        else
+        {
+            if (Mathf.Sign(vertical) > 0)
+            {
+                return LookingDirection.Up;
+            }
+            else
+            {
+                return LookingDirection.Down;
+            }
+        }
+        
+
     }
 
 }

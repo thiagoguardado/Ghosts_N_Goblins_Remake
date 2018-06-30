@@ -15,13 +15,13 @@ public class Weapon_Spear : WeaponBehavior {
 
     }
 
-    protected override void CollidedWith(GameObject go, Vector2 onPoint)
+    protected override void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal)
     {
         // look for hittable implementation
         var hitComponent = go.GetComponent<IWeaponHittable>();
         if (hitComponent != null)
         {
-            hitComponent.Hit(damage, onPoint);
+            hitComponent.Hit(damage, onPoint, SpriteDirection.ConvertVectorToLookingDirection(normal));
             Destroy(gameObject);
         }
     }

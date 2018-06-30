@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
 
     }
 
-    public virtual void Hit(int damageTaken, Vector2 hitPoint)
+    public virtual void Hit(int damageTaken, Vector2 hitPoint, LookingDirection hitDirection)
     {
 
         // decrease life

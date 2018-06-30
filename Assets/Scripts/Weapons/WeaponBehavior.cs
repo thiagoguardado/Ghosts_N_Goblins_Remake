@@ -13,7 +13,7 @@ public abstract class WeaponBehavior : MonoBehaviour
     protected SpriteDirection spriteDirection;
 
     public abstract void Shoot(float shootSpeed, LookingDirection direction);
-    protected abstract void CollidedWith(GameObject go, Vector2 onPoint);
+    protected abstract void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal);
     protected abstract void Move();
     protected abstract void Setup();
 
@@ -32,7 +32,7 @@ public abstract class WeaponBehavior : MonoBehaviour
     {
 
         if (collision.contacts.Length>0)
-            CollidedWith(collision.gameObject, collision.contacts[0].point);
+            CollidedWith(collision.gameObject, collision.contacts[0].point, collision.contacts[0].normal);
     }
 
     private void Update()
