@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerScorePanel : HUDStringDisplay
 {
 
+    public PlayerID player;
+
     private void OnEnable()
     {
         GameEvents.ScoreIncremented += UpdateScore;
@@ -16,10 +18,22 @@ public class PlayerScorePanel : HUDStringDisplay
         GameEvents.ScoreIncremented -= UpdateScore;
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
 
+        if (GameManager.Instance.currentGameMode == GameMode.SinglePlayer && player != PlayerID.Player1)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        UpdateScore();
+
+    }
     public void UpdateScore()
     {
-        DisplayString(GameController.Instance.Score.ToString());
+        DisplayString(GameManager.Instance.playersDictionary[player].score.ToString());
     }
 
     

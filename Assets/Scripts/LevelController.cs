@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController: MonoBehaviour
+public class LevelController: MonoBehaviour
 {
 
-    public static GameController Instance { get; private set; }
+    public static LevelController Instance { get; private set; }
 
     private bool inLevel = false;
     public bool InLevel
@@ -16,27 +16,23 @@ public class GameController: MonoBehaviour
         }
     }
 
-    public int initialTimer = 120;
-    public int initialLifes = 3;
-
     public FloatingScoreManager floatingScoreManager;
 
-    private int lifes = 0;
-    private int score = 0;
+    
     private float timer = 0f;
 
     public int Lifes
     {
         get
         {
-            return lifes;
+            return GameManager.Instance.currentPlayer.lifes;
         }
     }
     public int Score
     {
         get
         {
-            return score;
+            return GameManager.Instance.currentPlayer.score;
         }
     }
     public float Timer
@@ -47,19 +43,17 @@ public class GameController: MonoBehaviour
         }
     }
 
-
-
     private Coroutine timerRunning;
 
 
     void OnEnable()
     {
-        GameEvents.PlayerDied += EndLevel;
+        GameEvents.PlayerDied += PlayerDies;
     }
 
     void OnDisable()
     {
-        GameEvents.PlayerDied -= EndLevel;
+        GameEvents.PlayerDied -= PlayerDies;
     }
 
     private void Awake()
@@ -78,20 +72,12 @@ public class GameController: MonoBehaviour
 
     }
 
-    // starts a game
-    public void NewGame(bool countTime)
-    {
-        lifes = initialLifes;
-
-        StartLevel(countTime);
-
-    }
 
     // starts a level
     public void StartLevel(bool countTime)
     {
         inLevel = true;
-        timer = (float)initialTimer;
+        timer = GameManager.Instance.defaultLevelTime;
 
         if(countTime)
             timerRunning = StartCoroutine(CountTimer());
@@ -105,6 +91,14 @@ public class GameController: MonoBehaviour
     public void EndLevel()
     {
         inLevel = false;
+    }
+
+    public void PlayerDies()
+    {
+        EndLevel();
+
+        // decrease life and restart level
+        GameManager.Instance.SetupNextTry();
     }
 
     IEnumerator CountTimer() {
@@ -128,7 +122,7 @@ public class GameController: MonoBehaviour
 
     public void IncrementScore(int scoreIncrement)
     {
-        score += scoreIncrement;
+        GameManager.Instance.currentPlayer.IncrementScore(scoreIncrement);
         GameEvents.ScoreIncremented.SafeCall();
     }
 

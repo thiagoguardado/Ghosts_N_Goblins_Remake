@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4254708509978538}
   - component: {fileID: 212197399387801392}
   - component: {fileID: 61154348206194436}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: potSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,9 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4166603524194890}
   - component: {fileID: 50279017920098320}
-  - component: {fileID: 114273633462090786}
   - component: {fileID: 114951854481608856}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +101,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -118,19 +117,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &114273633462090786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1727727381824870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e2cfb6f673274704a45ca767ff94210, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectCollider: {fileID: 61154348206194436}
-  rayLenght: 0.03
 --- !u!114 &114951854481608856
 MonoBehaviour:
   m_ObjectHideFlags: 1

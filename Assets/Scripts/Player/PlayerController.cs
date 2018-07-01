@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     private void ResolveInputs()
     {
-        if (GameController.Instance.InLevel)
+        if (LevelController.Instance.InLevel)
         {
             horizontalAxis = Input.GetAxisRaw("Horizontal");
             verticalAxis = Input.GetAxisRaw("Vertical");

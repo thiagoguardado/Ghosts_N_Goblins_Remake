@@ -9,19 +9,19 @@ public class ObjectScore : MonoBehaviour {
 
     public void IncrementGameScore()
     {
-        GameController.Instance.IncrementScore(score);
+        LevelController.Instance.IncrementScore(score);
 
     }
 
     public void IncrementGameScore(Vector3 displayScoreTextPosition)
     {
-        GameController.Instance.IncrementScore(score);
+        LevelController.Instance.IncrementScore(score);
 
         DisplayScore(displayScoreTextPosition);
     }
 
     private void DisplayScore(Vector3 displayScoreTextPosition)
     {
-        GameController.Instance.floatingScoreManager.InstantiateFloatingSscore(score, displayScoreTextPosition);
+        LevelController.Instance.floatingScoreManager.InstantiateFloatingSscore(score, displayScoreTextPosition);
     }
 }

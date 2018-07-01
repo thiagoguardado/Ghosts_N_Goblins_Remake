@@ -12,6 +12,7 @@ public static class GameEvents {
     public static Action TimeEnded;
 
     public static Action ScoreIncremented;
+    public static Action TopScoreChanged;
 }
 
 

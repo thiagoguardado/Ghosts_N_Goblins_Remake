@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1949218409986668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.79, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0.46841294, y: -0.7246163, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4813374394801728}
@@ -224,6 +224,7 @@ MonoBehaviour:
     m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 0}
+  rangeRadious: 2
   projectilePrefab: {fileID: 114251931727813320, guid: 87139a9fed2128b4bb0831b7cdeb3a24,
     type: 2}
   projectileInstantiationAnchor: {fileID: 4290973926885634}

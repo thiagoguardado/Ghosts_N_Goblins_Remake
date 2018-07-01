@@ -5,6 +5,27 @@ using UnityEngine;
 public class TopScorePanel : HUDStringDisplay
 {
 
-	//TODO
+    private void OnEnable()
+    {
+        GameEvents.TopScoreChanged += UpdateTopScore;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.TopScoreChanged -= UpdateTopScore;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        UpdateTopScore();
+
+    }
+
+    private void UpdateTopScore()
+    {
+        DisplayString(GameManager.Instance.topScore.ToString());
+    }
 
 }

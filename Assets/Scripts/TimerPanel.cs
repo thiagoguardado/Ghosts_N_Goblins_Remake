@@ -16,8 +16,8 @@ public class TimerPanel : HUDStringDisplay
     // update timer display
     private void UpdateTimer()
     {
-        int minutes = Mathf.FloorToInt(GameController.Instance.Timer / 60);
-        int seconds = Mathf.CeilToInt(GameController.Instance.Timer % 60);
+        int minutes = Mathf.FloorToInt(LevelController.Instance.Timer / 60);
+        int seconds = Mathf.CeilToInt(LevelController.Instance.Timer % 60);
         if (seconds == 60)
         {
             minutes += 1;

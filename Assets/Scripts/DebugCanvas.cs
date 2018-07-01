@@ -34,7 +34,7 @@ public class DebugCanvas : MonoBehaviour {
 
     public void PressStartButton()
     {
-        GameController.Instance.NewGame(countTime);
+        LevelController.Instance.StartLevel(countTime);
         startButton.gameObject.SetActive(false);
         centerText.text = "";
 

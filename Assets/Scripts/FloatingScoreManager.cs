@@ -28,7 +28,7 @@ public class FloatingScoreManager : ScriptableObject {
         Sprite left;
         Sprite right;
 
-        if (GameController.Instance.floatingScoreManager.GetSprites(score, out left, out right))
+        if (LevelController.Instance.floatingScoreManager.GetSprites(score, out left, out right))
         {
 
             FloatingScore fs = Instantiate(floatingScore, position, Quaternion.identity);

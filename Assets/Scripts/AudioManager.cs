@@ -9,16 +9,16 @@ public class AudioManager : MonoBehaviour {
     public AudioSource bgmAudioSource;
     public AudioSource sfxAudioSource;
     public AudioClip bgm;
-    public AudioClip gameOver;
+    public AudioClip playerDied;
 
     private void OnEnable()
     {
-        GameEvents.PlayerDied += PlayGameOver;
+        GameEvents.PlayerDied += PlayDyingAudio;
     }
 
     private void OnDisable()
     {
-        GameEvents.PlayerDied -= PlayGameOver;
+        GameEvents.PlayerDied -= PlayDyingAudio;
     }
 
     public void Awake()
@@ -34,11 +34,11 @@ public class AudioManager : MonoBehaviour {
         bgmAudioSource.Play();
     }
 
-    private void PlayGameOver()
+    private void PlayDyingAudio()
     {
         bgmAudioSource.Stop();
         bgmAudioSource.loop = false;
-        bgmAudioSource.clip = gameOver;
+        bgmAudioSource.clip = playerDied;
         bgmAudioSource.Play();
     }
 }

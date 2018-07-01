@@ -10,13 +10,11 @@ public class LifesPanel : MonoBehaviour {
 
     private void OnEnable()
     {
-        GameEvents.PlayerDied += UpdateLifes;
         GameEvents.LevelStarted += UpdateLifes;
     }
 
     private void OnDisable()
     {
-        GameEvents.PlayerDied -= UpdateLifes;
         GameEvents.LevelStarted -= UpdateLifes;
     }
 
@@ -31,7 +29,7 @@ public class LifesPanel : MonoBehaviour {
     {
         TurnOffAll();
 
-        for (int i = 0; i < GameController.Instance.Lifes; i++)
+        for (int i = 0; i < LevelController.Instance.Lifes; i++)
         {
             TurnOn(imageUnits[i]);
         }

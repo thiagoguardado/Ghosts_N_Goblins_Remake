@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoStart: 1
-  countTime: 0
+  countTime: 1
   centerText: {fileID: 114029823198105350}
   startButton: {fileID: 114851964972576026}
 --- !u!114 &114207301358712666

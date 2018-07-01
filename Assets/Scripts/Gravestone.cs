@@ -12,7 +12,6 @@ public class Gravestone : MonoBehaviour, IWeaponHittable
     public void Hit(int damageTaken, Vector2 hitPoint, LookingDirection hitDirection)
     { 
         hitCount += 1;
-        Debug.Log("Gravestone hit!");
 
         if(hitCountText!=null)
             hitCountText.text = "Hits: " + hitCount.ToString();

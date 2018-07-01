@@ -5,17 +5,18 @@ using UnityEngine;
 public class PlantProjectile : Enemy {
 
     public float speed;
+    public Vector3 direction;
 
     protected override void Update()
     {
         base.Update();
 
-        transform.position += spriteDirection.WorldLookingDirection * (speed * Time.deltaTime);
+        transform.position += direction * (speed * Time.deltaTime);
     }
 
-    public void Init(LookingDirection lookingDirection)
+    public void Init(Vector2 shootDirection)
     {
-        spriteDirection.FaceDirection(lookingDirection);
+        direction = shootDirection;
     }
     
 }
