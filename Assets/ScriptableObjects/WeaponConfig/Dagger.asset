@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00ea65dcc5315ca4bb46badd6016381e, type: 3}
-  m_Name: Spear
+  m_Name: Dagger
   m_EditorClassIdentifier: 
-  weaponSprite: {fileID: 21300030, guid: 3066daeac2a3312488a1641df30c3a07, type: 3}
-  initialVelocity: 2
+  weaponSprite: {fileID: 21300032, guid: 3066daeac2a3312488a1641df30c3a07, type: 3}
+  initialVelocity: 3
   weaponDamage: 1
   maxWeaponsOnScreen: 3
-  weaponPrefab: {fileID: 114508811228731838, guid: 6c84098d6579dba4cafbe6a0d5fa22d9,
+  weaponPrefab: {fileID: 114351493678843758, guid: 1db5cb2e2f7ed4744a6b39c9e2cbfe94,
     type: 2}

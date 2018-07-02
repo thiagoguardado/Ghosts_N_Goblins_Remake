@@ -7,25 +7,20 @@ using UnityEngine;
 public abstract class WeaponBehavior : MonoBehaviour
 {
 
-    public int damage;
+    [HideInInspector] public int damage;
 
     protected Rigidbody2D rigidbody2d;
     protected SpriteDirection spriteDirection;
+    private PlayerController owner;
 
-    public abstract void Shoot(float shootSpeed, LookingDirection direction);
+    protected abstract void Shoot(float shootSpeed, LookingDirection direction);
     protected abstract void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal);
     protected abstract void Move();
-    protected abstract void Setup();
 
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        spriteDirection = GetComponent<SpriteDirection>();
-    }
-
-    private void Start()
-    {
-        Setup();
+        spriteDirection = GetComponentInChildren<SpriteDirection>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,5 +35,16 @@ public abstract class WeaponBehavior : MonoBehaviour
         Move();
     }
 
+    public void Init(float shootSpeed, LookingDirection direction, PlayerController owner)
+    {
+        this.owner = owner;
+
+        Shoot(shootSpeed, direction);
+    }
+
+    private void OnDestroy()
+    {
+        owner.WeaponDestroyed(this);
+    }
 
 }

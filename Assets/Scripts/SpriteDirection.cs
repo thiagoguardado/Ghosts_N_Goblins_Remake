@@ -20,21 +20,7 @@ public class SpriteDirection : MonoBehaviour {
     {
         get
         {
-            switch (lookingDirection)
-            {
-                case LookingDirection.None:
-                    return Vector3.zero;
-                case LookingDirection.Left:
-                    return Vector3.left;
-                case LookingDirection.Right:
-                    return Vector3.right;
-                case LookingDirection.Up:
-                    return Vector3.up;
-                case LookingDirection.Down:
-                    return Vector3.down;
-                default:
-                    return Vector3.zero;
-            }
+            return LookingDirectionToVector3(lookingDirection);
         }
     }
 
@@ -52,6 +38,45 @@ public class SpriteDirection : MonoBehaviour {
         }
 	}
 
+
+    public static Vector2 LookingDirectionToVector2(LookingDirection lookingDirection)
+    {
+        switch (lookingDirection)
+        {
+            case LookingDirection.None:
+                return Vector2.zero;
+            case LookingDirection.Left:
+                return Vector2.left;
+            case LookingDirection.Right:
+                return Vector2.right;
+            case LookingDirection.Up:
+                return Vector2.up;
+            case LookingDirection.Down:
+                return Vector2.down;
+            default:
+                return Vector2.zero;
+        }
+    }
+
+    public static Vector3 LookingDirectionToVector3(LookingDirection lookingDirection)
+    {
+        switch (lookingDirection)
+        {
+            case LookingDirection.None:
+                return Vector3.zero;
+            case LookingDirection.Left:
+                return Vector3.left;
+            case LookingDirection.Right:
+                return Vector3.right;
+            case LookingDirection.Up:
+                return Vector3.up;
+            case LookingDirection.Down:
+                return Vector3.down;
+            default:
+                return Vector3.zero;
+        }
+
+    }
 
     public static LookingDirection OtherDirectionY(LookingDirection direction)
     {

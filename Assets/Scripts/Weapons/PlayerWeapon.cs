@@ -11,13 +11,12 @@ public class PlayerWeapon : ScriptableObject {
     public WeaponBehavior weaponPrefab;
 
 
-    public void ShootWeapon(Vector3 SpawnPosition, Transform parent, LookingDirection direction)
+    public WeaponBehavior ShootWeapon(Vector3 SpawnPosition, LookingDirection direction, PlayerController owner)
     {
-  
-        var instantiated = Instantiate(weaponPrefab, SpawnPosition, Quaternion.identity, parent);
+        WeaponBehavior instantiated = Instantiate(weaponPrefab, SpawnPosition, Quaternion.identity);
         instantiated.damage = weaponDamage;
-        instantiated.Shoot(initialVelocity, direction);
-
+        instantiated.Init(initialVelocity, direction, owner);
+        return instantiated;
     }
 
 }

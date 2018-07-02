@@ -19,10 +19,10 @@ TextureImporter:
     21300024: score_8
     21300026: score_9
     21300028: life
-    21300030: spear
-    21300032: knife
+    21300030: spear_UI
+    21300032: dagger_UI
     21300034: axescore_0
-    21300036: torch
+    21300036: torch_UI
     21300038: colon
     21300040: timer_2
     21300042: timer_3
@@ -340,7 +340,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spear
+      name: spear_UI
       rect:
         serializedVersion: 2
         x: 72
@@ -354,7 +354,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: knife
+      name: dagger_UI
       rect:
         serializedVersion: 2
         x: 89
@@ -382,7 +382,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: torch
+      name: torch_UI
       rect:
         serializedVersion: 2
         x: 37

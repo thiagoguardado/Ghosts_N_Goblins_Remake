@@ -44,12 +44,14 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     public Transform weaponStandingSpawnPoint;
     public Transform weaponCrouchedSpawnPoint;
     public Transform weaponsShotParent;
+    public List<WeaponBehavior> instantiatedWeapons = new List<WeaponBehavior>();
 
     [Header("Life and Armor")]
     public PlayerArmor currentArmorStatus = PlayerArmor.Armored;
     public float afterDamageInvincibleDuration = 0.5f;
     public bool isReceivingDamage { get; private set; }
     public BreakableArmor breakableArmor;
+
 
 
     // control variables
@@ -231,13 +233,20 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     private bool Shoot(Transform spawnPoint)
     {
-        if (currentWeapon.maxWeaponsOnScreen > weaponsShotParent.childCount)
+
+        if (currentWeapon.maxWeaponsOnScreen > instantiatedWeapons.Count)
         {
-            currentWeapon.ShootWeapon(spawnPoint.position, weaponsShotParent, spriteDirection.lookingDirection);
+            instantiatedWeapons.Add(currentWeapon.ShootWeapon(spawnPoint.position, spriteDirection.lookingDirection,this));
             return true;
         }
 
         return false;
+    }
+
+
+    internal void WeaponDestroyed(WeaponBehavior weapon)
+    {
+        instantiatedWeapons.Remove(weapon);
     }
 
     public void ReceiveDamage() {

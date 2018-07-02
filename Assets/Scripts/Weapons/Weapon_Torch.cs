@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon_Spear : WeaponBehavior {
-    
-    private Vector2 direction;
+public class Weapon_Torch : WeaponBehavior {
 
-    protected override void Shoot(float speed, LookingDirection direction)
+    public float throwingAngle = 45f;
+
+
+    protected override void Shoot(float shootSpeed, LookingDirection direction)
     {
-        // setup velocity
-        rigidbody2d.velocity = spriteDirection.WorldLookingDirection * speed;
 
-        //setup direction
+        rigidbody2d.velocity = new Vector2(SpriteDirection.LookingDirectionToVector2(direction).x * Mathf.Sin(throwingAngle), Mathf.Cos(throwingAngle)) * shootSpeed;
+
         spriteDirection.FaceDirection(direction);
-
     }
 
     protected override void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal)
@@ -32,7 +31,7 @@ public class Weapon_Spear : WeaponBehavior {
     protected override void Move()
     {
         return;
-        
     }
+
 
 }
