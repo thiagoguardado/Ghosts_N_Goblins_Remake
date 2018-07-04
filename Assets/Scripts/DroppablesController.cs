@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DroppablesController : SingletonAwakeGeneric<DroppablesController> {
 
-    public Pot pot;
-    public GameObject doll;
-    public GameObject specialDoll;
-    public GameObject accesory;
-    public GameObject[] weapons;
+    public Pot potPrefab;
+    public GameObject collectibleDoll;
+    public GameObject collectiblSpecialDoll;
+    public GameObject collectibleAccesory;
+    public GameObject[] collectibleWeapon;
 
     protected override void Awake()
     {
@@ -19,7 +19,7 @@ public class DroppablesController : SingletonAwakeGeneric<DroppablesController> 
 
     public void DropPot(Vector3 position)
     {
-        Pot go = Instantiate(pot, position, Quaternion.identity);
+        Pot go = Instantiate(potPrefab, position, Quaternion.identity);
         go.Release();
     }
 
@@ -33,13 +33,13 @@ public class DroppablesController : SingletonAwakeGeneric<DroppablesController> 
         switch (item)
         {
             case DroppableItem.Doll:
-                return doll;
+                return collectibleDoll;
             case DroppableItem.Weapon:
-                return weapons[Random.Range(0, weapons.Length)];
+                return collectibleWeapon[Random.Range(0, collectibleWeapon.Length)];
             case DroppableItem.Accesory:
-                return accesory;
+                return collectibleAccesory;
             case DroppableItem.SpecialDoll:
-                return specialDoll;
+                return collectiblSpecialDoll;
             default:
                 return null;
         }

@@ -172,7 +172,7 @@ MonoBehaviour:
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114534560851743402, guid: e19fca69d3dfd9643948ef7605304043,
     type: 2}
-  dropPotProbability: 0.75
+  dropPotProbability: 0.99
   speed: 0.5
   spriteTransform: {fileID: 4228025343332120}
   animator: {fileID: 95679570916686078}

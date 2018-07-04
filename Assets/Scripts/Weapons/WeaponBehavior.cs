@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -17,7 +17,7 @@ public abstract class WeaponBehavior : MonoBehaviour
     protected abstract void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal);
     protected abstract void Move();
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         spriteDirection = GetComponentInChildren<SpriteDirection>();

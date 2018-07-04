@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     {
         IPlayerTouchable playerTouchable = collision.GetComponentInParent<IPlayerTouchable>();
         if (playerTouchable != null)
-            playerTouchable.WasTouchesByPlayer();
+            playerTouchable.WasTouchedByPlayer();
 
     }
 
@@ -305,5 +305,16 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         }
 
     }
+
+    public void ChangeWeapon(PlayerWeapon playerWeapon)
+    {
+
+        if (currentWeapon != playerWeapon)
+        {
+            currentWeapon = playerWeapon;
+            GameEvents.PlayerPickedWeapon.SafeCall();
+        }
+    }
+
 
 }

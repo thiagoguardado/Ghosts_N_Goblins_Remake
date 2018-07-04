@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IPlayerTouchable {
 
-    void WasTouchesByPlayer();
+    void WasTouchedByPlayer();
 
 }

@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundingRayLength: 0.03
-  currentWeapon: {fileID: 11400000, guid: e1cdcfb8038e08f4b9813799f2590c66, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 8fc551dda6420af4caa6d8fcc880ae13, type: 2}
   weaponStandingSpawnPoint: {fileID: 4731901508064238}
   weaponCrouchedSpawnPoint: {fileID: 4379725981845562}
   weaponsShotParent: {fileID: 0}

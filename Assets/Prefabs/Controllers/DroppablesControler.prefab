@@ -51,10 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fafffb6e9dc47e43a4051db2c86b21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pot: {fileID: 114951854481608856, guid: 8063923496ae0674b8c03a9630980c44, type: 2}
-  doll: {fileID: 1333712304152366, guid: 04bf573674859ee4caa244fe72cb6ac5, type: 2}
-  specialDoll: {fileID: 1333712304152366, guid: 04bf573674859ee4caa244fe72cb6ac5,
+  potPrefab: {fileID: 114951854481608856, guid: 8063923496ae0674b8c03a9630980c44,
     type: 2}
-  accesory: {fileID: 1480803591373550, guid: 1fdc47c31e1f6934d8a0fd7fb69bb2f6, type: 2}
-  weapons:
-  - {fileID: 1333712304152366, guid: 04bf573674859ee4caa244fe72cb6ac5, type: 2}
+  collectibleDoll: {fileID: 1333712304152366, guid: 04bf573674859ee4caa244fe72cb6ac5,
+    type: 2}
+  collectiblSpecialDoll: {fileID: 1333712304152366, guid: 04bf573674859ee4caa244fe72cb6ac5,
+    type: 2}
+  collectibleAccesory: {fileID: 1480803591373550, guid: 1fdc47c31e1f6934d8a0fd7fb69bb2f6,
+    type: 2}
+  collectibleWeapon:
+  - {fileID: 1296934057672860, guid: f6d81895c87dd4245824146f083aa4fa, type: 2}
+  - {fileID: 1845677251618420, guid: eef27129b95ab8244b0febad84e251ec, type: 2}
+  - {fileID: 1581417864874364, guid: 1f6103009ae9d62479f186ba76ee1950, type: 2}

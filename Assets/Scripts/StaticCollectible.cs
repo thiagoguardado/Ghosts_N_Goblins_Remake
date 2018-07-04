@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class StaticCollectible : MonoBehaviour, IPlayerTouchable {
 
     public Transform spriteTransform;
 
-    public void WasTouchesByPlayer()
+    public void WasTouchedByPlayer()
     {
 
         // add score to game controller
