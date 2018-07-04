@@ -7,64 +7,78 @@ public class AudioManager : MonoBehaviour {
     public bool autoStartPlaying = true;
 
     [Header("Audio Sources")]
-    public AudioSource bgmAudioSource;
-    public AudioSource sfxAudioSource;
+    [SerializeField] private AudioSource bgmAudioSource;
+    [SerializeField] private AudioSource sfxAudioSource;
 
     [Header("Music")]
+    public AudioClip map;
     public AudioClip opening;
     public AudioClip intro;
     public AudioClip bgm;
     public AudioClip playerDied;
+    public AudioClip gameOver;
+    public AudioClip stageClear;
+    public AudioClip timer;
+    public AudioClip timerExtended;
 
-    [Header("SFX")]
+    [Header("SFX - Player")]
     public AudioClip jump;
     public AudioClip land;
     public AudioClip shot;
     public AudioClip hurt;
     public AudioClip pickupArmor;
+    public AudioClip pickupWeapon;
+    public AudioClip pickupTreasure;
 
+    [Header("SFX - GameManager")]
+    public AudioClip extraLife;
+    public AudioClip highScore;
+
+
+    private Coroutine playingBGMCoroutine;
 
     private void OnEnable()
     {
-        GameEvents.Player.PlayerDied += PlayDyingAudio;
-
+       
         GameEvents.Player.PlayerJumped += PlayJumpSFX;
         GameEvents.Player.PlayerLanded += PlayLandSFX;
         GameEvents.Player.PlayerShot += PlayShotSFX;
         GameEvents.Player.PlayerTookDamage += PlayHurtSFX;
-        GameEvents.Player.PlayerPickedWeapon += PlayPickedArmorSFX;
+        GameEvents.Player.PlayerPickedArmor += PlayPickedArmorSFX;
+        GameEvents.Player.PlayerPickedWeapon += PlayPickedWeaponSFX;
+        GameEvents.Player.PlayerPickedTreasure += PlayPickedTreasureSFX;
+        GameEvents.Player.PlayerLoseLife += PlayDyingAudio;
+        GameEvents.Player.PlayerGameOver += PlayGameOverAudio;
+
+        GameEvents.Level.GameOver += PlayGameOverAudio;
+        GameEvents.Level.TimerStarted += PlayTimerStarted;
+        GameEvents.Level.TimerExtended += PlayTimerExtended;
+        GameEvents.Level.PlayerReachedEnd += PlayStageClear;
     }
 
     private void OnDisable()
     {
-        GameEvents.Player.PlayerDied -= PlayDyingAudio;
-
         GameEvents.Player.PlayerJumped -= PlayJumpSFX;
         GameEvents.Player.PlayerLanded -= PlayLandSFX;
         GameEvents.Player.PlayerShot -= PlayShotSFX;
         GameEvents.Player.PlayerTookDamage -= PlayHurtSFX;
-        GameEvents.Player.PlayerPickedWeapon -= PlayPickedArmorSFX;
+        GameEvents.Player.PlayerPickedArmor -= PlayPickedArmorSFX;
+        GameEvents.Player.PlayerPickedWeapon -= PlayPickedWeaponSFX;
+        GameEvents.Player.PlayerPickedTreasure -= PlayPickedTreasureSFX;
+        GameEvents.Player.PlayerLoseLife -= PlayDyingAudio;
+        GameEvents.Player.PlayerGameOver -= PlayGameOverAudio;
+
+        GameEvents.Level.GameOver += PlayGameOverAudio;
+        GameEvents.Level.TimerStarted -= PlayTimerStarted;
+        GameEvents.Level.TimerExtended -= PlayTimerExtended;
+        GameEvents.Level.PlayerReachedEnd -= PlayStageClear;
     }
 
     public void Awake()
     {
-        if(autoStartPlaying)
-            StartPlayingBGM(bgm);
-    }
-
-    private void StartPlayingBGM(AudioClip bgm)
-    {
-        bgmAudioSource.loop = true;
-        bgmAudioSource.clip = bgm;
-        bgmAudioSource.Play();
-    }
-
-    private void PlayDyingAudio()
-    {
-        bgmAudioSource.Stop();
-        bgmAudioSource.loop = false;
-        bgmAudioSource.clip = playerDied;
-        bgmAudioSource.Play();
+        if (autoStartPlaying)
+            StartPlayingBGM(false);
+            
     }
 
     private void PlayJumpSFX() { sfxAudioSource.PlayOneShot(jump); }
@@ -72,4 +86,76 @@ public class AudioManager : MonoBehaviour {
     private void PlayShotSFX() { sfxAudioSource.PlayOneShot(shot); }
     private void PlayHurtSFX() { sfxAudioSource.PlayOneShot(hurt); }
     private void PlayPickedArmorSFX() { sfxAudioSource.PlayOneShot(pickupArmor); }
+    private void PlayPickedWeaponSFX() { sfxAudioSource.PlayOneShot(pickupWeapon); }
+    private void PlayPickedTreasureSFX() { sfxAudioSource.PlayOneShot(pickupTreasure); }
+
+    private void StartPlayingBGM(bool includeOpening)
+    {
+        AudioClip[] audioSequence;
+
+        if (includeOpening)
+        {
+            audioSequence = new AudioClip[] { opening, intro, bgm };
+        }
+        else {
+            audioSequence = new AudioClip[] { intro, bgm };
+        }
+
+        SubstitutePlayingSequenceOnBGM(audioSequence, true);
+    }
+
+    private void PlayDyingAudio()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { playerDied }, false);
+    }
+
+    private void PlayGameOverAudio()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { gameOver }, false);
+    }
+
+    private void PlayTimerStarted()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { timer }, true);
+    }
+
+    private void PlayTimerExtended()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { timerExtended, bgm }, true);
+    }
+
+    private void PlayStageClear()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { stageClear }, true);
+    }
+
+    private void SubstitutePlayingSequenceOnBGM(AudioClip[] audios, bool isLastLoop)
+    {
+        if (playingBGMCoroutine != null)
+        {
+            StopCoroutine(playingBGMCoroutine);
+        }
+
+        playingBGMCoroutine = StartCoroutine(PlayAudioSequence(bgmAudioSource, audios, isLastLoop));
+    }
+
+    private IEnumerator PlayAudioSequence(AudioSource source, AudioClip[] audios, bool isLastLoop)
+    {
+        source.Stop();
+
+        for (int i = 0; i < audios.Length; i++)
+        {
+            while (source.isPlaying)
+            {
+                yield return null;
+            }
+
+            source.clip = audios[i];
+            source.loop = i != (audios.Length - 1) ? false : isLastLoop;
+            source.Play();
+
+        }
+
+    }
+
 }

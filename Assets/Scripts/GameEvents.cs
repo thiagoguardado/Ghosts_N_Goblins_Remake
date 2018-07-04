@@ -5,21 +5,31 @@ public static class GameEvents
 
     public static class Player
     {
+        public static Action PlayerPickedArmor;
         public static Action PlayerPickedWeapon;
+        public static Action PlayerPickedTreasure;
         public static Action PlayerTookDamage;
         public static Action PlayerDied;
+        public static Action PlayerLoseLife;
+        public static Action PlayerGameOver;
         public static Action PlayerJumped;
         public static Action PlayerLanded;
         public static Action PlayerShot;
     }
 
+    public static class Weapons
+    {
+        public static Action TorchHitFloor;
+    }
 
     public static class Level
     {
         public static Action LevelStarted;
         public static Action PlayerReachedEnd;
+        public static Action TimerStarted;
+        public static Action TimerExtended;
         public static Action TimeEnded;
-
+        public static Action GameOver;
     }
 
     public static class Score
@@ -28,6 +38,7 @@ public static class GameEvents
         public static Action TopScoreChanged;
     }
 
+    /*
     public static class Collectibles
     {
         public static Action CollectedCoin;
@@ -37,5 +48,6 @@ public static class GameEvents
         public static Action CollectedAccessory;
 
     }
+    */
 
 }

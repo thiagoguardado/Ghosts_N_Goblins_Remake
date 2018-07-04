@@ -46,8 +46,15 @@ public class GameManager : MonoBehaviour {
     public Player currentPlayer { get; private set; }
     public Dictionary<PlayerID, Player> playersDictionary = new Dictionary<PlayerID, Player>();
     public float defaultLevelTime = 120f;
-
     public int topScore = 10000;
+
+    [Header("Singleplayer")]
+    public int initialLivesOnSinglePlayer = 3;
+
+    [Header("Multiplayer")]
+    public int initialLivesOnMultiPlayer = 2;
+
+    private const float waitTimeBeforeRetry = 5f;
 
     private void OnEnable()
     {
@@ -92,11 +99,11 @@ public class GameManager : MonoBehaviour {
         switch (currentGameMode)
         {
             case GameMode.SinglePlayer:
-                players.Add(new Player(PlayerID.Player1, 0,3));
+                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnSinglePlayer));
                 break;
             case GameMode.MultiPlayer:
-                players.Add(new Player(PlayerID.Player1, 0,2));
-                players.Add(new Player(PlayerID.Player2, 0,2));
+                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnMultiPlayer));
+                players.Add(new Player(PlayerID.Player2, 0, initialLivesOnMultiPlayer));
                 break;
             default:
                 break;
@@ -121,7 +128,11 @@ public class GameManager : MonoBehaviour {
         currentPlayer.lifes -= 1;
         if (currentPlayer.lifes < 0)
         {
+            GameEvents.Player.PlayerGameOver.SafeCall();
             players.Remove(currentPlayer);
+        }
+        else {
+            GameEvents.Player.PlayerLoseLife.SafeCall();
         }
 
         if (players.Count <= 0)
@@ -135,7 +146,7 @@ public class GameManager : MonoBehaviour {
 
         // reload scene after waiting for some time
         string scene = SceneManager.GetActiveScene().name;
-        MyExtensions.WaitAndAct(this, 2f, () => SceneManager.LoadScene(scene));
+        MyExtensions.WaitAndAct(this, waitTimeBeforeRetry, () => SceneManager.LoadScene(scene));
         
 
     }

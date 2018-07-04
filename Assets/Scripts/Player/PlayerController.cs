@@ -293,7 +293,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         currentArmorStatus = PlayerArmor.Armored;
 
         // notify event
-        GameEvents.Player.PlayerPickedWeapon.SafeCall();
+        GameEvents.Player.PlayerPickedArmor.SafeCall();
     }
 
 
@@ -305,6 +305,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         // call events
         GameEvents.Player.PlayerTookDamage.SafeCall();
         GameEvents.Player.PlayerDied.SafeCall();
+
+
     }
 
     public void Hit(int hitDamage)
