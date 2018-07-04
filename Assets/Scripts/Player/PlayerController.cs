@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         Dead
     }
 
+
     // singleton
     private static PlayerController instance;
     public static PlayerController Instance
@@ -43,7 +44,6 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     }
     public Transform weaponStandingSpawnPoint;
     public Transform weaponCrouchedSpawnPoint;
-    public Transform weaponsShotParent;
     public List<WeaponBehavior> instantiatedWeapons = new List<WeaponBehavior>();
 
     [Header("Life and Armor")]
@@ -281,6 +281,13 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         // make invincible
         this.WaitAndAct(afterDamageInvincibleDuration, () => isReceivingDamage = true);
     }
+
+
+    public void GetArmor()
+    {
+        currentArmorStatus = PlayerArmor.Armored;
+    }
+
 
     private void Die()
     {

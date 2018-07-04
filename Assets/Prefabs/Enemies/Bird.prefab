@@ -184,6 +184,7 @@ MonoBehaviour:
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114534560851743402, guid: e19fca69d3dfd9643948ef7605304043,
     type: 2}
+  dropPotProbability: 0.2
   distanceToPlayerToStartFlying: 1.1
   waitBeforeStartMovingAfterStartFlying: 0.6
   speed: 1

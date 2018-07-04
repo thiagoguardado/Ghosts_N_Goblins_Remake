@@ -25,7 +25,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4348743551456058
 Transform:
@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830096666308612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0773451, y: -0.24214149, z: -0.026367188}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
     type: 2}
   collectibleDoll: {fileID: 1333712304152366, guid: 04bf573674859ee4caa244fe72cb6ac5,
     type: 2}
-  collectiblSpecialDoll: {fileID: 1333712304152366, guid: 04bf573674859ee4caa244fe72cb6ac5,
+  collectiblSpecialDoll: {fileID: 1650533112175340, guid: 1d69a55306d3103449627241efa1c5c1,
     type: 2}
   collectibleAccesory: {fileID: 1480803591373550, guid: 1fdc47c31e1f6934d8a0fd7fb69bb2f6,
     type: 2}

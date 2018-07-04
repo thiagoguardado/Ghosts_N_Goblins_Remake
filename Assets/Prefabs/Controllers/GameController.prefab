@@ -25,7 +25,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4807616346560150
 Transform:
@@ -51,7 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000bfd673b5269d458d0a495ac72a0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTimer: 120
-  initialLifes: 3
   floatingScoreManager: {fileID: 11400000, guid: 664db5f00852b0d48a967a73cc851ca2,
     type: 2}

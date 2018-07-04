@@ -285,6 +285,7 @@ MonoBehaviour:
     type: 2}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 9350d017e0e531a46b42f505eca0ca90,
     type: 2}
+  dropPotProbability: 0.2
   walkingSpeed: 0.1
   timeGroundedBeforeJump: 2.5
   jumpForce: 3.5

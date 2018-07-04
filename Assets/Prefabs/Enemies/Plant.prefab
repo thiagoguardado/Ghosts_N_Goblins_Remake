@@ -224,6 +224,7 @@ MonoBehaviour:
     m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 0}
+  dropPotProbability: 0.2
   rangeRadious: 2
   projectilePrefab: {fileID: 114251931727813320, guid: 87139a9fed2128b4bb0831b7cdeb3a24,
     type: 2}

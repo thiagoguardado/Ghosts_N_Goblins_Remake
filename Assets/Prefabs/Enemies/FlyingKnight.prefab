@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4d3c89a110142f18f097cc7fb21eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteDirection: {fileID: 0}
   health: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
@@ -257,6 +258,7 @@ MonoBehaviour:
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
     type: 2}
+  dropPotProbability: 0.2
   horizontalSpeed: 0.5
   oscillationAmplitude: 0.5
   oscillationSpeed: 0.3
