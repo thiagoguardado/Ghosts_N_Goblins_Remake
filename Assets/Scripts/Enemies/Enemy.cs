@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +21,9 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
     [Header("VFX")]
     public VFXSpriteAnimation hitSpriteAnimation;
     public VFXSpriteAnimation destroySpriteAnimation;
+
+    [Header("DropProbability")]
+    public float dropPotProbability;
 
     protected virtual void Awake()
     {
@@ -89,15 +92,35 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
         }
     }
 
-    protected virtual void Kill()
+    protected void Kill()
     {
         // add score to game controller
-        GetComponent<ObjectScore>().IncrementGameScore();
+        IncrementScore();
+
+        // drop pot
+        DropPot();
 
         // kill object
         Destroy(gameObject);
 
     }
+
+    private void DropPot()
+    {
+        if (UnityEngine.Random.value <= dropPotProbability)
+        {
+            DroppablesController.Instance.DropPot(transform.position);
+        }
+    }
+
+
+    protected virtual void IncrementScore()
+    {
+        // add score to game controller
+        GetComponent<ObjectScore>().IncrementGameScore();
+
+    }
+
 
     public virtual void Hit(int damageTaken, Vector2 hitPoint, LookingDirection hitDirection)
     {

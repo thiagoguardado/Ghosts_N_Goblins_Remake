@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,13 +48,10 @@ public class Unicorn : Enemy {
 	}
 
 
-	protected override void Kill()
+	protected override void IncrementScore()
 	{
         // add score to game controller
         GetComponent<ObjectScore>().IncrementGameScore(scoreAnchor.position);
-
-        // kill object
-        Destroy(gameObject);
 	}
 
     public void Walk()

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,7 +47,9 @@ public class Pot : MonoBehaviour {
 
     private void BreakPot()
     {
-        Instantiate(potItem, transform.position, Quaternion.identity);
+        GameObject dropItem = DroppablesController.Instance.GetNextItem();
+
+        Instantiate(dropItem, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
