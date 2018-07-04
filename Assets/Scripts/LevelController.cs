@@ -48,12 +48,12 @@ public class LevelController: MonoBehaviour
 
     void OnEnable()
     {
-        GameEvents.PlayerDied += PlayerDies;
+        GameEvents.Player.PlayerDied += PlayerDies;
     }
 
     void OnDisable()
     {
-        GameEvents.PlayerDied -= PlayerDies;
+        GameEvents.Player.PlayerDied -= PlayerDies;
     }
 
     private void Awake()
@@ -82,7 +82,7 @@ public class LevelController: MonoBehaviour
             timerRunning = StartCoroutine(CountTimer());
 
         // trigger event
-        GameEvents.LevelStarted.SafeCall();
+        GameEvents.Level.LevelStarted.SafeCall();
 
     }
 
@@ -110,7 +110,7 @@ public class LevelController: MonoBehaviour
             {
                 timer = 0f;
                 EndLevel();
-                GameEvents.TimeEnded.SafeCall();
+                GameEvents.Level.TimeEnded.SafeCall();
                 yield break;
             }
 
@@ -122,7 +122,7 @@ public class LevelController: MonoBehaviour
     public void IncrementScore(int scoreIncrement)
     {
         GameManager.Instance.currentPlayer.IncrementScore(scoreIncrement);
-        GameEvents.ScoreIncremented.SafeCall();
+        GameEvents.Score.ScoreIncremented.SafeCall();
     }
 
 }

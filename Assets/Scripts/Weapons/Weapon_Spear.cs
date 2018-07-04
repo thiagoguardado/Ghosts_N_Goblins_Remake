@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +8,15 @@ public class Weapon_Spear : WeaponBehavior {
 
     protected override void Shoot(float speed, LookingDirection direction)
     {
-        // setup velocity
-        rigidbody2d.velocity = spriteDirection.WorldLookingDirection * speed;
 
         //setup direction
         spriteDirection.FaceDirection(direction);
+
+
+        // setup velocity
+        rigidbody2d.velocity = spriteDirection.WorldLookingDirection * speed;
+
+        
 
     }
 

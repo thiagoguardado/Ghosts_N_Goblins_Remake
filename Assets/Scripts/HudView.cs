@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +13,12 @@ public class HudView : MonoBehaviour {
 
     private void OnEnable()
     {
-        GameEvents.PlayerPickedWeapon += ChangeWeapon;
+        GameEvents.Player.PlayerPickedWeapon += ChangeWeapon;
     }
 
     private void OnDisable()
     {
-        GameEvents.PlayerPickedWeapon -= ChangeWeapon;
+        GameEvents.Player.PlayerPickedWeapon -= ChangeWeapon;
     }
 
     private void Start()

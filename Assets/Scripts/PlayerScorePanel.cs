@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,12 +10,12 @@ public class PlayerScorePanel : HUDStringDisplay
 
     private void OnEnable()
     {
-        GameEvents.ScoreIncremented += UpdateScore;
+        GameEvents.Score.ScoreIncremented += UpdateScore;
     }
 
     private void OnDisable()
     {
-        GameEvents.ScoreIncremented -= UpdateScore;
+        GameEvents.Score.ScoreIncremented -= UpdateScore;
     }
 
     protected override void Awake()

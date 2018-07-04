@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -155,14 +155,14 @@ public class PlayerFSM : MonoBehaviour {
     private void OnEnable()
     {
         // add listener to hit state
-        GameEvents.PlayerTookDamage += GetHit;
+        GameEvents.Player.PlayerTookDamage += GetHit;
 
     }
 
     private void OnDisable()
     {
         // add listener to hit state
-        GameEvents.PlayerTookDamage -= GetHit;
+        GameEvents.Player.PlayerTookDamage -= GetHit;
     }
 
     private void Update()
@@ -289,16 +289,6 @@ public class PlayerFSM : MonoBehaviour {
         if (shot)
             animationController.throwSomething = true;
 
-
-        //// make controller shoot
-        //if (isCrouched)
-        //{
-        //    ;
-        //}
-        //else
-        //{
-        //    ;
-        //} 
 
 
     }
@@ -537,6 +527,10 @@ public class PlayerFSM : MonoBehaviour {
             {
                 if ((owner.isGrounded && owner.playerRigidbody.velocity.y <= 0) || owner.playerRigidbody.velocity.y == 0)
                 {
+                    // notify event
+                    GameEvents.Player.PlayerLanded.SafeCall();
+
+                    // transition
                     owner.ChangeState(PlayerFSMState.Idle);
                     return;
                 }
@@ -555,6 +549,9 @@ public class PlayerFSM : MonoBehaviour {
             runningHorizontalAxisValue = owner.horizontalAxis;
             wasRunning = owner.isRunning;
             timer = 0f;
+
+            // notify event
+            GameEvents.Player.PlayerJumped.SafeCall();
         }
 
         public override void DoBeforeLeave()

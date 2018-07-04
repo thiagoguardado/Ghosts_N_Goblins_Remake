@@ -274,5 +274,12 @@ MonoBehaviour:
   autoStartPlaying: 1
   bgmAudioSource: {fileID: 82600586748394056}
   sfxAudioSource: {fileID: 82976539051260732}
+  opening: {fileID: 8300000, guid: a4c637e725efaab4e866bfd44017615a, type: 3}
+  intro: {fileID: 8300000, guid: 88e8e877630b5554f86a8fc01e6f9286, type: 3}
   bgm: {fileID: 8300000, guid: f4006c3e4f28a3747acb1cfe588a447f, type: 3}
   playerDied: {fileID: 8300000, guid: b85c4cdf3c381404c81f9b9fde0b187e, type: 3}
+  jump: {fileID: 8300000, guid: 83a2cc802806cd145a32273033a8b4da, type: 3}
+  land: {fileID: 8300000, guid: cf57c894e0fbf81438060b707ea9b29d, type: 3}
+  shot: {fileID: 8300000, guid: 066ed8c5ec256e648ba95ced26a532b8, type: 3}
+  hurt: {fileID: 8300000, guid: 110bd5c6e4fa3124e888290eaca41e9a, type: 3}
+  pickupArmor: {fileID: 8300000, guid: 9caa30a139f640647879e5462ebc4a5a, type: 3}

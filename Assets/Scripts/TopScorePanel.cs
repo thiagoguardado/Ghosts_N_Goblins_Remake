@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +7,12 @@ public class TopScorePanel : HUDStringDisplay
 
     private void OnEnable()
     {
-        GameEvents.TopScoreChanged += UpdateTopScore;
+        GameEvents.Score.TopScoreChanged += UpdateTopScore;
     }
 
     private void OnDisable()
     {
-        GameEvents.TopScoreChanged -= UpdateTopScore;
+        GameEvents.Score.TopScoreChanged -= UpdateTopScore;
     }
 
     protected override void Awake()

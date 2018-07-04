@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,12 +51,12 @@ public class GameManager : MonoBehaviour {
 
     private void OnEnable()
     {
-        GameEvents.ScoreIncremented += CheckTopScore;
+        GameEvents.Score.ScoreIncremented += CheckTopScore;
     }
 
     private void OnDisable()
     {
-        GameEvents.ScoreIncremented -= CheckTopScore;
+        GameEvents.Score.ScoreIncremented -= CheckTopScore;
     }
 
     private void CheckTopScore()
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
         if (currentPlayer.score >= topScore)
         {
             topScore = currentPlayer.score;
-            GameEvents.TopScoreChanged.SafeCall();
+            GameEvents.Score.TopScoreChanged.SafeCall();
         }
     }
 

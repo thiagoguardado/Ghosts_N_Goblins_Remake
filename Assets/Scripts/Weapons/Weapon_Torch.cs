@@ -24,10 +24,13 @@ public class Weapon_Torch : WeaponBehavior {
 
     protected override void Shoot(float shootSpeed, LookingDirection direction)
     {
+        // set drirection
+        spriteDirection.FaceDirection(direction);
 
+        // setup velocity
         rigidbody2d.velocity = new Vector2(SpriteDirection.LookingDirectionToVector2(direction).x * Mathf.Sin(throwingAngle), Mathf.Cos(throwingAngle)) * shootSpeed;
 
-        spriteDirection.FaceDirection(direction);
+        
     }
 
     protected override void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal)

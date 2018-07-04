@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,12 +13,12 @@ public class DebugCanvas : MonoBehaviour {
 
     private void OnEnable()
     {
-        GameEvents.TimeEnded += DisplayLoseText;
+        GameEvents.Level.TimeEnded += DisplayLoseText;
     }
 
     private void OnDisable()
     {
-        GameEvents.TimeEnded -= DisplayLoseText;
+        GameEvents.Level.TimeEnded -= DisplayLoseText;
     }
 
     private void Start()

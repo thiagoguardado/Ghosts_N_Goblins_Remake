@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,12 +10,12 @@ public class LifesPanel : MonoBehaviour {
 
     private void OnEnable()
     {
-        GameEvents.LevelStarted += UpdateLifes;
+        GameEvents.Level.LevelStarted += UpdateLifes;
     }
 
     private void OnDisable()
     {
-        GameEvents.LevelStarted -= UpdateLifes;
+        GameEvents.Level.LevelStarted -= UpdateLifes;
     }
 
     private void Start()

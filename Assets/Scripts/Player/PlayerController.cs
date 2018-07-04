@@ -104,13 +104,13 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     private void OnEnable()
     {
-        GameEvents.TimeEnded += Die;
+        GameEvents.Level.TimeEnded += Die;
     }
 
 
     private void OnDisable()
     {
-        GameEvents.TimeEnded -= Die;
+        GameEvents.Level.TimeEnded -= Die;
     }
 
     private void Awake()
@@ -236,6 +236,11 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
         if (currentWeapon.maxWeaponsOnScreen > instantiatedWeapons.Count)
         {
+
+            // notify event
+            GameEvents.Player.PlayerShot.SafeCall();
+
+            // instantiate weapon
             instantiatedWeapons.Add(currentWeapon.ShootWeapon(spawnPoint.position, spriteDirection.lookingDirection,this));
             return true;
         }
@@ -275,8 +280,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         currentArmorStatus = PlayerArmor.Naked;
         breakableArmor.Break();
 
-        // call event
-        GameEvents.PlayerTookDamage.SafeCall();
+        // call events
+        GameEvents.Player.PlayerTookDamage.SafeCall();
 
         // make invincible
         this.WaitAndAct(afterDamageInvincibleDuration, () => isReceivingDamage = true);
@@ -286,6 +291,9 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     public void GetArmor()
     {
         currentArmorStatus = PlayerArmor.Armored;
+
+        // notify event
+        GameEvents.Player.PlayerPickedWeapon.SafeCall();
     }
 
 
@@ -295,8 +303,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         currentArmorStatus = PlayerArmor.Dead;
 
         // call events
-        GameEvents.PlayerTookDamage.SafeCall();
-        GameEvents.PlayerDied.SafeCall();
+        GameEvents.Player.PlayerTookDamage.SafeCall();
+        GameEvents.Player.PlayerDied.SafeCall();
     }
 
     public void Hit(int hitDamage)
@@ -319,7 +327,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         if (currentWeapon != playerWeapon)
         {
             currentWeapon = playerWeapon;
-            GameEvents.PlayerPickedWeapon.SafeCall();
+            GameEvents.Player.PlayerPickedWeapon.SafeCall();
         }
     }
 
