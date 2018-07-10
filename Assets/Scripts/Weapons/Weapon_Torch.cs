@@ -47,6 +47,7 @@ public class Weapon_Torch : WeaponBehavior {
         {
             transform.parent = go.transform;
             rigidbody2d.velocity = Vector2.zero;
+            rigidbody2d.gravityScale = 0f;
             fireCoroutine = StartCoroutine(FloorFireCoroutine());
             return;
         }
@@ -88,5 +89,14 @@ public class Weapon_Torch : WeaponBehavior {
         return;
     }
 
+    protected override void TriggeredWith(Collider2D collider)
+    {
+        // look for hittable implementation
+        var hitComponent = collider.GetComponentInParent<IWeaponHittable>();
+        if (hitComponent != null)
+        {
+            hitComponent.Hit(damage, collider.transform.position, SpriteDirection.ConvertVectorToLookingDirection(MyExtensions.FromVector3(collider.transform.position - transform.position)));
 
+        }
+    }
 }

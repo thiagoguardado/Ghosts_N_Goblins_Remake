@@ -125,4 +125,10 @@ public class LevelController: MonoBehaviour
         GameEvents.Score.ScoreIncremented.SafeCall();
     }
 
+    public void ExtendTime(int timeToAdd)
+    {
+        timer += timeToAdd;
+        GameEvents.Level.TimerExtended.SafeCall();
+    }
+
 }

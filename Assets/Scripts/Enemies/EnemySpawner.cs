@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +28,7 @@ public abstract class EnemySpawner : MonoBehaviour {
 
         if (timer >= nextTime)
         {
-            Spawn(SelectAreaToSpawn());
+            Spawn(SelectPointToSpawn());
             SetupNextTime();
             timer = 0f;
         }
@@ -49,7 +49,7 @@ public abstract class EnemySpawner : MonoBehaviour {
         Instantiate(objectPrefab, position, objectPrefab.transform.rotation);
     }
 
-    protected abstract Vector3 SelectAreaToSpawn();
+    protected abstract Vector3 SelectPointToSpawn();
 }
 
 

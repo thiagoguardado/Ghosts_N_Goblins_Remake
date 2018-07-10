@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class ZombieSpawner : EnemySpawner
         maxColliderX = (collider.bounds.center + collider.bounds.extents).x;
     }
 
-    protected override Vector3 SelectAreaToSpawn()
+    protected override Vector3 SelectPointToSpawn()
     {
 
         float minX = Mathf.Clamp(CameraController.Instance.cameraBounds.BoundsWithOffset.xMin, minColliderX, maxColliderX);

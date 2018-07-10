@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +25,17 @@ public class WoodyPig : Enemy {
     private bool shootVertically = true;
 
     private RaycastHit2D hit2D;
+
+    protected override void Start()
+    {
+        // Start Looking To Player
+        spriteDirection.FaceDirection(LookAtPlayer.LookToPlayerDirection(transform.position));
+
+        // wait for cooldown before starts shooting
+        canShoot = false;
+        MyExtensions.WaitAndAct(this, shootingCooldown, () => canShoot = true);
+    }
+    
 
 	protected override void Update()
 	{
@@ -130,6 +141,7 @@ public class WoodyPig : Enemy {
 
     public bool CheckIfNearBounds()
     {
+
         if(!CameraController.Instance.cameraBounds.Bounds.Contains(new Vector2(transform.position.x + spriteDirection.WorldLookingDirection.x * minDistanceToBoundsToTurn, transform.position.y)))
         {
             return true;

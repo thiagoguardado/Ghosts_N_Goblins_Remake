@@ -39,4 +39,8 @@ public class Weapon_Spear : WeaponBehavior {
         
     }
 
+    protected override void TriggeredWith(Collider2D collider)
+    {
+        return;
+    }
 }

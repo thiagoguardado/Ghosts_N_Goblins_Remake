@@ -20,6 +20,7 @@ public static class GameEvents
     public static class Weapons
     {
         public static Action TorchHitFloor;
+        public static Action ProjectileBlocked;
     }
 
     public static class Level
@@ -30,6 +31,7 @@ public static class GameEvents
         public static Action TimerExtended;
         public static Action TimeEnded;
         public static Action GameOver;
+        public static Action BossReached;
     }
 
     public static class Score

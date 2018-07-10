@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,7 +53,7 @@ public class WoodyPigFSM : FSM<WoodyPig> {
 
         public override void CheckTransition()
         {
-            if(fsm_holder.CheckIfNearBounds())
+            if (fsm_holder.CheckIfNearBounds() && CameraController.Instance.cameraBounds.Bounds.Contains(fsm_holder.transform.position))
             {
                 fsm.ChangeState(typeof(WoodyPig_Turning));
             }

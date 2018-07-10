@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectScore))]
 public class Enemy : MonoBehaviour, IWeaponHittable {
 
+    public bool displayScore = false;
+
     [Header("Health and Direction")]
     public SpriteDirection spriteDirection;
     public int health;
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
 
     [Header("DropProbability")]
     public float dropPotProbability;
+
 
     protected virtual void Awake()
     {
@@ -117,7 +120,14 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
     protected virtual void IncrementScore()
     {
         // add score to game controller
-        GetComponent<ObjectScore>().IncrementGameScore(enemyCollider.bounds.center);
+        if (displayScore)
+        {
+            GetComponent<ObjectScore>().IncrementGameScore(enemyCollider.bounds.center);
+        }
+        else {
+            GetComponent<ObjectScore>().IncrementGameScore();
+        }
+        
 
     }
 

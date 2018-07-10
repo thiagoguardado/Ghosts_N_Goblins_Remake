@@ -15,6 +15,7 @@ public abstract class WeaponBehavior : MonoBehaviour
 
     protected abstract void Shoot(float shootSpeed, LookingDirection direction);
     protected abstract void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal);
+    protected abstract void TriggeredWith(Collider2D collider);
     protected abstract void Move();
 
     protected virtual void Awake()
@@ -25,9 +26,13 @@ public abstract class WeaponBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.contacts.Length>0)
             CollidedWith(collision.gameObject, collision.contacts[0].point, collision.contacts[0].normal);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        TriggeredWith(collider);
     }
 
     private void Update()

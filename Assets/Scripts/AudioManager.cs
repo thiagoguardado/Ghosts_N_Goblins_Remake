@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour {
     public AudioClip opening;
     public AudioClip intro;
     public AudioClip bgm;
+    public AudioClip boss;
+
+    [Header("Level SFX")]
     public AudioClip playerDied;
     public AudioClip gameOver;
     public AudioClip stageClear;
@@ -29,6 +32,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip pickupArmor;
     public AudioClip pickupWeapon;
     public AudioClip pickupTreasure;
+    public AudioClip projectileBlocked;
 
     [Header("SFX - GameManager")]
     public AudioClip extraLife;
@@ -50,10 +54,13 @@ public class AudioManager : MonoBehaviour {
         GameEvents.Player.PlayerLoseLife += PlayDyingAudio;
         GameEvents.Player.PlayerGameOver += PlayGameOverAudio;
 
+        GameEvents.Weapons.ProjectileBlocked += PlayProjectileBlockedSFX;
+
         GameEvents.Level.GameOver += PlayGameOverAudio;
         GameEvents.Level.TimerStarted += PlayTimerStarted;
         GameEvents.Level.TimerExtended += PlayTimerExtended;
         GameEvents.Level.PlayerReachedEnd += PlayStageClear;
+        GameEvents.Level.BossReached += PlayBossAudio;
     }
 
     private void OnDisable()
@@ -68,10 +75,13 @@ public class AudioManager : MonoBehaviour {
         GameEvents.Player.PlayerLoseLife -= PlayDyingAudio;
         GameEvents.Player.PlayerGameOver -= PlayGameOverAudio;
 
+        GameEvents.Weapons.ProjectileBlocked -= PlayProjectileBlockedSFX;
+
         GameEvents.Level.GameOver += PlayGameOverAudio;
         GameEvents.Level.TimerStarted -= PlayTimerStarted;
         GameEvents.Level.TimerExtended -= PlayTimerExtended;
         GameEvents.Level.PlayerReachedEnd -= PlayStageClear;
+        GameEvents.Level.BossReached -= PlayBossAudio;
     }
 
     public void Awake()
@@ -88,6 +98,7 @@ public class AudioManager : MonoBehaviour {
     private void PlayPickedArmorSFX() { sfxAudioSource.PlayOneShot(pickupArmor); }
     private void PlayPickedWeaponSFX() { sfxAudioSource.PlayOneShot(pickupWeapon); }
     private void PlayPickedTreasureSFX() { sfxAudioSource.PlayOneShot(pickupTreasure); }
+    private void PlayProjectileBlockedSFX() { sfxAudioSource.PlayOneShot(projectileBlocked); }
 
     private void StartPlayingBGM(bool includeOpening)
     {
@@ -124,10 +135,17 @@ public class AudioManager : MonoBehaviour {
         SubstitutePlayingSequenceOnBGM(new AudioClip[] { timerExtended, bgm }, true);
     }
 
+    private void PlayBossAudio()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { boss }, true);
+    }
+
     private void PlayStageClear()
     {
         SubstitutePlayingSequenceOnBGM(new AudioClip[] { stageClear }, true);
     }
+
+
 
     private void SubstitutePlayingSequenceOnBGM(AudioClip[] audios, bool isLastLoop)
     {

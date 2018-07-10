@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitCount: 0
-  hitSpriteVFXPrefab: {fileID: 114288232091754024, guid: fea66d8fe46ae494ebcb99ccfdca5998,
+  hitSpriteVFXPrefab: {fileID: 114144234807581840, guid: fea66d8fe46ae494ebcb99ccfdca5998,
     type: 2}
   hitCountText: {fileID: 114356267055743070}
 --- !u!114 &114733214387478064
