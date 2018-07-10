@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,7 +54,7 @@ public class FloatingScoreManager : ScriptableObject {
             return false;
         }
 
-        if (score <= 100)
+        if (score < 100)
         {
             for (int i = 0; i < scoreAndSprite.Count; i++)
             {

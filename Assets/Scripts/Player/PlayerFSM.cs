@@ -725,7 +725,6 @@ public class PlayerFSM : MonoBehaviour {
             // rechaed bottom
             if (owner.transform.position.y <= ladder.baseOfLadder.position.y && owner.verticalAxis < 0f)
             {
-                owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
                 owner.animationController.FinishClimbingLadder(false);
                 owner.ChangeState(PlayerFSMState.Idle);
                 owner.playerController.ResetAxis();
@@ -763,6 +762,7 @@ public class PlayerFSM : MonoBehaviour {
 
             // change animator
             owner.animationController.StartClimbingLadder(isOnEndOfLadder);
+            
         }
 
         public override void DoBeforeLeave()
@@ -782,6 +782,9 @@ public class PlayerFSM : MonoBehaviour {
 
             // set sprite direction
             owner.spriteTransform.localScale = enterStateSpriteScale;
+
+            // change animator
+            owner.animationController.ResetClimbingAnimationVariables();
         }
 
         public override void UpdateState()

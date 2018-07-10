@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -133,6 +133,11 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         if(finishedOnTop)
             playerAnimator.SetTrigger("FinishedLadder");
+
+    }
+
+    public void ResetClimbingAnimationVariables()
+    {
         isClimbing = false;
         isOnEndOfLadder = false;
         isLeavingLadder = false;

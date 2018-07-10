@@ -235,7 +235,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
-  destroySpriteAnimation: {fileID: 0}
+  destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
+    type: 2}
   dropPotProbability: 0.2
   rangeRadious: 1.5
   projectilePrefab: {fileID: 114251931727813320, guid: 87139a9fed2128b4bb0831b7cdeb3a24,
@@ -252,7 +253,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -268,7 +268,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

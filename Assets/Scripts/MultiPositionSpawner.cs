@@ -1,14 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravestoneSpawner : MonoBehaviour {
+public class MultiPositionSpawner : MonoBehaviour {
 
     [System.Serializable]
     public class PositionsAndPrefabs {
         public string name;
         public Transform[] positions;
-        public Gravestone prefab;
+        public GameObject prefab;
     }
 
     public List<PositionsAndPrefabs> positionsToSpawn;
