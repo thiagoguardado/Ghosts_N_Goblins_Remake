@@ -6,19 +6,18 @@ public class CameraMovement : MonoBehaviour {
 
     public Transform playerTransform;
 
-    private Vector3 distanceAtStart;
+    public Transform leftLimit;
+    public Transform rightLimit;
 
 
-    private void Start()
-    {
-        distanceAtStart = transform.position - playerTransform.position;
-    }
 
     // Update is called once per frame
     void Update () {
 
-
-        transform.position = playerTransform.position + distanceAtStart;
+        float xPosition = playerTransform.position.x;
+        Vector3 position = transform.position;
+        position.x = Mathf.Clamp(xPosition, leftLimit.position.x, rightLimit.position.x);
+        transform.position = position;
 
 	}
 }

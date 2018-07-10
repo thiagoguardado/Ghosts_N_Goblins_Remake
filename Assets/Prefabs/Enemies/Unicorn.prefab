@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114400743673644054}
   - component: {fileID: 114738397426218922}
   - component: {fileID: 114809428248723260}
+  - component: {fileID: 114314757690846566}
   m_Layer: 12
   m_Name: Unicorn
   m_TagString: Untagged
@@ -239,6 +240,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLookingDirection: 1
+--- !u!114 &114314757690846566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127533519724640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d25995b6dcf8444c88c2edcfa25b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114400743673644054
 MonoBehaviour:
   m_ObjectHideFlags: 1

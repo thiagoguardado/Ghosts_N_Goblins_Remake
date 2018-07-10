@@ -148,7 +148,8 @@ MonoBehaviour:
     m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 0}
-  speed: 1.5
+  dropPotProbability: 0
+  speed: 1
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &114563063410085240
 MonoBehaviour:

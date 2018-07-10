@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     [Header("Grounding")]
     public float groundingRayLength = 0.1f;
+    public float sideRaysDistanceFromCenter = 0.05f;
 
 
     [Header("Weapon Throwing")]
@@ -175,27 +176,14 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     private void CheckIfGrounded()
     {
 
-        int layerMask = ~LayerMask.GetMask( new string[] {"Player","Ladder"});
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundingRayLength, layerMask);
-        Debug.DrawRay(transform.position, Vector3.down * groundingRayLength);
-
-        if (hit.transform != null)
-        {
-            Floor floor = hit.transform.gameObject.GetComponent<Floor>();
-            if (floor != null && playerRigidbody.velocity.y <= 0)
-            {
-
-                if (!wasGrounded)
-                {
-                    Ground(floor, hit.point);
-                }
-
-                isGrounded = true;
-            }
-        }
-        else
+        // serach center raycast
+        if (SearchFloorFromPosition(transform.position) || SearchFloorFromPosition(transform.position + Vector3.left * sideRaysDistanceFromCenter) || SearchFloorFromPosition(transform.position + Vector3.right * sideRaysDistanceFromCenter))
         {
 
+            isGrounded = true;
+
+        } else
+        {
             if (wasGrounded)
                 UnGround();
 
@@ -204,6 +192,27 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
         wasGrounded = isGrounded;
 
+    }
+
+    private bool SearchFloorFromPosition(Vector3 position)
+    {
+        int layerMask = ~LayerMask.GetMask(new string[] { "Player", "Ladder", "IgnoreAll" });
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, groundingRayLength, layerMask);
+
+        // check central raycast
+        if (hit.transform != null)
+        {
+            Floor floor = hit.transform.gameObject.GetComponent<Floor>();
+            if (floor != null && playerRigidbody.velocity.y <= 0)
+            {
+
+                Ground(floor, transform.position);
+                return true;
+
+            }
+        }
+
+        return false;
     }
 
     private void UnGround()
@@ -297,6 +306,16 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     }
 
 
+    public void Fall()
+    {
+        // change sprites
+        currentArmorStatus = PlayerArmor.Dead;
+
+        // call events
+        GameEvents.Player.PlayerDied.SafeCall();
+    }
+
+
     private void Die()
     {
         // change sprites
@@ -333,5 +352,11 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Debug.DrawRay(transform.position, Vector3.down * groundingRayLength);
+        Debug.DrawRay(transform.position + Vector3.left * sideRaysDistanceFromCenter, Vector3.down * groundingRayLength);
+        Debug.DrawRay(transform.position + Vector3.right * sideRaysDistanceFromCenter, Vector3.down * groundingRayLength);
 
+    }
 }

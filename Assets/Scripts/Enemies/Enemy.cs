@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
     protected virtual void IncrementScore()
     {
         // add score to game controller
-        GetComponent<ObjectScore>().IncrementGameScore();
+        GetComponent<ObjectScore>().IncrementGameScore(enemyCollider.bounds.center);
 
     }
 

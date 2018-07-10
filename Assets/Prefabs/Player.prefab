@@ -405,7 +405,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00039228797, y: 0.10158801}
+  m_Offset: {x: 0, y: 0.10158801}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -430,7 +430,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.002608955, y: 0.15260899}
+  m_Offset: {x: 0, y: 0.15260899}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -489,10 +489,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundingRayLength: 0.03
+  sideRaysDistanceFromCenter: 0.08
   currentWeapon: {fileID: 11400000, guid: 8fc551dda6420af4caa6d8fcc880ae13, type: 2}
   weaponStandingSpawnPoint: {fileID: 4731901508064238}
   weaponCrouchedSpawnPoint: {fileID: 4379725981845562}
-  weaponsShotParent: {fileID: 0}
   instantiatedWeapons: []
   currentArmorStatus: 0
   afterDamageInvincibleDuration: 2

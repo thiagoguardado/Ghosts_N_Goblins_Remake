@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4521798526125564}
   - component: {fileID: 114517504727055868}
   - component: {fileID: 114989433939940662}
+  - component: {fileID: 114834870806555360}
   m_Layer: 14
   m_Name: MoneyBag
   m_TagString: Untagged
@@ -109,6 +110,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 500
+--- !u!114 &114834870806555360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543981591362546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d25995b6dcf8444c88c2edcfa25b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114989433939940662
 MonoBehaviour:
   m_ObjectHideFlags: 1

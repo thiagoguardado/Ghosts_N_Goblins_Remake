@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114303546272122036}
   - component: {fileID: 114108226060443166}
   - component: {fileID: 114408712744975600}
+  - component: {fileID: 114181917733666184}
   m_Layer: 12
   m_Name: RedAremer
   m_TagString: Untagged
@@ -152,6 +153,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteDirection: {fileID: 114298886896160632}
+--- !u!114 &114181917733666184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151066623856918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d25995b6dcf8444c88c2edcfa25b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114298886896160632
 MonoBehaviour:
   m_ObjectHideFlags: 1

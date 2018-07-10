@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 50390170896749106}
   - component: {fileID: 114197990243439542}
   - component: {fileID: 114546873755062816}
+  - component: {fileID: 114373563380165228}
   m_Layer: 12
   m_Name: Plant
   m_TagString: Untagged
@@ -179,6 +180,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 100
+--- !u!114 &114373563380165228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949218409986668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d25995b6dcf8444c88c2edcfa25b1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114546873755062816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,11 +237,11 @@ MonoBehaviour:
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 0}
   dropPotProbability: 0.2
-  rangeRadious: 2
+  rangeRadious: 1.5
   projectilePrefab: {fileID: 114251931727813320, guid: 87139a9fed2128b4bb0831b7cdeb3a24,
     type: 2}
   projectileInstantiationAnchor: {fileID: 4290973926885634}
-  timeBetweenSpits: 2
+  timeBetweenSpits: 3
   animator: {fileID: 95740494241400442}
 --- !u!212 &212221896796272312
 SpriteRenderer:
