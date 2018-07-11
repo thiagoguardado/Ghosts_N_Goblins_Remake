@@ -9,6 +9,7 @@ public class MultiPositionSpawner : MonoBehaviour {
         public string name;
         public Transform[] positions;
         public GameObject prefab;
+        public bool isWinningCondition = false;
     }
 
     public List<PositionsAndPrefabs> positionsToSpawn;
@@ -21,7 +22,13 @@ public class MultiPositionSpawner : MonoBehaviour {
         {
             for (int j = 0; j < positionsToSpawn[i].positions.Length; j++)
             {
-                Instantiate(positionsToSpawn[i].prefab, positionsToSpawn[i].positions[j].position, Quaternion.identity, positionsToSpawn[i].positions[j]);
+                GameObject go = Instantiate(positionsToSpawn[i].prefab, positionsToSpawn[i].positions[j].position, Quaternion.identity, positionsToSpawn[i].positions[j]);
+
+                if (positionsToSpawn[i].isWinningCondition)
+                {
+                    go.AddComponent<WinningConditionEnemy>();
+                }
+
             }
         }
 

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class GameEvents
 {
@@ -32,12 +33,14 @@ public static class GameEvents
         public static Action TimeEnded;
         public static Action GameOver;
         public static Action BossReached;
+        public static Action DoorOpen;
     }
 
     public static class Score
     {
         public static Action ScoreIncremented;
         public static Action TopScoreChanged;
+        public static Action<Vector3,int> BonusScore;
     }
 
     /*

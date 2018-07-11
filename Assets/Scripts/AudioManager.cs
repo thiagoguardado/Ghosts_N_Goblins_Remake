@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip stageClear;
     public AudioClip timer;
     public AudioClip timerExtended;
+    public AudioClip doorOpen;
 
     [Header("SFX - Player")]
     public AudioClip jump;
@@ -61,6 +62,7 @@ public class AudioManager : MonoBehaviour {
         GameEvents.Level.TimerExtended += PlayTimerExtended;
         GameEvents.Level.PlayerReachedEnd += PlayStageClear;
         GameEvents.Level.BossReached += PlayBossAudio;
+        GameEvents.Level.DoorOpen += PlayDoorOpenSFX;
     }
 
     private void OnDisable()
@@ -82,6 +84,7 @@ public class AudioManager : MonoBehaviour {
         GameEvents.Level.TimerExtended -= PlayTimerExtended;
         GameEvents.Level.PlayerReachedEnd -= PlayStageClear;
         GameEvents.Level.BossReached -= PlayBossAudio;
+        GameEvents.Level.DoorOpen -= PlayDoorOpenSFX;
     }
 
     public void Awake()
@@ -99,6 +102,7 @@ public class AudioManager : MonoBehaviour {
     private void PlayPickedWeaponSFX() { sfxAudioSource.PlayOneShot(pickupWeapon); }
     private void PlayPickedTreasureSFX() { sfxAudioSource.PlayOneShot(pickupTreasure); }
     private void PlayProjectileBlockedSFX() { sfxAudioSource.PlayOneShot(projectileBlocked); }
+    private void PlayDoorOpenSFX() { sfxAudioSource.PlayOneShot(doorOpen); }
 
     private void StartPlayingBGM(bool includeOpening)
     {
@@ -142,9 +146,8 @@ public class AudioManager : MonoBehaviour {
 
     private void PlayStageClear()
     {
-        SubstitutePlayingSequenceOnBGM(new AudioClip[] { stageClear }, true);
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { stageClear }, false);
     }
-
 
 
     private void SubstitutePlayingSequenceOnBGM(AudioClip[] audios, bool isLastLoop)

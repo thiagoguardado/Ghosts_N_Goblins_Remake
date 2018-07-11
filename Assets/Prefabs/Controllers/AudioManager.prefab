@@ -284,6 +284,7 @@ MonoBehaviour:
   stageClear: {fileID: 8300000, guid: b50f56ca3ec2f2c4e8597f7352377b4e, type: 3}
   timer: {fileID: 8300000, guid: 2452c41836e38274babd8a2a8dac6e44, type: 3}
   timerExtended: {fileID: 8300000, guid: a9599672e53b7574695b93dd414bca5c, type: 3}
+  doorOpen: {fileID: 8300000, guid: 825e521c980082b4bb60a7fc82eb5a92, type: 3}
   jump: {fileID: 8300000, guid: 83a2cc802806cd145a32273033a8b4da, type: 3}
   land: {fileID: 8300000, guid: cf57c894e0fbf81438060b707ea9b29d, type: 3}
   shot: {fileID: 8300000, guid: 066ed8c5ec256e648ba95ced26a532b8, type: 3}

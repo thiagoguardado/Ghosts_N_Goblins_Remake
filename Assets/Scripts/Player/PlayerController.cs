@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
 
     // control variables
+    private bool wasUpdatingInput = false;
     private float horizontalAxis;
     private float verticalAxis;
     private bool throwButton;
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     private bool isGrounded = false;
     private bool wasGrounded = false;
     public SpriteDirection spriteDirection;
-    //public LookingDirection currentDirection = LookingDirection.Right;
+    public bool isOnVictoryPose { get; private set; }
 
     // encapsulated variables
     public float HorizontalAxis
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         instance = this;
 
         isReceivingDamage = true;
+        isOnVictoryPose = false;
     }
 
 
@@ -150,6 +152,11 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     }
 
+    public void SimulateHorizontalAxis(float simulatedValue)
+    {
+        horizontalAxis = simulatedValue;
+    }
+
     private void ResetButtons()
     {
         throwButton = false;
@@ -164,8 +171,10 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
             verticalAxis = Input.GetAxisRaw("Vertical");
             throwButton = Input.GetButtonDown("Fire1");
             jumpButton = Input.GetButtonDown("Jump");
+            wasUpdatingInput = true;
         }
-        else {
+        else if(wasUpdatingInput){
+            wasUpdatingInput = false;
             ResetAxis();
             ResetButtons();
         }
@@ -350,6 +359,16 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
             currentWeapon = playerWeapon;
             GameEvents.Player.PlayerPickedWeapon.SafeCall();
         }
+    }
+
+    public void StartVictoryPose()
+    {
+       isOnVictoryPose = true;
+    }
+
+    public void StopVictoryPose()
+    {
+        isOnVictoryPose = false;
     }
 
     void OnDrawGizmos()

@@ -31,6 +31,13 @@ public class PlayerAnimationController : MonoBehaviour {
             return playerController.currentArmorStatus == PlayerController.PlayerArmor.Dead;
         }
     }
+    private bool isOnVictoryPose
+    {
+        get
+        {
+            return playerController.isOnVictoryPose;
+        }
+    }
     public bool throwSomething = false;
     public bool isClimbing = false;
     public bool isOnEndOfLadder = false;
@@ -158,6 +165,7 @@ public class PlayerAnimationController : MonoBehaviour {
         playerAnimator.SetBool("isOnEndOfLadder", isOnEndOfLadder);
         playerAnimator.SetBool("isLeavingLadder", isLeavingLadder);
         playerAnimator.SetBool("isInvincible", isInvincible);
+        playerAnimator.SetBool("Victory", isOnVictoryPose);
 
     }
 
@@ -170,4 +178,6 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         playerAnimator.SetTrigger("FinishHit");
     }
+
+
 }

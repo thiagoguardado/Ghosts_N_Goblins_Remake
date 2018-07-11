@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114738397426218922}
   - component: {fileID: 114809428248723260}
   - component: {fileID: 114314757690846566}
+  - component: {fileID: 114992136988260622}
   m_Layer: 12
   m_Name: Unicorn
   m_TagString: Untagged
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f99ab1866cb423e9a608a8b5b755c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayScore: 0
   spriteDirection: {fileID: 114234943771775934}
   health: 10
   damageOnHit: 1
@@ -318,6 +320,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectCollider: {fileID: 61790108670562458}
   rayLenght: 0.03
+--- !u!114 &114992136988260622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127533519724640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea2b94e52d87b74f86cec6fbbdea303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212526287939563206
 SpriteRenderer:
   m_ObjectHideFlags: 1

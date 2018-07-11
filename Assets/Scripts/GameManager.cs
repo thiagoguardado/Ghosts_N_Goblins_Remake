@@ -118,6 +118,28 @@ public class GameManager : MonoBehaviour {
         currentPlayer = players[0];
     }
 
+    public void AdvanceLevel()
+    {
+
+        // find next player
+        Player nextPlayer = players[(players.IndexOf(currentPlayer) + 1) % players.Count];
+
+        players.Remove(currentPlayer);
+
+        if (players.Count <= 0)
+        {
+            // end game
+            return;
+        }
+
+        // change player
+        currentPlayer = nextPlayer;
+
+        // reload scene after waiting for some time
+        string scene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(scene);
+
+    }
 
     public void SetupNextTry()
     {
