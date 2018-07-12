@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416e9284ca805f44a9a110a06f98bc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitCount: 0
   hitSpriteVFXPrefab: {fileID: 114144234807581840, guid: fea66d8fe46ae494ebcb99ccfdca5998,
     type: 2}
-  hitCountText: {fileID: 0}
+  magicianPrefab: {fileID: 114050672132118910, guid: 77db4a80926c7bd438f8b81af9870377,
+    type: 2}
+  hitsToSummonMagician: 15
 --- !u!114 &114920904033163108
 MonoBehaviour:
   m_ObjectHideFlags: 1

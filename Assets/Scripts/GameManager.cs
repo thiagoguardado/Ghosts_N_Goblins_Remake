@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour {
 
         CreatePlayers();
 
-        SceneManager.LoadScene("Stage1");
+        StartCoroutine(StartLevel("Stage1"));
     }
 
     private void CreatePlayers()
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour {
 
         // reload scene after waiting for some time
         string scene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(scene);
+        MyExtensions.WaitAndAct(this, waitTimeBeforeRetry, () => StartCoroutine(StartLevel(scene)));
 
     }
 
@@ -190,8 +190,7 @@ public class GameManager : MonoBehaviour {
 
         // reload scene after waiting for some time
         string scene = SceneManager.GetActiveScene().name;
-        MyExtensions.WaitAndAct(this, waitTimeBeforeRetry, () => SceneManager.LoadScene(scene));
-        
+        MyExtensions.WaitAndAct(this, waitTimeBeforeRetry, () => StartCoroutine(StartLevel(scene)));
 
     }
 
@@ -207,5 +206,17 @@ public class GameManager : MonoBehaviour {
     private void ReturnToMenu()
     {
         MyExtensions.WaitAndAct(this, waitTimeBeforeReturnToMenu, () => SceneManager.LoadScene("Menu"));
+    }
+
+    private IEnumerator StartLevel(string levelName)
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync(levelName);
+
+        while (!async.isDone)
+        {
+            yield return null;
+        }
+
+        LevelController.Instance.StartLevel(true);
     }
 }

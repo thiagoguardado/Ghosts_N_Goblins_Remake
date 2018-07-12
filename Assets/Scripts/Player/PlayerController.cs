@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     [Header("Grounding")]
     public float groundingRayLength = 0.1f;
+
     public float sideRaysDistanceFromCenter = 0.05f;
 
 
@@ -339,14 +340,14 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     public void Hit(int hitDamage)
     {
-
-        if(isReceivingDamage)
+        if (hitDamage > 0)
         {
+            if (isReceivingDamage)
+            {
 
-            ReceiveDamage();
+                ReceiveDamage();
 
-            Debug.Log("Player Hit");
-
+            }
         }
 
     }
@@ -359,6 +360,12 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
             currentWeapon = playerWeapon;
             GameEvents.Player.PlayerPickedWeapon.SafeCall();
         }
+    }
+
+    public void TurnToFrog()
+    {
+        // Turn into frog
+        Debug.Log("Player turned into frog");
     }
 
     public void StartVictoryPose()

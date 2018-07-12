@@ -22,7 +22,7 @@ TagManager:
   - Collectible
   - OnlyWithFloor
   - IgnoreAll
-  - 
+  - OnlyWithPlayer
   - 
   - 
   - 
