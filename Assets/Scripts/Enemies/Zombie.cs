@@ -17,6 +17,10 @@ public class Zombie : Enemy
     public float timeWalking;
     public float timeSinking;
 
+    [Header("FloorCheck")]
+    public Transform floorRayCheckStart;
+    public float floorRayLenght;
+    public bool hasFloorAhead { get; private set; }
 
     protected override void Start()
     {
@@ -46,6 +50,16 @@ public class Zombie : Enemy
     {
         base.Update();
 
+        CheckFloorAhead();
     }
 
+    private void CheckFloorAhead()
+    {
+        hasFloorAhead = Physics2D.Raycast(floorRayCheckStart.position, Vector2.down, floorRayLenght, 1 << LayerMask.NameToLayer("Floor"));
+    }
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawRay(floorRayCheckStart.position, Vector3.down * floorRayLenght);
+    }
 }

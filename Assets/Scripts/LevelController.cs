@@ -9,7 +9,6 @@ public class LevelController: MonoBehaviour
     public static LevelController Instance { get; private set; }
 
     public FloatingScoreManager floatingScoreManager;
-    public Key keyObject;
 
     private bool inLevel = false;
     public bool InLevel
@@ -45,12 +44,15 @@ public class LevelController: MonoBehaviour
     // timer
     private float timer = 0f;
     private Coroutine timerRunning;
+    public float lastingTimeToWarn;
+    private bool isWarningTimer = false;
 
     // winning condition
     private List<Enemy> winningConditionEnemies = new List<Enemy>();
     private bool reachedEnd = false;
     public delegate IEnumerator Routine();
     private Routine EndLevelRoutine;
+
 
     void OnEnable()
     {
@@ -79,7 +81,26 @@ public class LevelController: MonoBehaviour
 
     private void Update()
     {
-        CheckEnemyWinningCondition();
+        if (inLevel)
+        {
+            CheckEnemyWinningCondition();
+            CheckTimer();
+        }
+    }
+
+ 
+
+    private void CheckTimer()
+    {
+        if (timer <= lastingTimeToWarn && !isWarningTimer)
+        {
+            isWarningTimer = true;
+            GameEvents.Level.TimerStarted.SafeCall();
+
+        } else if (timer >= lastingTimeToWarn)
+        {
+            isWarningTimer = false;
+        }
     }
 
 
@@ -88,6 +109,7 @@ public class LevelController: MonoBehaviour
     {
         inLevel = true;
         reachedEnd = false;
+        isWarningTimer = false;
         timer = GameManager.Instance.defaultLevelTime;
 
         if(countTime)
@@ -144,9 +166,9 @@ public class LevelController: MonoBehaviour
 
     }
 
-    public void ExtendTime(int timeToAdd)
+    public void ExtendTime(int newTimer)
     {
-        timer += timeToAdd;
+        timer = newTimer;
         GameEvents.Level.TimerExtended.SafeCall();
     }
 

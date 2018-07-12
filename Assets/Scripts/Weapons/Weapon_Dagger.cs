@@ -37,6 +37,6 @@ public class Weapon_Dagger : WeaponBehavior {
 
     protected override void TriggeredWith(Collider2D collider)
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }

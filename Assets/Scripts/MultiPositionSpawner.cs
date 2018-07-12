@@ -10,6 +10,7 @@ public class MultiPositionSpawner : MonoBehaviour {
         public Transform[] positions;
         public GameObject prefab;
         public bool isWinningCondition = false;
+        public ObjectDestroyedTriggeredAction triggerWhenDefeated;
     }
 
     public List<PositionsAndPrefabs> positionsToSpawn;
@@ -27,6 +28,12 @@ public class MultiPositionSpawner : MonoBehaviour {
                 if (positionsToSpawn[i].isWinningCondition)
                 {
                     go.AddComponent<WinningConditionEnemy>();
+                }
+
+                if (positionsToSpawn[i].triggerWhenDefeated != null)
+                {
+                    TriggerWhenDetroy twd = go.AddComponent<TriggerWhenDetroy>();
+                    twd.SetupTrigger(positionsToSpawn[i].triggerWhenDefeated);
                 }
 
             }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
+    public static AudioManager Instance { get; private set; }
+
     public bool autoStartPlaying = true;
 
     [Header("Audio Sources")]
@@ -16,12 +18,12 @@ public class AudioManager : MonoBehaviour {
     public AudioClip intro;
     public AudioClip bgm;
     public AudioClip boss;
+    public AudioClip timer;
 
     [Header("Level SFX")]
     public AudioClip playerDied;
     public AudioClip gameOver;
     public AudioClip stageClear;
-    public AudioClip timer;
     public AudioClip timerExtended;
     public AudioClip doorOpen;
 
@@ -38,6 +40,7 @@ public class AudioManager : MonoBehaviour {
     [Header("SFX - GameManager")]
     public AudioClip extraLife;
     public AudioClip highScore;
+    public AudioClip credit;
 
 
     private Coroutine playingBGMCoroutine;
@@ -57,12 +60,17 @@ public class AudioManager : MonoBehaviour {
 
         GameEvents.Weapons.ProjectileBlocked += PlayProjectileBlockedSFX;
 
+        GameEvents.Level.LevelStarted += StartBGMWithoutOpening;
         GameEvents.Level.GameOver += PlayGameOverAudio;
         GameEvents.Level.TimerStarted += PlayTimerStarted;
         GameEvents.Level.TimerExtended += PlayTimerExtended;
         GameEvents.Level.PlayerReachedEnd += PlayStageClear;
         GameEvents.Level.BossReached += PlayBossAudio;
         GameEvents.Level.DoorOpen += PlayDoorOpenSFX;
+
+        GameEvents.Score.PlayerReachedHighScore += PlayHighScoreSFX;
+
+        GameEvents.GameManager.NewGameStarted += PlayNewGameSFX;
     }
 
     private void OnDisable()
@@ -79,16 +87,33 @@ public class AudioManager : MonoBehaviour {
 
         GameEvents.Weapons.ProjectileBlocked -= PlayProjectileBlockedSFX;
 
-        GameEvents.Level.GameOver += PlayGameOverAudio;
+        GameEvents.Level.LevelStarted -= StartBGMWithoutOpening;
+        GameEvents.Level.GameOver -= PlayGameOverAudio;
         GameEvents.Level.TimerStarted -= PlayTimerStarted;
         GameEvents.Level.TimerExtended -= PlayTimerExtended;
         GameEvents.Level.PlayerReachedEnd -= PlayStageClear;
         GameEvents.Level.BossReached -= PlayBossAudio;
         GameEvents.Level.DoorOpen -= PlayDoorOpenSFX;
+
+        GameEvents.Score.PlayerReachedHighScore -= PlayHighScoreSFX;
+
+        GameEvents.GameManager.NewGameStarted -= PlayNewGameSFX;
     }
 
     public void Awake()
     {
+        // singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+        }
+
+
         if (autoStartPlaying)
             StartPlayingBGM(false);
             
@@ -103,20 +128,30 @@ public class AudioManager : MonoBehaviour {
     private void PlayPickedTreasureSFX() { sfxAudioSource.PlayOneShot(pickupTreasure); }
     private void PlayProjectileBlockedSFX() { sfxAudioSource.PlayOneShot(projectileBlocked); }
     private void PlayDoorOpenSFX() { sfxAudioSource.PlayOneShot(doorOpen); }
+    private void PlayHighScoreSFX() { sfxAudioSource.PlayOneShot(highScore); }
+    private void PlayNewGameSFX() { sfxAudioSource.PlayOneShot(credit); }
 
     private void StartPlayingBGM(bool includeOpening)
     {
-        AudioClip[] audioSequence;
 
         if (includeOpening)
         {
-            audioSequence = new AudioClip[] { opening, intro, bgm };
+            StartBGMWithOpening();
         }
         else {
-            audioSequence = new AudioClip[] { intro, bgm };
+            StartBGMWithoutOpening();
         }
+        
+    }
 
-        SubstitutePlayingSequenceOnBGM(audioSequence, true);
+    private void StartBGMWithOpening()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { opening, intro, bgm }, true);
+    }
+
+    private void StartBGMWithoutOpening()
+    {
+        SubstitutePlayingSequenceOnBGM(new AudioClip[] { intro, bgm }, true);
     }
 
     private void PlayDyingAudio()
@@ -133,6 +168,7 @@ public class AudioManager : MonoBehaviour {
     {
         SubstitutePlayingSequenceOnBGM(new AudioClip[] { timer }, true);
     }
+    
 
     private void PlayTimerExtended()
     {

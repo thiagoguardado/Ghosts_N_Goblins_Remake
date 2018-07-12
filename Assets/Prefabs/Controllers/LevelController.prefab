@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4807616346560150}
   - component: {fileID: 114210797266202524}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: LevelController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,3 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingScoreManager: {fileID: 11400000, guid: 664db5f00852b0d48a967a73cc851ca2,
     type: 2}
+  lastingTimeToWarn: 10

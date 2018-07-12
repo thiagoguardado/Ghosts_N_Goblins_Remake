@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08171c64a7724a4295b2cdb23482f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGameMode: 1
+  currentGameMode: 0
   defaultLevelTime: 120
   topScore: 10000
   initialLivesOnSinglePlayer: 3

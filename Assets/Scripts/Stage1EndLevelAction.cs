@@ -20,6 +20,7 @@ public class Stage1EndLevelAction : StageEndAction {
         yield return StartCoroutine(MovePlayerTo(playerPositionWhenDoorOpens));
 
         // open gates
+        PlayerController.Instance.GetArmor();
         PlayerController.Instance.StartVictoryPose();
         yield return StartCoroutine(OpenGatesDoor());
 

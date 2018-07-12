@@ -29,6 +29,7 @@ public static class GameEvents
         public static Action LevelStarted;
         public static Action PlayerReachedEnd;
         public static Action TimerStarted;
+        public static Action TimerStopped;
         public static Action TimerExtended;
         public static Action TimeEnded;
         public static Action GameOver;
@@ -40,8 +41,15 @@ public static class GameEvents
     {
         public static Action ScoreIncremented;
         public static Action TopScoreChanged;
+        public static Action PlayerReachedHighScore;
         public static Action<Vector3,int> BonusScore;
     }
+
+    public static class GameManager
+    {
+        public static Action NewGameStarted;
+    }
+
 
     /*
     public static class Collectibles

@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036ef9fada25c214192cd1ebd6f06d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoStartPlaying: 1
+  autoStartPlaying: 0
   bgmAudioSource: {fileID: 82600586748394056}
   sfxAudioSource: {fileID: 82976539051260732}
   map: {fileID: 8300000, guid: 88e8e877630b5554f86a8fc01e6f9286, type: 3}
@@ -279,11 +279,11 @@ MonoBehaviour:
   intro: {fileID: 8300000, guid: c5586c532f632e346a9b476453a2f86c, type: 3}
   bgm: {fileID: 8300000, guid: f4006c3e4f28a3747acb1cfe588a447f, type: 3}
   boss: {fileID: 8300000, guid: c50d1443bed576d4eb88d50240b5091d, type: 3}
+  timer: {fileID: 8300000, guid: 2452c41836e38274babd8a2a8dac6e44, type: 3}
   playerDied: {fileID: 8300000, guid: b85c4cdf3c381404c81f9b9fde0b187e, type: 3}
   gameOver: {fileID: 8300000, guid: 9700f808431164548a9aaa744e98cce9, type: 3}
   stageClear: {fileID: 8300000, guid: b50f56ca3ec2f2c4e8597f7352377b4e, type: 3}
-  timer: {fileID: 8300000, guid: 2452c41836e38274babd8a2a8dac6e44, type: 3}
-  timerExtended: {fileID: 8300000, guid: a9599672e53b7574695b93dd414bca5c, type: 3}
+  timerExtended: {fileID: 8300000, guid: 87aec4deb9be53b40b8ae6ce7857c8aa, type: 3}
   doorOpen: {fileID: 8300000, guid: 825e521c980082b4bb60a7fc82eb5a92, type: 3}
   jump: {fileID: 8300000, guid: 83a2cc802806cd145a32273033a8b4da, type: 3}
   land: {fileID: 8300000, guid: cf57c894e0fbf81438060b707ea9b29d, type: 3}

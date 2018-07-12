@@ -18,6 +18,13 @@ public class Plant : Enemy
 
     private Collider2D playerInRange;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        timer = timeBetweenSpits;
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -46,6 +53,12 @@ public class Plant : Enemy
         projectile.Init(shootDirection);
 
         animator.SetTrigger("Spit");
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, rangeRadious);
     }
 }
 

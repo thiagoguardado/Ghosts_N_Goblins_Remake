@@ -5,10 +5,10 @@ using UnityEngine;
 public class TimerCheckpoint : Checkpoint
 {
 
-    public int secondToAdd = 60;
+    public int newTimer = 60;
 
     protected override void CheckpointReached()
     {
-        LevelController.Instance.ExtendTime(secondToAdd);
+        LevelController.Instance.ExtendTime(newTimer);
     }
 }

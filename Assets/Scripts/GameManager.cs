@@ -15,12 +15,14 @@ public class Player
     public PlayerID player;
     public int score = 0;
     public int lifes = 0;
+    public bool reachedHighScore = false;
 
     public Player(PlayerID player, int score, int lifes)
     {
         this.player = player;
         this.score = score;
         this.lifes = lifes;
+        reachedHighScore = false;
     }
 
     public void IncrementScore(int increment)
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour {
     public int initialLivesOnMultiPlayer = 2;
 
     private const float waitTimeBeforeRetry = 5f;
+    private const float waitTimeBeforeReturnToMenu = 9f;
 
     private void OnEnable()
     {
@@ -72,6 +75,12 @@ public class GameManager : MonoBehaviour {
         {
             topScore = currentPlayer.score;
             GameEvents.Score.TopScoreChanged.SafeCall();
+
+            if (!currentPlayer.reachedHighScore)
+            {
+                currentPlayer.reachedHighScore = true;
+                GameEvents.Score.PlayerReachedHighScore.SafeCall();
+            }
         }
     }
 
@@ -88,13 +97,22 @@ public class GameManager : MonoBehaviour {
             DestroyImmediate(gameObject);
         }
 
-        CreatePlayers(); 
+        CreatePlayers();
+    }
 
+    public void SetupNewGame(GameMode gameMode)
+    {
+        currentGameMode = gameMode;
+
+        CreatePlayers();
+
+        SceneManager.LoadScene("Stage1");
     }
 
     private void CreatePlayers()
     {
         players = new List<Player>();
+        playersDictionary.Clear();
 
         switch (currentGameMode)
         {
@@ -129,17 +147,20 @@ public class GameManager : MonoBehaviour {
         if (players.Count <= 0)
         {
             // end game
+            ReturnToMenu();
             return;
         }
 
         // change player
-        currentPlayer = nextPlayer;
+        SetupNextPlayer(nextPlayer);
 
         // reload scene after waiting for some time
         string scene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(scene);
 
     }
+
+
 
     public void SetupNextTry()
     {
@@ -160,11 +181,12 @@ public class GameManager : MonoBehaviour {
         if (players.Count <= 0)
         {
             // end game
+            ReturnToMenu();
             return;
         }
 
         // change player
-        currentPlayer = nextPlayer;
+        SetupNextPlayer(nextPlayer);
 
         // reload scene after waiting for some time
         string scene = SceneManager.GetActiveScene().name;
@@ -173,4 +195,17 @@ public class GameManager : MonoBehaviour {
 
     }
 
+
+    private void SetupNextPlayer(Player nextPlayer)
+    {
+        currentPlayer = nextPlayer;
+
+        currentPlayer.reachedHighScore = currentPlayer.score >= topScore;
+
+    }
+
+    private void ReturnToMenu()
+    {
+        MyExtensions.WaitAndAct(this, waitTimeBeforeReturnToMenu, () => SceneManager.LoadScene("Menu"));
+    }
 }

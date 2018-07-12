@@ -59,6 +59,12 @@ public class ZombieFSM : FSM<Zombie>{
             {
                 fsm.ChangeState(typeof(Zombi_Sinking));
             }
+
+            if (!fsm_holder.hasFloorAhead)
+            {
+                fsm.ChangeState(typeof(Zombi_Sinking));
+            }
+
         }
 
         public override void DoBeforeEntering()
