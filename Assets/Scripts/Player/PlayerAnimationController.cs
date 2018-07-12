@@ -19,7 +19,10 @@ public class PlayerAnimationController : MonoBehaviour {
     private PlayerController playerController;
 
     [Header("Animator Control")]
-    public Animator playerAnimator; //animator attached to player
+    public Animator playerHumanAnimator; //animator attached to player
+    public Animator playerFrogAnimator;
+    private SpriteRenderer playerHumanSpriteRenderer;
+    private SpriteRenderer playerFrogSpriteRenderer;
 
     public bool isRunning = false;
     public bool isCrouched = false;
@@ -35,7 +38,7 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         get
         {
-            return playerController.isOnVictoryPose;
+            return playerController.IsOnVictoryPose;
         }
     }
     public bool throwSomething = false;
@@ -43,6 +46,7 @@ public class PlayerAnimationController : MonoBehaviour {
     public bool isOnEndOfLadder = false;
     public bool isLeavingLadder = false;
     public bool isInvincible { get { return !playerController.isReceivingDamage; } }
+    private bool isFrog { get { return playerController.IsFrog; } }
 
     // animation layer
     private AnimationLayer previousLayer = AnimationLayer.Armored;  // previous layer playing
@@ -54,6 +58,9 @@ public class PlayerAnimationController : MonoBehaviour {
     {
 
         playerController = GetComponent<PlayerController>();
+
+        playerFrogSpriteRenderer = playerFrogAnimator.GetComponent<SpriteRenderer>();
+        playerHumanSpriteRenderer = playerHumanAnimator.GetComponent<SpriteRenderer>();
 
         previousPlayerArmor = playerController.currentArmorStatus;
 
@@ -105,7 +112,7 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         for (int i = 0; i < Enum.GetValues(typeof(AnimationLayer)).Length; i++)
         {
-            animationLayerNameToInt.Add((AnimationLayer)i, playerAnimator.GetLayerIndex(((AnimationLayer)i).ToString()));
+            animationLayerNameToInt.Add((AnimationLayer)i, playerHumanAnimator.GetLayerIndex(((AnimationLayer)i).ToString()));
         }
     }
 
@@ -117,11 +124,11 @@ public class PlayerAnimationController : MonoBehaviour {
         {
             if (item.Key == newLayer)
             {
-                playerAnimator.SetLayerWeight(item.Value, 1);
+                playerHumanAnimator.SetLayerWeight(item.Value, 1);
             }
             else
             {
-                playerAnimator.SetLayerWeight(item.Value, 0);
+                playerHumanAnimator.SetLayerWeight(item.Value, 0);
             }
         }
         
@@ -133,13 +140,13 @@ public class PlayerAnimationController : MonoBehaviour {
         isClimbing = true;
         isOnEndOfLadder = isOnTop;
         isLeavingLadder = isOnTop;
-        playerAnimator.ResetTrigger("FinishedLadder");
+        playerHumanAnimator.ResetTrigger("FinishedLadder");
     }
 
     public void FinishClimbingLadder(bool finishedOnTop)
     {
         if(finishedOnTop)
-            playerAnimator.SetTrigger("FinishedLadder");
+            playerHumanAnimator.SetTrigger("FinishedLadder");
 
     }
 
@@ -152,32 +159,45 @@ public class PlayerAnimationController : MonoBehaviour {
 
     private void UpdateAnimatorValues()
     {
-        playerAnimator.SetBool("isDead", isDead);
-        playerAnimator.SetBool("isRunning", isRunning);
-        playerAnimator.SetBool("isCrouched", isCrouched);
-        playerAnimator.SetBool("isJumping", isJumping);
+        playerHumanAnimator.SetBool("isDead", isDead);
+        playerHumanAnimator.SetBool("isRunning", isRunning);
+        playerHumanAnimator.SetBool("isCrouched", isCrouched);
+        playerHumanAnimator.SetBool("isJumping", isJumping);
         if (throwSomething)
         {
-            playerAnimator.SetTrigger("Throw");
+            playerHumanAnimator.SetTrigger("Throw");
             throwSomething = false;
         }
-        playerAnimator.SetBool("isClimbing", isClimbing);
-        playerAnimator.SetBool("isOnEndOfLadder", isOnEndOfLadder);
-        playerAnimator.SetBool("isLeavingLadder", isLeavingLadder);
-        playerAnimator.SetBool("isInvincible", isInvincible);
-        playerAnimator.SetBool("Victory", isOnVictoryPose);
+        playerHumanAnimator.SetBool("isClimbing", isClimbing);
+        playerHumanAnimator.SetBool("isOnEndOfLadder", isOnEndOfLadder);
+        playerHumanAnimator.SetBool("isLeavingLadder", isLeavingLadder);
+        playerHumanAnimator.SetBool("isInvincible", isInvincible);
+        playerHumanAnimator.SetBool("Victory", isOnVictoryPose);
+        playerHumanAnimator.SetBool("isHidden", isFrog);
 
+        playerFrogAnimator.SetBool("isRunning", isRunning);
+        playerFrogAnimator.SetBool("isJumping", isJumping);
+        playerFrogAnimator.SetBool("isDead", isDead);
+        playerFrogAnimator.SetBool("isInvincible", isInvincible);
+        playerFrogAnimator.SetBool("isHidden", !isFrog);
     }
 
     public void TriggerHit()
     {
-        playerAnimator.SetTrigger("Hit");
+        playerHumanAnimator.SetTrigger("Hit");
     }
 
     public void LeaveHitState()
     {
-        playerAnimator.SetTrigger("FinishHit");
+        playerHumanAnimator.SetTrigger("FinishHit");
     }
 
+    public void ChangeBetweenHumanAndFrog(bool activateHuman)
+    {
+
+    //    playerHumanSpriteRenderer.gameObject.SetActive(activateHuman);
+    //    playerFrogSpriteRenderer.gameObject.SetActive(!activateHuman);
+        
+    }
 
 }

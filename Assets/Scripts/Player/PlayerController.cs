@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     public float afterDamageInvincibleDuration = 0.5f;
     public bool isReceivingDamage { get; private set; }
     public BreakableArmor breakableArmor;
+    public float frogDuration = 5f;
 
 
 
@@ -65,7 +66,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     private bool isGrounded = false;
     private bool wasGrounded = false;
     public SpriteDirection spriteDirection;
-    public bool isOnVictoryPose { get; private set; }
+    private bool isOnVictoryPose = false;
+    private bool isFrog = false;
 
     // encapsulated variables
     public float HorizontalAxis
@@ -103,7 +105,20 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
             return isGrounded;
         }
     }
-
+    public bool IsOnVictoryPose
+    {
+        get
+        {
+            return isOnVictoryPose;
+        }
+    }
+    public bool IsFrog
+    {
+        get
+        {
+            return isFrog;
+        }
+    }
 
     private void OnEnable()
     {
@@ -275,6 +290,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     public void ReceiveDamage() {
 
+        isFrog = false;
+
         isReceivingDamage = false;
 
         switch (currentArmorStatus)
@@ -289,7 +306,40 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
                 break;
         }
 
-        
+    }
+
+    public void TurnFromHumanToFrog()
+    {
+        // Turn into frog
+        Debug.Log("Player turned into frog");
+
+        isFrog = true;
+
+        // make invincible
+        isReceivingDamage = false;
+        this.WaitAndAct(afterDamageInvincibleDuration, () => isReceivingDamage = true);
+
+        // schedule return to human form
+        this.WaitAndAct(frogDuration, () => TurnFromFrogToHuman());
+
+    }
+
+    public void TurnFromFrogToHuman()
+    {
+        if (isFrog)
+        {
+            isFrog = false;
+
+            isReceivingDamage = false;
+            this.WaitAndAct(afterDamageInvincibleDuration, () => isReceivingDamage = true);
+
+        }
+
+    }
+
+
+    public void TurnIntoFrog()
+    {
 
     }
 
@@ -362,11 +412,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         }
     }
 
-    public void TurnToFrog()
-    {
-        // Turn into frog
-        Debug.Log("Player turned into frog");
-    }
+
 
     public void StartVictoryPose()
     {

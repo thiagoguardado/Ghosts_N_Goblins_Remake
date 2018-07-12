@@ -20,7 +20,10 @@ public class PlayerFSM : MonoBehaviour {
         StandupAttack,
         CrouchedAttack,
         Hit,
-        Died
+        Died,
+        FrogIdle,
+        FrogRunning,
+        FrogJumping
     }
 
     private enum TranslatingAxis
@@ -63,6 +66,13 @@ public class PlayerFSM : MonoBehaviour {
         get
         {
             return playerController.ThrowButton;
+        }
+    }
+    private bool isFrog
+    {
+        get
+        {
+            return playerController.IsFrog;
         }
     }
 
@@ -116,6 +126,10 @@ public class PlayerFSM : MonoBehaviour {
     [Header("Hit")]
     public Vector3 hitForceDirection;
     public float hitForce;
+
+    [Header("Frog")]
+    public Collider2D frogCollider;
+
     private bool isDead
     {
         get
@@ -142,6 +156,9 @@ public class PlayerFSM : MonoBehaviour {
         statesDictionary.Add(PlayerFSMState.Climbing, new PlayerState_Climbing(this, PlayerFSMState.Climbing));
         statesDictionary.Add(PlayerFSMState.Hit, new PlayerState_Hit(this, PlayerFSMState.Hit));
         statesDictionary.Add(PlayerFSMState.Died, new PlayerState_Died(this, PlayerFSMState.Died));
+        statesDictionary.Add(PlayerFSMState.FrogIdle, new PlayerState_FrogIdle(this, PlayerFSMState.FrogIdle));
+        statesDictionary.Add(PlayerFSMState.FrogRunning, new PlayerState_FrogRunning(this, PlayerFSMState.FrogRunning));
+        statesDictionary.Add(PlayerFSMState.FrogJumping, new PlayerState_FrogJumping(this, PlayerFSMState.FrogJumping));
 
         // assign initial state
         currentPlayerState = statesDictionary[PlayerFSMState.Idle];
@@ -296,15 +313,18 @@ public class PlayerFSM : MonoBehaviour {
     // hit
     private void GetHit()
     {
+
+
         ChangeState(PlayerFSMState.Hit);
     }
 
 
     // collider
-    private void ChangeColliders(bool standingCollider, bool crouchedCollider)
+    private void ChangeColliders(bool standingCollider, bool crouchedCollider, bool frogCollider)
     {
         this.standingCollider.enabled = standingCollider;
         this.crouchedCollider.enabled = crouchedCollider;
+        this.frogCollider.enabled = frogCollider;
     }
 
 
@@ -340,8 +360,8 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.throwButton)
             {
                 owner.Throw(false);
-
             }
+
         }
 
         public override void CheckTransition()
@@ -364,6 +384,13 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.jumpButton)
             {
                 owner.ChangeState(PlayerFSMState.Jumping);
+                return;
+            }
+
+            // if frog
+            if (owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSMState.FrogIdle);
                 return;
             }
 
@@ -405,11 +432,12 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void DoBeforeEntering()
         {
-            // set parameter
-            owner.isRunning = false;
 
+            // set running parameter
+            owner.isRunning = false;
             // update animator
             owner.animationController.isRunning = false;
+
         }
     }
 
@@ -439,6 +467,13 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.jumpButton)
             {
                 owner.ChangeState(PlayerFSMState.Jumping);
+                return;
+            }
+
+            // if frog
+            if (owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSMState.FrogIdle);
                 return;
             }
 
@@ -484,7 +519,7 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void DoBeforeLeave()
         {
-            
+            return;
         }
 
         public override void UpdateState()
@@ -515,6 +550,13 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void CheckTransition()
         {
+            
+            // if frog
+            if (owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSMState.FrogIdle);
+                return;
+            }
 
             // check if is dead
             if (owner.isDead)
@@ -535,7 +577,7 @@ public class PlayerFSM : MonoBehaviour {
                     return;
                 }
             }
-    }
+        }
 
         public override void DoBeforeEntering()
         {
@@ -547,7 +589,6 @@ public class PlayerFSM : MonoBehaviour {
 
             // save horizontal axis value to use if jump running
             runningHorizontalAxisValue = owner.horizontalAxis;
-            wasRunning = owner.isRunning;
             timer = 0f;
 
             // notify event
@@ -601,6 +642,14 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.isDead)
             {
                 owner.ChangeState(PlayerFSMState.Died);
+                return;
+            }
+
+            // if frog
+            if (owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSMState.FrogIdle);
+                return;
             }
 
             // if get up
@@ -622,17 +671,20 @@ public class PlayerFSM : MonoBehaviour {
         {
             //set parameter
             owner.isCrouched = true;
-            owner.isRunning = false;
 
             // update controller
             owner.animationController.isCrouched = true;
-            owner.animationController.isRunning = false;
 
             // set timer
             notHoldingDownTimer = 0f;
 
             // change collliders
-            owner.ChangeColliders(false,true);
+            owner.ChangeColliders(false,true,false);
+
+            // set running parameter
+            owner.isRunning = false;
+            // update animator
+            owner.animationController.isRunning = false;
 
         }
 
@@ -645,7 +697,7 @@ public class PlayerFSM : MonoBehaviour {
 
 
             // change collliders
-            owner.ChangeColliders(true, false);
+            owner.ChangeColliders(true, false, false);
           
 
         }
@@ -710,6 +762,14 @@ public class PlayerFSM : MonoBehaviour {
             if (owner.isDead)
             {
                 owner.ChangeState(PlayerFSMState.Died);
+                return;
+            }
+
+            // if frog
+            if (owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSMState.FrogIdle);
+                return;
             }
 
             // reached top of ladder
@@ -762,7 +822,12 @@ public class PlayerFSM : MonoBehaviour {
 
             // change animator
             owner.animationController.StartClimbingLadder(isOnEndOfLadder);
-            
+
+            // set running parameter
+            owner.isRunning = false;
+            // update animator
+            owner.animationController.isRunning = false;
+
         }
 
         public override void DoBeforeLeave()
@@ -778,7 +843,7 @@ public class PlayerFSM : MonoBehaviour {
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Floor"), false);
 
             //change colliders
-            owner.ChangeColliders(true, false);
+            owner.ChangeColliders(true, false, false);
 
             // set sprite direction
             owner.spriteTransform.localScale = enterStateSpriteScale;
@@ -818,7 +883,7 @@ public class PlayerFSM : MonoBehaviour {
                 owner.spriteTransform.position = ladder.finishOfLadder.position;
 
                 //change colliders
-                owner.ChangeColliders(false, true);
+                owner.ChangeColliders(false, true, false);
 
             }
             else
@@ -830,7 +895,7 @@ public class PlayerFSM : MonoBehaviour {
                 owner.spriteTransform.localPosition = new Vector3(owner.spriteTransform.localPosition.x, owner.spriteObjectStartYPosition, owner.spriteTransform.localPosition.z);
 
                 //change colliders
-                owner.ChangeColliders(true, false);
+                owner.ChangeColliders(true, false, false);
 
             }
 
@@ -886,6 +951,10 @@ public class PlayerFSM : MonoBehaviour {
 
         public override void DoBeforeEntering()
         {
+            // set running parameter
+            owner.isRunning = false;
+            // update animator
+            owner.animationController.isRunning = false;
 
             // change animator
             owner.animationController.TriggerHit();
@@ -940,6 +1009,194 @@ public class PlayerFSM : MonoBehaviour {
         }
 
 
+    }
+
+    public class PlayerState_FrogIdle : PlayerState
+    {
+        public PlayerState_FrogIdle(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
+        {
+        }
+
+        public override void CheckTransition()
+        {
+            // if run
+            if (owner.horizontalAxis != 0)
+            {
+                owner.ChangeState(PlayerFSMState.FrogRunning);
+                return;
+            }
+
+            // if leaves frog
+            if (!owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSMState.Idle);
+                return;
+            }
+
+            // if jump
+            if (owner.jumpButton)
+            {
+                owner.ChangeState(PlayerFSMState.FrogJumping);
+                return;
+            }
+
+        }
+
+        public override void DoBeforeEntering()
+        {
+            // set running parameter
+            owner.isRunning = false;
+            // update animator
+            owner.animationController.isRunning = false;
+
+            // change animator
+            owner.animationController.ChangeBetweenHumanAndFrog(false);
+
+            // change coliders
+            owner.ChangeColliders(false, false, true);
+        }
+
+        public override void DoBeforeLeave()
+        {
+            // change animator
+            owner.animationController.ChangeBetweenHumanAndFrog(true);
+
+            // change coliders
+            owner.ChangeColliders(true, false, false);
+        }
+
+        public override void UpdateState()
+        {
+            return;
+        }
+    }
+
+    public class PlayerState_FrogRunning : PlayerState
+    {
+        public PlayerState_FrogRunning(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
+        {
+        }
+
+        public override void CheckTransition()
+        {
+            // if stop walking
+            if (owner.horizontalAxis == 0)
+            {
+                owner.ChangeState(PlayerFSMState.Idle);
+                return;
+            }
+
+            // if leaves frog
+            if (!owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSMState.Idle);
+                return;
+            }
+
+            // if jump
+            if (owner.jumpButton)
+            {
+                owner.ChangeState(PlayerFSMState.FrogJumping);
+                return;
+            }
+        }
+
+        public override void DoBeforeEntering()
+        {
+
+            // set running parameter
+            owner.isRunning = true;
+            // update animator
+            owner.animationController.isRunning = true;
+        }
+
+        public override void DoBeforeLeave()
+        {
+            return;
+        }
+
+        public override void UpdateState()
+        {
+            // move and change direction
+            owner.TranslateIntention(TranslatingAxis.Horizontal, owner.horizontalAxis * owner.horizontalSpeed);
+            owner.CheckDirection();
+
+        }
+    }
+
+    public class PlayerState_FrogJumping : PlayerState
+    {
+
+        private float timer = 0f;
+        private bool wasRunning;
+        private float runningHorizontalAxisValue;
+
+        public PlayerState_FrogJumping(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
+        {
+        }
+
+        public override void CheckTransition()
+        {
+            // if leaves frog
+            if (!owner.isFrog)
+            {
+                owner.ChangeState(PlayerFSM.PlayerFSMState.Idle);
+                return;
+            }
+
+            // check if touches ground (consider a minimum time to not leave immediately
+            if (timer >= owner.minTimeToExitJump)
+            {
+                if ((owner.isGrounded && owner.playerRigidbody.velocity.y <= 0) || owner.playerRigidbody.velocity.y == 0)
+                {
+                    // notify event
+                    GameEvents.Player.PlayerLanded.SafeCall();
+
+                    // transition
+                    owner.ChangeState(PlayerFSMState.FrogIdle);
+                    return;
+                }
+            }
+
+        }
+
+        public override void DoBeforeEntering()
+        {
+            // update animator
+            owner.animationController.isJumping = true;
+
+            // execute action
+            owner.Jump();
+
+            // save horizontal axis value to use if jump running
+            runningHorizontalAxisValue = owner.horizontalAxis;
+            wasRunning = owner.isRunning;
+            timer = 0f;
+
+            // notify event
+            GameEvents.Player.PlayerJumped.SafeCall();
+        }
+
+        public override void DoBeforeLeave()
+        {
+            owner.animationController.isJumping = false;
+
+            owner.isJumping = false;
+        }
+
+        public override void UpdateState()
+        {
+            // increment timer
+            timer += Time.deltaTime;
+
+            // move and change direction
+            if (owner.isRunning)
+            {
+                owner.TranslateIntention(TranslatingAxis.Horizontal, runningHorizontalAxisValue * owner.horizontalSpeed);
+            }
+            owner.CheckDirection();
+            
+        }
     }
 
     #endregion

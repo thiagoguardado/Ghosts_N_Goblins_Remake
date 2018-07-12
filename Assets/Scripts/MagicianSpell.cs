@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ public class MagicianSpell : MonoBehaviour {
         {
 
             // turn player into frog
-            PlayerController.Instance.TurnToFrog();
+            PlayerController.Instance.TurnFromHumanToFrog();
 
             // destroy
             Destroy(gameObject);
