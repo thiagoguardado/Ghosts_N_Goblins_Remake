@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ public class Bird : Enemy
     private float startFlyingTime;
 
     public bool startFlying = false;
-    
+
 
     protected override void Update()
     {
@@ -41,6 +41,9 @@ public class Bird : Enemy
     private void StartFlying() {
 
         isFlying = true;
+
+        // notify event
+        GameEvents.Enemies.CrowStartedToFly.SafeCall();
 
     }
 

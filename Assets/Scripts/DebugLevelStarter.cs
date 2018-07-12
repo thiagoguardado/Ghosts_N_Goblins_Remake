@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +16,7 @@ public class DebugLevelStarter : MonoBehaviour {
             if (Input.GetButtonDown("Fire1"))
             {
                 LevelController.Instance.StartLevel(true);
+                Destroy(gameObject);
             }
         }
 

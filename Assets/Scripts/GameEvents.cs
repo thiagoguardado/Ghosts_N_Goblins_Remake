@@ -10,12 +10,23 @@ public static class GameEvents
         public static Action PlayerPickedWeapon;
         public static Action PlayerPickedTreasure;
         public static Action PlayerTookDamage;
+        public static Action<float> PlayerPushed;
         public static Action PlayerDied;
         public static Action PlayerLoseLife;
         public static Action PlayerGameOver;
         public static Action PlayerJumped;
         public static Action PlayerLanded;
         public static Action PlayerShot;
+        public static Action PlayerTurnedIntoFrog;
+    }
+
+    public static class Enemies
+    {
+        public static Action EnemyHit;
+        public static Action EnemyDeath;
+        public static Action ZombieSpawned;
+        public static Action MagicianSpawned;
+        public static Action CrowStartedToFly;
     }
 
     public static class Weapons

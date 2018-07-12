@@ -663,7 +663,7 @@ MonoBehaviour:
   jumpForce: 150
   minTimeToExitJump: 0.02
   flippingInterval: 0.12
-  hitForceDirection: {x: -1, y: 3, z: 0}
+  hitForceDirection: {x: 1, y: 3}
   hitForce: 3
   frogCollider: {fileID: 61712912004524926}
 --- !u!114 &114597777754878852

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +28,9 @@ public class Zombie : Enemy
 
         // Start Looking To Player
         spriteDirection.FaceDirection(LookAtPlayer.LookToPlayerDirection(transform.position));
+
+        // notify
+        GameEvents.Enemies.ZombieSpawned.SafeCall();
     }
 
 

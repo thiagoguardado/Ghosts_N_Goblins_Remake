@@ -87,13 +87,6 @@ public class LevelController: MonoBehaviour
             CheckEnemyWinningCondition();
             CheckTimer();
         }
-        else
-        {
-            if (Input.GetButton("Fire1"))
-            {
-                StartLevel(true);
-            }
-        }
     }
 
  

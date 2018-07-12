@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
                 IEnemyHittable enemyHittable = overlapingColliders[i].attachedRigidbody.GetComponent<IEnemyHittable>();
                 if (enemyHittable != null)
                 {
-                    enemyHittable.Hit(damageOnHit);
+                    enemyHittable.Hit(damageOnHit, transform.position);
                     HitSomething();
                 }
                 
@@ -143,11 +143,18 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
         if (health > 0)
         {
             PlayHitAnimation(hitSpriteAnimation, hitPoint, transform.position);
+
+            // notify event
+            GameEvents.Enemies.EnemyHit.SafeCall();
+
         }
         else
         {
             PlayHitAnimation(destroySpriteAnimation, hitPoint,transform.position);
             Kill();
+
+            // notify event
+            GameEvents.Enemies.EnemyDeath.SafeCall();
         }
 
 

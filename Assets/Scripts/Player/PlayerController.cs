@@ -288,7 +288,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         instantiatedWeapons.Remove(weapon);
     }
 
-    public void ReceiveDamage() {
+    public void ReceiveDamage(float direction) {
 
         isFrog = false;
 
@@ -297,9 +297,11 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         switch (currentArmorStatus)
         {
             case PlayerArmor.Armored:
+                PushPlayer(direction);
                 LoseArmor();
                 break;
             case PlayerArmor.Naked:
+                PushPlayer(direction);
                 Die();
                 break;
             default:
@@ -311,9 +313,10 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     public void TurnFromHumanToFrog()
     {
         // Turn into frog
-        Debug.Log("Player turned into frog");
-
         isFrog = true;
+
+        // notify event
+        GameEvents.Player.PlayerTurnedIntoFrog.SafeCall();
 
         // make invincible
         isReceivingDamage = false;
@@ -337,10 +340,10 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     }
 
-
-    public void TurnIntoFrog()
+    private void PushPlayer(float xDirection)
     {
-
+        // call events
+        GameEvents.Player.PlayerPushed.SafeCall(xDirection);
     }
 
     private void LoseArmor()
@@ -355,6 +358,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         // make invincible
         this.WaitAndAct(afterDamageInvincibleDuration, () => isReceivingDamage = true);
     }
+
 
 
     public void GetArmor()
@@ -382,20 +386,19 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         currentArmorStatus = PlayerArmor.Dead;
 
         // call events
-        GameEvents.Player.PlayerTookDamage.SafeCall();
         GameEvents.Player.PlayerDied.SafeCall();
 
 
     }
 
-    public void Hit(int hitDamage)
+    public void Hit(int hitDamage, Vector3 objectPosition)
     {
         if (hitDamage > 0)
         {
             if (isReceivingDamage)
             {
-
-                ReceiveDamage();
+                float pushDirection = objectPosition.x >= transform.position.x ? -1 : 1;
+                ReceiveDamage(pushDirection);
 
             }
         }

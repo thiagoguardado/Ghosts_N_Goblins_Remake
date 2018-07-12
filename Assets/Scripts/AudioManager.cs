@@ -36,6 +36,14 @@ public class AudioManager : MonoBehaviour {
     public AudioClip pickupWeapon;
     public AudioClip pickupTreasure;
     public AudioClip projectileBlocked;
+    public AudioClip turnedIntoFrog;
+
+    [Header("SFX Enemies")]
+    public AudioClip enemyDeath;
+    public AudioClip enemyHit;
+    public AudioClip zombieSpawned;
+    public AudioClip magicianSpawned;
+    public AudioClip crow;
 
     [Header("SFX - GameManager")]
     public AudioClip extraLife;
@@ -57,6 +65,13 @@ public class AudioManager : MonoBehaviour {
         GameEvents.Player.PlayerPickedTreasure += PlayPickedTreasureSFX;
         GameEvents.Player.PlayerLoseLife += PlayDyingAudio;
         GameEvents.Player.PlayerGameOver += PlayGameOverAudio;
+        GameEvents.Player.PlayerTurnedIntoFrog += PlayPlayerTurnedIntoFrogSFX;
+
+        GameEvents.Enemies.EnemyDeath += PlayEnemyDeathSFX;
+        GameEvents.Enemies.EnemyHit += PlayEnemyHitSFX;
+        GameEvents.Enemies.ZombieSpawned += PlayZombieSpawnedSFX;
+        GameEvents.Enemies.MagicianSpawned += PlayMagicianSpawnedSFX;
+        GameEvents.Enemies.CrowStartedToFly += PlayCrowSFX;
 
         GameEvents.Weapons.ProjectileBlocked += PlayProjectileBlockedSFX;
 
@@ -84,6 +99,13 @@ public class AudioManager : MonoBehaviour {
         GameEvents.Player.PlayerPickedTreasure -= PlayPickedTreasureSFX;
         GameEvents.Player.PlayerLoseLife -= PlayDyingAudio;
         GameEvents.Player.PlayerGameOver -= PlayGameOverAudio;
+        GameEvents.Player.PlayerTurnedIntoFrog -= PlayPlayerTurnedIntoFrogSFX;
+
+        GameEvents.Enemies.EnemyDeath -= PlayEnemyDeathSFX;
+        GameEvents.Enemies.EnemyHit -= PlayEnemyHitSFX;
+        GameEvents.Enemies.ZombieSpawned -= PlayZombieSpawnedSFX;
+        GameEvents.Enemies.MagicianSpawned -= PlayMagicianSpawnedSFX;
+        GameEvents.Enemies.CrowStartedToFly -= PlayCrowSFX;
 
         GameEvents.Weapons.ProjectileBlocked -= PlayProjectileBlockedSFX;
 
@@ -130,6 +152,12 @@ public class AudioManager : MonoBehaviour {
     private void PlayDoorOpenSFX() { sfxAudioSource.PlayOneShot(doorOpen); }
     private void PlayHighScoreSFX() { sfxAudioSource.PlayOneShot(highScore); }
     private void PlayNewGameSFX() { sfxAudioSource.PlayOneShot(credit); }
+    private void PlayEnemyDeathSFX() { sfxAudioSource.PlayOneShot(enemyDeath); }
+    private void PlayEnemyHitSFX() { sfxAudioSource.PlayOneShot(enemyHit); }
+    private void PlayZombieSpawnedSFX() { sfxAudioSource.PlayOneShot(zombieSpawned); }
+    private void PlayMagicianSpawnedSFX() { sfxAudioSource.PlayOneShot(magicianSpawned); }
+    private void PlayPlayerTurnedIntoFrogSFX() { sfxAudioSource.PlayOneShot(turnedIntoFrog); }
+    private void PlayCrowSFX() { sfxAudioSource.PlayOneShot(crow); }
 
     private void StartPlayingBGM(bool includeOpening)
     {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +22,9 @@ public class Magician : Enemy {
     override protected void Start () {
 
         base.Start();
+
+        // notify event
+        GameEvents.Enemies.MagicianSpawned.SafeCall();
 
         StartCoroutine(MagicianRoutine());
 

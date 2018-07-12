@@ -124,8 +124,9 @@ public class PlayerFSM : MonoBehaviour {
     private Ladder currentLadder;
 
     [Header("Hit")]
-    public Vector3 hitForceDirection;
+    public Vector2 hitForceDirection;
     public float hitForce;
+    private float hitXDirection;
 
     [Header("Frog")]
     public Collider2D frogCollider;
@@ -172,14 +173,14 @@ public class PlayerFSM : MonoBehaviour {
     private void OnEnable()
     {
         // add listener to hit state
-        GameEvents.Player.PlayerTookDamage += GetHit;
+        GameEvents.Player.PlayerPushed += GetHit;
 
     }
 
     private void OnDisable()
     {
         // add listener to hit state
-        GameEvents.Player.PlayerTookDamage -= GetHit;
+        GameEvents.Player.PlayerPushed -= GetHit;
     }
 
     private void Update()
@@ -311,10 +312,9 @@ public class PlayerFSM : MonoBehaviour {
     }
 
     // hit
-    private void GetHit()
+    private void GetHit(float xDirection)
     {
-
-
+        hitXDirection = xDirection;
         ChangeState(PlayerFSMState.Hit);
     }
 
@@ -961,7 +961,8 @@ public class PlayerFSM : MonoBehaviour {
 
             // apply force
             owner.playerRigidbody.velocity = Vector2.zero;
-            owner.playerRigidbody.AddForce(owner.hitForceDirection.normalized * owner.hitForce,ForceMode2D.Impulse);
+
+            owner.playerRigidbody.AddForce(new Vector3(owner.hitXDirection * owner.hitForceDirection.normalized.x, owner.hitForceDirection.normalized.y, 0) * owner.hitForce,ForceMode2D.Impulse);
 
             // set timer
             timer = 0f;

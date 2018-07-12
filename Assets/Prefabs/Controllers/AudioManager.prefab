@@ -293,5 +293,12 @@ MonoBehaviour:
   pickupWeapon: {fileID: 8300000, guid: 7ebfc3233d802434d953b21904770dbe, type: 3}
   pickupTreasure: {fileID: 8300000, guid: 218ad50c255b71e44b66334fbb7bf8d1, type: 3}
   projectileBlocked: {fileID: 8300000, guid: 964907aee1ae0074890a80aa5a0032b0, type: 3}
+  turnedIntoFrog: {fileID: 8300000, guid: bedc9b0990504354d9f962391001ff20, type: 3}
+  enemyDeath: {fileID: 8300000, guid: 23f15e90c95254943b3bb1513f4363f9, type: 3}
+  enemyHit: {fileID: 8300000, guid: b1379a65ced2a50459473fc8b7a95daa, type: 3}
+  zombieSpawned: {fileID: 8300000, guid: c8e23b8b46bd1fd43a9cc7ce5378c63a, type: 3}
+  magicianSpawned: {fileID: 8300000, guid: 8966a9de8ad39d04e91ade6e15eaea10, type: 3}
+  crow: {fileID: 8300000, guid: bb9410eb2f13c0a4bbfb6297dd0150da, type: 3}
   extraLife: {fileID: 8300000, guid: 87aec4deb9be53b40b8ae6ce7857c8aa, type: 3}
   highScore: {fileID: 8300000, guid: bedc9b0990504354d9f962391001ff20, type: 3}
+  credit: {fileID: 8300000, guid: 58ccb32bf0c348d4b88b838a8deb67e6, type: 3}

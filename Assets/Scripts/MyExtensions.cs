@@ -18,6 +18,14 @@ public static class MyExtensions
         }
     }
 
+    public static void SafeCall(this Action<float> action, float arg1)
+    {
+        if (action != null)
+        {
+            action(arg1);
+        }
+    }
+
     public static void WaitAndAct(this MonoBehaviour mono, float wait, Action action)
     {
         mono.StartCoroutine(WaitBeforeAct(wait,action));
