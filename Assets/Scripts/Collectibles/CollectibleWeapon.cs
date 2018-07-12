@@ -6,13 +6,7 @@ public class CollectibleWeapon : MonoBehaviour, IPlayerTouchable
 {
 
     public PlayerWeapon playerWeapon;
-    private SpriteRenderer spriteRenderer;
 
-    private void Awake()
-    {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer.sprite = playerWeapon.weaponSprite;
-    }
 
     public void WasTouchedByPlayer()
     {
