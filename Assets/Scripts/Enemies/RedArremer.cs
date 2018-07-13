@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundedCheck))]
+[RequireComponent(typeof(FloorChecker))]
 public class RedArremer : Enemy
 {
 
@@ -19,7 +20,6 @@ public class RedArremer : Enemy
     public float timePreparingToFly;
     public float timeFlying;
     public float timeWalking;
-    public float timeStopped;
     public float timeGrounded;
     private bool sawPlayer;
 
@@ -29,7 +29,7 @@ public class RedArremer : Enemy
     public bool isGrounded { 
         get
         {
-            return gc.isGrounded;
+            return groundedCheck.isGrounded;
         }
     }
 
@@ -37,13 +37,17 @@ public class RedArremer : Enemy
     [HideInInspector] public bool isWalking;
 
     private float groundedTimer = 0f;
-    private GroundedCheck gc;
+    public GroundedCheck groundedCheck { get; private set; }
+
+    public FloorChecker floorChecker { get; private set; }
+
 
     protected override void Awake()
     {
         base.Awake();
 
-        gc = GetComponent<GroundedCheck>();
+        groundedCheck = GetComponent<GroundedCheck>();
+        floorChecker = GetComponent<FloorChecker>();
 
         // configure grounding contact filter
         floorContactFilter = new ContactFilter2D();
@@ -115,9 +119,9 @@ public class RedArremer : Enemy
         animator.SetTrigger("Hurt");
 	}
 
-    public void Ground()
+    public void Ground(Vector2 groundingPoint)
     {
-        return;
+        transform.position = new Vector3(groundingPoint.x, groundingPoint.y, transform.position.z);
     }
 
     public void StartToAscend()
@@ -162,6 +166,15 @@ public class RedArremer : Enemy
 
     }
 
+    public void Turn()
+    {
+        spriteDirection.FlipDirectionY();
+    }
+
+    public void LookToPlayer()
+    {
+        spriteDirection.FaceDirection(LookAtPlayer.LookToPlayerDirection(transform.position));
+    }
 
     private Vector3 PlayerDirection()
     {

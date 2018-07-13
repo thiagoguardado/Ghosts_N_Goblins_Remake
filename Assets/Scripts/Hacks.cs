@@ -13,9 +13,18 @@ public class Hacks : MonoBehaviour {
     private Coroutine fadingCoroutine;
     private bool isInvincible = false;
 
+    private void OnEnable()
+    {
+        GameEvents.Level.LevelStarted += SetPlayerInvincibility;
+    }
 
-	// Update is called once per frame
-	void Update () {
+    private void OnDisable()
+    {
+        GameEvents.Level.LevelStarted -= SetPlayerInvincibility;
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -31,7 +40,7 @@ public class Hacks : MonoBehaviour {
     {
         isInvincible = !isInvincible;
 
-        PlayerController.Instance.invincibleHack = isInvincible;
+        SetPlayerInvincibility();
 
         TriggerTextOnScreen("Invincible Mode: " + (isInvincible ? "ON" : "OFF"));
         
@@ -55,5 +64,12 @@ public class Hacks : MonoBehaviour {
         yield return new WaitForSeconds(duration);
 
         action.Invoke();
+    }
+
+    private void SetPlayerInvincibility()
+    {
+
+        PlayerController.Instance.invincibleHack = isInvincible;
+
     }
 }

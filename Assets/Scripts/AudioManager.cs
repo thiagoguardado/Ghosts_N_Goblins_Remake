@@ -237,7 +237,7 @@ public class AudioManager : MonoBehaviour {
 
     private void PlayTimerExtended()
     {
-        SubstitutePlayingSequenceOnBGM(new AudioClip[] { bgm }, true);
+        //SubstitutePlayingSequenceOnBGM(new AudioClip[] { bgm }, true);
         //SubstitutePlayingSequenceOnBGM(new AudioClip[] { timerExtended, bgm }, true);
     }
 

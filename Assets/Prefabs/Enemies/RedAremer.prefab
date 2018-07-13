@@ -23,11 +23,26 @@ GameObject:
   - component: {fileID: 114440027410045948}
   - component: {fileID: 114859510203792776}
   - component: {fileID: 114303546272122036}
-  - component: {fileID: 114108226060443166}
   - component: {fileID: 114408712744975600}
   - component: {fileID: 114181917733666184}
+  - component: {fileID: 114630271372759102}
   m_Layer: 12
   m_Name: RedAremer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1444834324429498
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4725003143518764}
+  m_Layer: 12
+  m_Name: FloorRayCheckStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +76,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4725003143518764}
   m_Father: {fileID: 4679037529830182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,6 +93,19 @@ Transform:
   m_Children:
   - {fileID: 4301585676504404}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4725003143518764
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444834324429498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.114, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4301585676504404}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50961132213425162
@@ -141,18 +170,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114108226060443166
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1151066623856918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d2a739468842644baa9cbce4e2b7bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteDirection: {fileID: 114298886896160632}
 --- !u!114 &114181917733666184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +229,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 200
+--- !u!114 &114630271372759102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151066623856918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1594c69e244be5f4696f0cdf73264e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorRayCheckStart: {fileID: 4725003143518764}
+  floorRayLenght: 0.05
 --- !u!114 &114859510203792776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,15 +270,14 @@ MonoBehaviour:
   dropPotProbability: 0.2
   animator: {fileID: 95637362851208436}
   maxHeightWhenAscending: 0.7
-  ascendingDescendingVerticalSpeed: 1
+  ascendingDescendingVerticalSpeed: 1.75
   ascendingDescendingHorizontalSpeed: 0.5
-  movingOnGroundSpeed: 0.2
-  distanceFromPlayerToStartMovement: 1.2
+  movingOnGroundSpeed: 0.3
+  distanceFromPlayerToStartMovement: 1.5
   timePreparingToFly: 0.25
-  timeFlying: 1.5
-  timeWalking: 0.5
-  timeStopped: 0.5
-  timeGrounded: 3
+  timeFlying: 1
+  timeWalking: 0.3
+  timeGrounded: 2
   isFlying: 0
   isWalking: 0
 --- !u!212 &212708240953082844

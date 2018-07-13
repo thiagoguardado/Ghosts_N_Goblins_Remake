@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FloorChecker))]
 public class Zombie : Enemy
 {
     [Header("Movement")]
@@ -17,10 +18,15 @@ public class Zombie : Enemy
     public float timeWalking;
     public float timeSinking;
 
-    [Header("FloorCheck")]
-    public Transform floorRayCheckStart;
-    public float floorRayLenght;
-    public bool hasFloorAhead { get; private set; }
+    public FloorChecker floorChecker { get; private set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        floorChecker = GetComponent<FloorChecker>();
+    }
+
 
     protected override void Start()
     {
@@ -48,21 +54,6 @@ public class Zombie : Enemy
     {
         Destroy(gameObject);
     }
+    
 
-    protected override void Update()
-    {
-        base.Update();
-
-        CheckFloorAhead();
-    }
-
-    private void CheckFloorAhead()
-    {
-        hasFloorAhead = Physics2D.Raycast(floorRayCheckStart.position, Vector2.down, floorRayLenght, 1 << LayerMask.NameToLayer("Floor"));
-    }
-
-    private void OnDrawGizmos()
-    {
-        Debug.DrawRay(floorRayCheckStart.position, Vector3.down * floorRayLenght);
-    }
 }

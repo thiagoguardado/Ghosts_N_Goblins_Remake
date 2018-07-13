@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,7 @@ public class GroundedCheck : MonoBehaviour {
     private int maxNumberOfOverlappingColliders;
     public float rayLenght;
     private RaycastHit2D raycastHit;
+    public Vector2 groundindPoint { get; private set; }
 
 	private void Awake()
 	{
@@ -32,6 +33,7 @@ public class GroundedCheck : MonoBehaviour {
         if(raycastHit.collider != null)
         {
             isGrounded = true;
+            groundindPoint = raycastHit.point;
             return;
         }
 

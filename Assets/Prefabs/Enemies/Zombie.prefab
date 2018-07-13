@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 114347360259090158}
   - component: {fileID: 114384480248026712}
   - component: {fileID: 114934739668792964}
+  - component: {fileID: 114481447647661342}
   m_Layer: 12
   m_Name: Zombie
   m_TagString: Untagged
@@ -210,8 +211,6 @@ MonoBehaviour:
   timeEmerging: 1.25
   timeWalking: 3
   timeSinking: 1.25
-  floorRayCheckStart: {fileID: 4911370916879960}
-  floorRayLenght: 0.05
 --- !u!114 &114384480248026712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,6 +223,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 200
+--- !u!114 &114481447647661342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637877261045534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1594c69e244be5f4696f0cdf73264e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorRayCheckStart: {fileID: 4911370916879960}
+  floorRayLenght: 0.05
 --- !u!114 &114934739668792964
 MonoBehaviour:
   m_ObjectHideFlags: 1

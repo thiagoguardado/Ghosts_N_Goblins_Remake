@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,7 +60,7 @@ public class ZombieFSM : FSM<Zombie>{
                 fsm.ChangeState(typeof(Zombi_Sinking));
             }
 
-            if (!fsm_holder.hasFloorAhead)
+            if (!fsm_holder.floorChecker.hasFloorAhead)
             {
                 fsm.ChangeState(typeof(Zombi_Sinking));
             }

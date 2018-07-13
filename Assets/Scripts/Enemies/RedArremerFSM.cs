@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,7 +45,8 @@ public class RedArremerFSM : FSM<RedArremer> {
 
         public override void UpdateState()
         {
-            return;
+            // look at player
+            fsm_holder.LookToPlayer();
         }
     }
 
@@ -144,6 +145,9 @@ public class RedArremerFSM : FSM<RedArremer> {
             fsm_holder.animator.SetBool("isFlying", true);
 
             timer = 0f;
+
+            // look at player
+            fsm_holder.LookToPlayer();
         }
 
         public override void DoBeforeLeave()
@@ -155,6 +159,7 @@ public class RedArremerFSM : FSM<RedArremer> {
         {
             // fly
             fsm_holder.Fly();
+            
 
             // timer
             timer += Time.deltaTime;
@@ -175,7 +180,7 @@ public class RedArremerFSM : FSM<RedArremer> {
         {
             if(fsm_holder.isGrounded)
             {
-                fsm_holder.Ground();
+                fsm_holder.Ground(fsm_holder.groundedCheck.groundindPoint);
                 fsm.ChangeState(typeof(RedArremer_Grounded));
             }
         }
@@ -274,6 +279,9 @@ public class RedArremerFSM : FSM<RedArremer> {
             fsm_holder.ChangeWalkingDirection();
 
             timer = 0f;
+
+            // look at player
+            fsm_holder.LookToPlayer();
         }
 
         public override void DoBeforeLeave()
@@ -285,6 +293,11 @@ public class RedArremerFSM : FSM<RedArremer> {
         public override void UpdateState()
         {
             fsm_holder.MoveOnGround();
+
+            if (!fsm_holder.floorChecker.hasFloorAhead)
+            {
+                fsm_holder.Turn();
+            }
 
             timer += Time.deltaTime;
 
