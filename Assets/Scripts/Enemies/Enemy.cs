@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ObjectScore))]
-public class Enemy : MonoBehaviour, IWeaponHittable {
+public class Enemy : MonoBehaviour, IWeaponHittable
+{
 
-    public bool displayScore = false;
+    public enum EnemySize { Big, Normal, Small }
 
-    [Header("Health and Direction")]
+    [Header("Config")]
     public SpriteDirection spriteDirection;
     public int health;
+    public bool displayScore = false;
+    public EnemySize size;
 
     [Header("Check Overlapping Collision")]
     public int damageOnHit;
@@ -40,7 +43,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
 
     protected virtual void Start()
     {
-        
+
     }
 
 
@@ -64,7 +67,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
                     enemyHittable.Hit(damageOnHit, transform.position);
                     HitSomething();
                 }
-                
+
             }
         }
 
@@ -91,7 +94,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
                 default:
                     break;
             }
-           
+
         }
     }
 
@@ -124,10 +127,11 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
         {
             GetComponent<ObjectScore>().IncrementGameScore(enemyCollider.bounds.center);
         }
-        else {
+        else
+        {
             GetComponent<ObjectScore>().IncrementGameScore();
         }
-        
+
 
     }
 
@@ -150,11 +154,11 @@ public class Enemy : MonoBehaviour, IWeaponHittable {
         }
         else
         {
-            PlayHitAnimation(destroySpriteAnimation, hitPoint,transform.position);
+            PlayHitAnimation(destroySpriteAnimation, hitPoint, transform.position);
             Kill();
 
             // notify event
-            GameEvents.Enemies.EnemyDeath.SafeCall();
+            GameEvents.Enemies.EnemyDeath.SafeCall(size);
         }
 
 

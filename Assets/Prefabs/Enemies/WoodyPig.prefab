@@ -178,9 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca90c5038c1254cebb174501d3be61de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayScore: 0
   spriteDirection: {fileID: 114804860052526520}
   health: 1
+  displayScore: 0
+  size: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
   enemyCollider: {fileID: 61835753240982174}
@@ -247,6 +248,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -262,6 +264,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

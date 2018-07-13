@@ -16,18 +16,32 @@ public class Player
     public int score = 0;
     public int lifes = 0;
     public bool reachedHighScore = false;
+    private Queue<int> nextExtraLives;
 
-    public Player(PlayerID player, int score, int lifes)
+    public Player(PlayerID player, int score, int lifes, List<int> nextExtraLives)
     {
         this.player = player;
         this.score = score;
         this.lifes = lifes;
+        this.nextExtraLives = new Queue<int>(nextExtraLives);
         reachedHighScore = false;
     }
 
     public void IncrementScore(int increment)
     {
         score += increment;
+
+        if (score >= nextExtraLives.Peek())
+        {
+            nextExtraLives.Dequeue();
+            IncrementLife(1);
+        }
+    }
+
+    public void IncrementLife(int increment)
+    {
+        lifes += 1;
+        GameEvents.Player.PlayerGetsExtraLife.SafeCall();
     }
 
 }
@@ -48,7 +62,8 @@ public class GameManager : MonoBehaviour {
     public Player currentPlayer { get; private set; }
     public Dictionary<PlayerID, Player> playersDictionary = new Dictionary<PlayerID, Player>();
     public float defaultLevelTime = 120f;
-    public int topScore = 10000;
+    public int defaultTopScore = 10000;
+    public List<int> defaultNextExtraLives;
 
     [Header("Singleplayer")]
     public int initialLivesOnSinglePlayer = 3;
@@ -71,9 +86,9 @@ public class GameManager : MonoBehaviour {
 
     private void CheckTopScore()
     {
-        if (currentPlayer.score >= topScore)
+        if (currentPlayer.score >= defaultTopScore)
         {
-            topScore = currentPlayer.score;
+            defaultTopScore = currentPlayer.score;
             GameEvents.Score.TopScoreChanged.SafeCall();
 
             if (!currentPlayer.reachedHighScore)
@@ -117,11 +132,11 @@ public class GameManager : MonoBehaviour {
         switch (currentGameMode)
         {
             case GameMode.SinglePlayer:
-                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnSinglePlayer));
+                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnSinglePlayer, defaultNextExtraLives));
                 break;
             case GameMode.MultiPlayer:
-                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnMultiPlayer));
-                players.Add(new Player(PlayerID.Player2, 0, initialLivesOnMultiPlayer));
+                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnMultiPlayer, defaultNextExtraLives));
+                players.Add(new Player(PlayerID.Player2, 0, initialLivesOnMultiPlayer, defaultNextExtraLives));
                 break;
             default:
                 break;
@@ -199,7 +214,7 @@ public class GameManager : MonoBehaviour {
     {
         currentPlayer = nextPlayer;
 
-        currentPlayer.reachedHighScore = currentPlayer.score >= topScore;
+        currentPlayer.reachedHighScore = currentPlayer.score >= defaultTopScore;
 
     }
 

@@ -226,9 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f739b8b97e7f13044a6ddce23d65c128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayScore: 0
   spriteDirection: {fileID: 114552487633799368}
   health: 1
+  displayScore: 0
+  size: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
   enemyCollider: {fileID: 61866175863794590}
@@ -239,7 +240,7 @@ MonoBehaviour:
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
     type: 2}
   dropPotProbability: 0.2
-  rangeRadious: 1.75
+  rangeRadious: 1.5
   projectilePrefab: {fileID: 114251931727813320, guid: 87139a9fed2128b4bb0831b7cdeb3a24,
     type: 2}
   projectileInstantiationAnchor: {fileID: 4290973926885634}

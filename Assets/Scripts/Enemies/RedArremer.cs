@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -129,6 +129,9 @@ public class RedArremer : Enemy
     public void StartToDescend()
     {
         isFlying = false;
+
+        // notify event
+        GameEvents.Enemies.RedArremerDive.SafeCall();
     }
 
     public void StartWalking()

@@ -13,6 +13,7 @@ public static class GameEvents
         public static Action<float> PlayerPushed;
         public static Action PlayerDied;
         public static Action PlayerLoseLife;
+        public static Action PlayerGetsExtraLife;
         public static Action PlayerGameOver;
         public static Action PlayerJumped;
         public static Action PlayerLanded;
@@ -23,11 +24,35 @@ public static class GameEvents
     public static class Enemies
     {
         public static Action EnemyHit;
-        public static Action EnemyDeath;
+        public static Action<Enemy.EnemySize> EnemyDeath;
         public static Action ZombieSpawned;
         public static Action MagicianSpawned;
         public static Action CrowStartedToFly;
+        public static Action RedArremerDive;
+        public static Action EnemyEnteredScreen;
+        public static Action EnemyLeftScreen;
+        public static Action WoodyPigSpawned;
+
+
+        public delegate void EnemyOnScreen<T>();
+        public static event EnemyOnScreen<FlyingKnight> FlyingKnightEnteredScreen;
+        public static event EnemyOnScreen<FlyingKnight> FlyingKnightLeftScreen;
+        
+
+        public static void TriggerFlyingKnightEnter()
+        {
+            if (FlyingKnightEnteredScreen != null)
+                FlyingKnightEnteredScreen.Invoke();
+        }
+
+        public static void TriggerFlyingKnightLeft()
+        {
+            if (FlyingKnightLeftScreen != null)
+                FlyingKnightLeftScreen.Invoke();
+        }
+
     }
+
 
     public static class Weapons
     {

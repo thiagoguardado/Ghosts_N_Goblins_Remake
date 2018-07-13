@@ -11,11 +11,13 @@ public class LifesPanel : MonoBehaviour {
     private void OnEnable()
     {
         GameEvents.Level.LevelStarted += UpdateLifes;
+        GameEvents.Player.PlayerGetsExtraLife += UpdateLifes;
     }
 
     private void OnDisable()
     {
         GameEvents.Level.LevelStarted -= UpdateLifes;
+        GameEvents.Player.PlayerGetsExtraLife -= UpdateLifes;
     }
 
     private void Start()

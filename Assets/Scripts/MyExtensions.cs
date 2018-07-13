@@ -18,7 +18,7 @@ public static class MyExtensions
         }
     }
 
-    public static void SafeCall(this Action<float> action, float arg1)
+    public static void SafeCall<T>(this Action<T> action, T arg1)
     {
         if (action != null)
         {

@@ -12,23 +12,27 @@ public class FlyingKnight : Enemy {
     public bool startMovingUp = true;
     private float initialPositionY;
     private float initialTime;
-    
 
-
-	protected override void Start()
+    protected override void Start()
 	{
         base.Start();
 
         initialPositionY = transform.position.y;
         initialTime = Time.time;
-	}
+        
+    }
+    
 
-	protected override void Update()
+    protected override void Update()
 	{
         base.Update();
 
         Move();
+
+
 	}
+
+
 
 
     private void Move()

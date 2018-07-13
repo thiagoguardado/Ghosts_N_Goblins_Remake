@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 50782446929692374}
   - component: {fileID: 114504107424384770}
   - component: {fileID: 114233548428989064}
-  - component: {fileID: 114540440811839618}
+  - component: {fileID: 114416894054036488}
+  - component: {fileID: 114453445578630684}
   m_Layer: 12
   m_Name: FlyingKnight
   m_TagString: Untagged
@@ -314,6 +315,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd81b93c1a17b4a71a471fbec1307704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114416894054036488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466036071909524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0ccb4fc64391947852c0f3dde77d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114453445578630684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466036071909524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f077afbd204d40a8b614ead8db8e65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114504107424384770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,9 +348,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4d3c89a110142f18f097cc7fb21eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayScore: 0
   spriteDirection: {fileID: 0}
   health: 1
+  displayScore: 0
+  size: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
   enemyCollider: {fileID: 61481372832394030}
@@ -343,17 +367,6 @@ MonoBehaviour:
   oscillationAmplitude: 0.4
   oscillationSpeed: 0.75
   startMovingUp: 1
---- !u!114 &114540440811839618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1466036071909524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d25995b6dcf8444c88c2edcfa25b1fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114667790991023698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,6 +387,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -389,6 +403,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

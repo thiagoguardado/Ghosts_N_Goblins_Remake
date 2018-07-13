@@ -225,6 +225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteDirection: {fileID: 114298886896160632}
   health: 5
+  displayScore: 0
+  size: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
   enemyCollider: {fileID: 61302617322941162}

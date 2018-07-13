@@ -34,6 +34,9 @@ public class WoodyPig : Enemy {
         // wait for cooldown before starts shooting
         canShoot = false;
         MyExtensions.WaitAndAct(this, shootingCooldown, () => canShoot = true);
+
+        //notify spawn
+        GameEvents.Enemies.WoodyPigSpawned.SafeCall();
     }
     
 

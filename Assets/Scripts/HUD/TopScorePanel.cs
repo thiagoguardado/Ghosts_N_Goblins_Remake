@@ -25,7 +25,7 @@ public class TopScorePanel : HUDStringDisplay
 
     private void UpdateTopScore()
     {
-        DisplayString(GameManager.Instance.topScore.ToString());
+        DisplayString(GameManager.Instance.defaultTopScore.ToString());
     }
 
 }

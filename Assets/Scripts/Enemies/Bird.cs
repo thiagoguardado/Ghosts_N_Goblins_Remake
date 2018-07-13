@@ -31,7 +31,7 @@ public class Bird : Enemy
     {
         base.Update();
 
-        if ((transform.position.x - PlayerController.Instance.transform.position.x) <= distanceToPlayerToStartFlying)
+        if ((transform.position.x - PlayerController.Instance.transform.position.x) <= distanceToPlayerToStartFlying && !isFlying)
         {
             StartFlying();
         }

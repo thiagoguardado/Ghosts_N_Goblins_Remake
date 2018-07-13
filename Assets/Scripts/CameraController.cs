@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,10 +29,10 @@ public class CameraController : SingletonAwakeGeneric<CameraController> {
         {
             if (cameraBounds.BoundsWithOffset.Contains(sceneActivatableObjects[i].transform.position))
             {
-                sceneActivatableObjects[i].gameObject.SetActive(true);
+                sceneActivatableObjects[i].SendActivationOrder();
             }
             else {
-                sceneActivatableObjects[i].gameObject.SetActive(false);
+                sceneActivatableObjects[i].SendDeactivationOrder();
             }
         }
     }

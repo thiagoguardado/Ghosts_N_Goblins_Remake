@@ -149,9 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c81f52a5b54eb4fb0fc46874a34120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayScore: 0
   spriteDirection: {fileID: 114227628532341264}
   health: 1
+  displayScore: 0
+  size: 1
   damageOnHit: 1
   maxNumberOfCollisionsPerFrame: 5
   enemyCollider: {fileID: 61566705712122290}

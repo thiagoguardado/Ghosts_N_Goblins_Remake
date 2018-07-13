@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     public SpriteDirection spriteDirection;
     private bool isOnVictoryPose = false;
     private bool isFrog = false;
+    [HideInInspector] public bool invincibleHack = false;
 
     // encapsulated variables
     public float HorizontalAxis
@@ -395,11 +396,14 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     {
         if (hitDamage > 0)
         {
-            if (isReceivingDamage)
+            if (!invincibleHack)
             {
-                float pushDirection = objectPosition.x >= transform.position.x ? -1 : 1;
-                ReceiveDamage(pushDirection);
+                if (isReceivingDamage && LevelController.Instance.InLevel)
+                {
+                    float pushDirection = objectPosition.x >= transform.position.x ? -1 : 1;
+                    ReceiveDamage(pushDirection);
 
+                }
             }
         }
 
