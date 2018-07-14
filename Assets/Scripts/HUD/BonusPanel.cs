@@ -23,7 +23,7 @@ public class BonusPanel : HUDStringDisplay
 
     private void DisplayBonus(Vector3 position, int bonusValue)
     {
-        GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(position);
+        GetComponent<RectTransform>().position = Camera.main.worldToCameraMatrix * position;
 
         objectsParent.gameObject.SetActive(true);
 

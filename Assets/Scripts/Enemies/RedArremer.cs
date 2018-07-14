@@ -49,11 +49,6 @@ public class RedArremer : Enemy
         groundedCheck = GetComponent<GroundedCheck>();
         floorChecker = GetComponent<FloorChecker>();
 
-        // configure grounding contact filter
-        floorContactFilter = new ContactFilter2D();
-        floorContactFilter.layerMask = 1 << LayerMask.NameToLayer("Floor");
-        overlappingColliders = new Collider2D[5];
-
     }
 
     protected override void Update()

@@ -6307,7 +6307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 1637877261045534, guid: 0fb698408422e8e4aaee281edf21fd81,
     type: 2}
-  collider: {fileID: 61092748753458774}
+  thisCollider: {fileID: 61092748753458774}
   minBetweenSpawnTime: 2
   maxBetweenSpawnTime: 5
 --- !u!114 &114560838731816098
@@ -6323,7 +6323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 1081062317513812, guid: c933abd828df34b68a36212359f5c9bb,
     type: 2}
-  collider: {fileID: 61508567072480500}
+  thisCollider: {fileID: 61508567072480500}
   minBetweenSpawnTime: 2
   maxBetweenSpawnTime: 4
   spawnableArea: {fileID: 61899078846140792}
@@ -6452,7 +6452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 1637877261045534, guid: 0fb698408422e8e4aaee281edf21fd81,
     type: 2}
-  collider: {fileID: 61001527353703174}
+  thisCollider: {fileID: 61001527353703174}
   minBetweenSpawnTime: 1
   maxBetweenSpawnTime: 2.5
 --- !u!114 &114800089574314914

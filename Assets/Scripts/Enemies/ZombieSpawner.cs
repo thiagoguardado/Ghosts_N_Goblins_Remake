@@ -10,8 +10,8 @@ public class ZombieSpawner : EnemySpawner
 
     void Awake()
     {
-        minColliderX = (collider.bounds.center - collider.bounds.extents).x;
-        maxColliderX = (collider.bounds.center + collider.bounds.extents).x;
+        minColliderX = (thisCollider.bounds.center - thisCollider.bounds.extents).x;
+        maxColliderX = (thisCollider.bounds.center + thisCollider.bounds.extents).x;
     }
 
     protected override Vector3 SelectPointToSpawn()

@@ -1121,7 +1121,6 @@ public class PlayerFSM : MonoBehaviour {
             // move and change direction
             owner.TranslateIntention(TranslatingAxis.Horizontal, owner.horizontalAxis * owner.horizontalSpeed);
             owner.CheckDirection();
-
         }
     }
 
@@ -1129,7 +1128,6 @@ public class PlayerFSM : MonoBehaviour {
     {
 
         private float timer = 0f;
-        private bool wasRunning;
         private float runningHorizontalAxisValue;
 
         public PlayerState_FrogJumping(PlayerFSM owner, PlayerFSMState state) : base(owner, state)
@@ -1171,7 +1169,6 @@ public class PlayerFSM : MonoBehaviour {
 
             // save horizontal axis value to use if jump running
             runningHorizontalAxisValue = owner.horizontalAxis;
-            wasRunning = owner.isRunning;
             timer = 0f;
 
             // notify event

@@ -62,6 +62,7 @@ public static class GameEvents
 
     public static class Level
     {
+        public static Action<PlayerID> PlayerStarted;
         public static Action LevelStarted;
         public static Action PlayerReachedEnd;
         public static Action TimerStarted;

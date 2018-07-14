@@ -7,7 +7,6 @@ public class MagicianSpell : MonoBehaviour {
     [Header("MagicianSpell")]
     public SpriteDirection spriteDirection;
     public float speed;
-    public Collider2D collider;
 
     private void Update()
     {

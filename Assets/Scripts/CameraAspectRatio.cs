@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[ExecuteInEditMode]
 public class CameraAspectRatio : MonoBehaviour {
 
     float width;
     float height;
+    float targetaspect = 256.0f / 224.0f;
 
     void Start()
     {
@@ -37,44 +38,27 @@ public class CameraAspectRatio : MonoBehaviour {
 
     void ChangeAspect()
     {
-        // set the desired aspect ratio (the values in this example are
-        // hard-coded for 16:9, but you could make them into public
-        // variables instead so you can set them at design time)
-        float targetaspect = 256.0f / 224.0f;
-
-        // determine the game window's current aspect ratio
-        float windowaspect = width / height;
-
-        // current viewport height should be scaled by this amount
-        float scaleheight = windowaspect / targetaspect;
-
-        // obtain camera component so we can modify its viewport
+        float currentAspect = width / height;
+        float factor = currentAspect / targetaspect;
         Camera camera = GetComponent<Camera>();
+        Rect rect = camera.rect;
 
-        // if scaled height is less than current height, add letterbox
-        if (scaleheight < 1.0f)
+        if (factor < 1.0f)
         {
-            Rect rect = camera.rect;
-
-            rect.width = 1.0f;
-            rect.height = scaleheight;
+            rect.width = 1f;
+            rect.height = factor;
             rect.x = 0;
-            rect.y = (1.0f - scaleheight) / 2.0f;
-
-            camera.rect = rect;
+            rect.y = (1f - factor) / 2f;
+            
         }
-        else // add pillarbox
+        else 
         {
-            float scalewidth = 1.0f / scaleheight;
-
-            Rect rect = camera.rect;
-
-            rect.width = scalewidth;
-            rect.height = 1.0f;
-            rect.x = (1.0f - scalewidth) / 2.0f;
+            rect.width = 1f/factor ;
+            rect.height = 1f;
+            rect.x = (1f - 1f / factor) / 2f;
             rect.y = 0;
-
-            camera.rect = rect;
         }
+
+        camera.rect = rect;
     }
 }

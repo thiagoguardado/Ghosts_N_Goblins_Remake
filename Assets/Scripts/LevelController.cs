@@ -18,7 +18,6 @@ public class LevelController: MonoBehaviour
             return inLevel;
         }
     }
-    private bool levelStarted = false;
 
     public int Lifes
     {
@@ -44,7 +43,7 @@ public class LevelController: MonoBehaviour
 
     // timer
     private float timer = 0f;
-    private Coroutine timerRunning;
+    //private Coroutine timerRunning;
     public float lastingTimeToWarn;
     private bool isWarningTimer = false;
 
@@ -113,11 +112,15 @@ public class LevelController: MonoBehaviour
         isWarningTimer = false;
         timer = GameManager.Instance.defaultLevelTime;
 
-        if(countTime)
-            timerRunning = StartCoroutine(CountTimer());
+        if (countTime)
+        {
+            //timerRunning = StartCoroutine(CountTimer());
+            StartCoroutine(CountTimer());
+        }
 
         // trigger event
         GameEvents.Level.LevelStarted.SafeCall();
+        GameEvents.Level.PlayerStarted.SafeCall(GameManager.Instance.currentPlayer.player);
 
     }
 

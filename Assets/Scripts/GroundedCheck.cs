@@ -9,7 +9,7 @@ public class GroundedCheck : MonoBehaviour {
     private Collider2D[] overlappingColliders;
     public bool isGrounded { get; private set; }
     public Collider2D objectCollider;
-    private int maxNumberOfOverlappingColliders;
+    private int maxNumberOfOverlappingColliders = 5;
     public float rayLenght;
     private RaycastHit2D raycastHit;
     public Vector2 groundindPoint { get; private set; }

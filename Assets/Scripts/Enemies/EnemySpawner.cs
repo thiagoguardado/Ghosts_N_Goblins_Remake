@@ -8,7 +8,7 @@ public abstract class EnemySpawner : MonoBehaviour {
     public GameObject objectPrefab;
 
     [Header("Spawning Area and Time")]
-    public Collider2D collider;
+    public Collider2D thisCollider;
     public float minBetweenSpawnTime = 2f;
     public float maxBetweenSpawnTime = 4f;
     private float timer = 0f;
@@ -21,7 +21,7 @@ public abstract class EnemySpawner : MonoBehaviour {
 
     protected virtual void Update()
     {
-        if (collider.OverlapPoint(PlayerController.Instance.transform.position))
+        if (thisCollider.OverlapPoint(PlayerController.Instance.transform.position))
         {
             UpdateTimer();
         }

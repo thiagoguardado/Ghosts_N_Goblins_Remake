@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraBounds : MonoBehaviour
 {
 
-    private Rect bounds;
-    private Rect boundsWithOffset;
+    private Rect bounds = new Rect();
+    private Rect boundsWithOffset = new Rect();
     public float externalBoundsSizeMultiplier;
     public Color internalBoundsColor;
     public Color externalBoundsColor;

@@ -21,8 +21,6 @@ public class PlayerAnimationController : MonoBehaviour {
     [Header("Animator Control")]
     public Animator playerHumanAnimator; //animator attached to player
     public Animator playerFrogAnimator;
-    private SpriteRenderer playerHumanSpriteRenderer;
-    private SpriteRenderer playerFrogSpriteRenderer;
 
     public bool isRunning = false;
     public bool isCrouched = false;
@@ -58,9 +56,6 @@ public class PlayerAnimationController : MonoBehaviour {
     {
 
         playerController = GetComponent<PlayerController>();
-
-        playerFrogSpriteRenderer = playerFrogAnimator.GetComponent<SpriteRenderer>();
-        playerHumanSpriteRenderer = playerHumanAnimator.GetComponent<SpriteRenderer>();
 
         previousPlayerArmor = playerController.currentArmorStatus;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,18 +18,28 @@ public class Unicorn : Enemy {
             return gc.isGrounded;
         }
     }
+    public float timeGroundedToShoot;
+    public Transform shootPosition;
+    public UnicornProjectile projectile;
 
     [Header("Unicorn Jumping")]
     public float jumpForce;
+    public float diagonalForceHorizontalDistanceFactor;
     public float minJumpDuration = 0.2f;
     public bool jump;
+
+    [Header("Dashing")]
+    public float dashSpeedMultiplier;
+    public float dashMaxDuration;
+    public bool hitSomething { get; private set; }
+    public float minDistanceToDahsAndJump;
 
     [Header("References")]
     public Transform scoreAnchor;
     public Animator animator;
+    
 
-
-	protected override void Awake()
+    protected override void Awake()
 	{
         base.Awake();
 
@@ -58,18 +69,54 @@ public class Unicorn : Enemy {
     {
         transform.Translate(spriteDirection.WorldLookingDirection * walkingSpeed * Time.deltaTime);
         animator.SetBool("isWalking", true);
+    }
 
+    public void Dash()
+    {
+        transform.Translate(spriteDirection.WorldLookingDirection * walkingSpeed * dashSpeedMultiplier * Time.deltaTime);
+        animator.SetBool("isWalking", true);
+        animator.SetFloat("walkingSpeed", dashSpeedMultiplier);
     }
 
     public void Jump()
     {
-        //rb.velocity = Vector2.up * jumpVelocity;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    public void JumpDiagonal(float distance)
+    {
+        Vector2 dir = new Vector2(diagonalForceHorizontalDistanceFactor * distance * spriteDirection.WorldLookingDirection.x, 1);
+        rb.AddForce(dir * jumpForce, ForceMode2D.Impulse);
     }
 
 
     public void Ground(){
         rb.velocity = Vector2.zero;
+    }
+
+    protected override void HitSomething()
+    {
+        hitSomething = true;
+    }
+
+    public void ResetHitSomethingFlag()
+    {
+        hitSomething = false;
+    }
+
+
+    public void Shoot()
+    {
+
+        // shoot projectile
+        Instantiate(projectile, shootPosition.position, projectile.transform.rotation);
+
+    }
+
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, minDistanceToDahsAndJump);
     }
 
 }

@@ -9,7 +9,9 @@ public class UnicornFSM : FSM<Unicorn> {
 	private void Awake()
     {
         Init(new System.Type[] { typeof(Unicorn_Grounded),
-        typeof(Unicorn_Jumping)}, 
+        typeof(Unicorn_Jumping),
+        typeof(Unicorn_Dash),
+        typeof(Unicorn_JumpingDiagonal)},
              GetComponent<Unicorn>());
 	}
 
@@ -18,6 +20,7 @@ public class UnicornFSM : FSM<Unicorn> {
     {
 
         private float timer = 0f;
+        private bool spitted = false;
 
         public Unicorn_Grounded(FSM<Unicorn> fsm, Unicorn fsm_holder) : base(fsm, fsm_holder)
         {
@@ -25,16 +28,36 @@ public class UnicornFSM : FSM<Unicorn> {
 
         public override void CheckTransition()
         {
+
+            // if player far away : jump to player or dash
+            if (Mathf.Abs(PlayerController.Instance.transform.position.x - fsm_holder.transform.position.x) > fsm_holder.minDistanceToDahsAndJump)
+            {
+                if (Random.value < 0.5f)
+                {
+                    fsm.ChangeState(typeof(Unicorn_JumpingDiagonal));
+                    return;
+                }
+                else {
+                    fsm.ChangeState(typeof(Unicorn_Dash));
+                    return;
+                }
+            }
+            
+
+            // jump or walk
             if (timer >= fsm_holder.timeGroundedBeforeJump)
             {
                 fsm.ChangeState(typeof(Unicorn_Jumping));
+                return;
             }
+
         }
 
         public override void DoBeforeEntering()
         {
             timer = 0f;
-        }
+            spitted = false;
+    }
 
         public override void DoBeforeLeave()
         {
@@ -46,6 +69,12 @@ public class UnicornFSM : FSM<Unicorn> {
             fsm_holder.Walk();
 
             timer += Time.deltaTime;
+
+            if (timer >= fsm_holder.timeGroundedToShoot)
+            {
+                fsm_holder.Shoot();
+            }
+
         }
     }
 
@@ -62,6 +91,7 @@ public class UnicornFSM : FSM<Unicorn> {
             if (fsm_holder.isGrounded && timer >= fsm_holder.minJumpDuration)
             {
                 fsm.ChangeState(typeof(Unicorn_Grounded));
+                return;
             }
         }
 
@@ -84,6 +114,81 @@ public class UnicornFSM : FSM<Unicorn> {
             timer += Time.deltaTime;
         }
     }
+
+    public class Unicorn_JumpingDiagonal : FSMState<Unicorn>
+    {
+        private float timer = 0f;
+
+        public Unicorn_JumpingDiagonal(FSM<Unicorn> fsm, Unicorn fsm_holder) : base(fsm, fsm_holder)
+        {
+        }
+
+        public override void CheckTransition()
+        {
+            if (fsm_holder.isGrounded && timer >= fsm_holder.minJumpDuration)
+            {
+                fsm.ChangeState(typeof(Unicorn_Grounded));
+                return;
+            }
+        }
+
+        public override void DoBeforeEntering()
+        {
+            timer = 0f;
+
+            fsm_holder.animator.SetBool("isJumping", true);
+
+            fsm_holder.JumpDiagonal(Mathf.Abs(PlayerController.Instance.transform.position.x - fsm_holder.transform.position.x));
+        }
+
+        public override void DoBeforeLeave()
+        {
+            fsm_holder.animator.SetBool("isJumping", false);
+        }
+
+        public override void UpdateState()
+        {
+            timer += Time.deltaTime;
+        }
+    }
+
+    public class Unicorn_Dash : FSMState<Unicorn>
+    {
+        float timer = 0f;
+
+        public Unicorn_Dash(FSM<Unicorn> fsm, Unicorn fsm_holder) : base(fsm, fsm_holder)
+        {
+        }
+
+        public override void CheckTransition()
+        {
+            if (fsm_holder.hitSomething || timer >= fsm_holder.dashMaxDuration)
+            {
+                fsm.ChangeState(typeof(Unicorn_Grounded));
+                return;
+            }
+        }
+
+        public override void DoBeforeEntering()
+        {
+            timer = 0f;
+
+            fsm_holder.ResetHitSomethingFlag();
+        }
+
+        public override void DoBeforeLeave()
+        {
+            return;
+        }
+
+        public override void UpdateState()
+        {
+            fsm_holder.Dash();
+
+            timer += Time.deltaTime;
+        }
+    }
+
 
 }
 
