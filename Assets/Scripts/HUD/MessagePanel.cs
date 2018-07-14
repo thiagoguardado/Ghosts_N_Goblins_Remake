@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,12 +20,14 @@ public class MessagePanel : MonoBehaviour {
     {
         GameEvents.Level.PlayerReachedEnd += ShowFinalMessage;
         GameEvents.Level.PlayerStarted += ShowPlayerStartMessage;
+        GameEvents.Level.PlayerGameOver += ShowPlayerGameOverMessage;
     }
 
     private void OnDisable()
     {
         GameEvents.Level.PlayerReachedEnd -= ShowFinalMessage;
         GameEvents.Level.PlayerStarted -= ShowPlayerStartMessage;
+        GameEvents.Level.PlayerGameOver -= ShowPlayerGameOverMessage;
     }
 
 
@@ -36,23 +38,43 @@ public class MessagePanel : MonoBehaviour {
 
     private void ShowPlayerStartMessage(PlayerID playerID)
     {
-        int playerNumber;
-        switch (playerID)
-        {
-            case PlayerID.Player1:
-                playerNumber = 1;
-                break;
-            case PlayerID.Player2:
-                playerNumber = 2;
-                break;
-            default:
-                return;
-        }
+        if (GameManager.Instance.currentGameMode == GameMode.SinglePlayer)
+            return;
+
+        int playerNumber = GetPlayerNumber(playerID);
+
+        if (playerNumber < 0)
+            return;
+
         ShowPanel("PLAYER " + playerNumber.ToString() + " START !", yellowFontDictionary);
 
         this.WaitAndAct(3.0f, () => HidePanel());
     }
 
+    private void ShowPlayerGameOverMessage(PlayerID playerID)
+    {
+        int playerNumber = GetPlayerNumber(playerID);
+
+        if (playerNumber < 0)
+            return;
+
+        ShowPanel("PLAYER " + playerNumber.ToString() + " GAME OVER !", yellowFontDictionary);
+
+        this.WaitAndAct(3.0f, () => HidePanel());
+    }
+
+    private int GetPlayerNumber(PlayerID playerID)
+    {
+        switch (playerID)
+        {
+            case PlayerID.Player1:
+                return 1;
+            case PlayerID.Player2:
+                return 2;
+            default:
+                return 0;
+        }
+    }
 
     private void ShowPanel(string sentence, FontImages fontDictionary)
     {

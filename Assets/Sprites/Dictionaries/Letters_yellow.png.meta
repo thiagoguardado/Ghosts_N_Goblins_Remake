@@ -1,21 +1,28 @@
 fileFormatVersion: 2
-guid: ed24cd61162d8dc4baa17457d0f439ae
-timeCreated: 1527702472
+guid: a47a6bb8d8629bd42961ac9a33e3e7ae
+timeCreated: 1531527814
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: spritesheet_prinprin_0
-    21300002: spritesheet_prinprin_1
-    21300004: spritesheet_prinprin_2
-    21300006: spritesheet_prinprin_3
-    21300008: spritesheet_prinprin_4
-    21300010: spritesheet_prinprin_5
-    21300012: spritesheet_prinprin_6
-    21300014: spritesheet_prinprin_7
-    21300016: spritesheet_prinprin_8
-    21300018: spritesheet_prinprin_9
-    21300020: spritesheet_prinprin_10
-    21300022: spritesheet_prinprin_11
+    21300000: B
+    21300002: O
+    21300004: N
+    21300006: U
+    21300008: S
+    21300010: P
+    21300012: L
+    21300014: A
+    21300016: Y
+    21300018: E
+    21300020: R
+    21300022: 1
+    21300024: 2
+    21300026: T
+    21300028: Letters_yellow_0
+    21300030: '!'
+    21300032: G
+    21300034: M
+    21300036: V
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -88,6 +95,16 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   - buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -112,169 +129,267 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet_prinprin_0
+      name: B
       rect:
         serializedVersion: 2
-        x: 22
-        y: 2
-        width: 16
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 162
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_1
+      name: O
       rect:
         serializedVersion: 2
-        x: 40
-        y: 2
-        width: 16
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 279
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_2
+      name: N
       rect:
         serializedVersion: 2
-        x: 58
-        y: 2
-        width: 16
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 270
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_3
+      name: U
       rect:
         serializedVersion: 2
-        x: 76
-        y: 2
-        width: 16
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 333
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_4
+      name: S
       rect:
         serializedVersion: 2
-        x: 93
-        y: 2
-        width: 16
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 315
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_5
+      name: P
       rect:
         serializedVersion: 2
-        x: 111
-        y: 2
-        width: 23
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 288
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_6
+      name: L
       rect:
         serializedVersion: 2
-        x: 136
-        y: 2
-        width: 23
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 252
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_7
+      name: A
       rect:
         serializedVersion: 2
-        x: 161
-        y: 2
-        width: 16
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 153
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_8
+      name: Y
       rect:
         serializedVersion: 2
-        x: 178
-        y: 2
-        width: 16
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 369
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_9
+      name: E
       rect:
         serializedVersion: 2
-        x: 196
-        y: 2
-        width: 16
-        height: 30
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 189
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_10
+      name: R
       rect:
         serializedVersion: 2
-        x: 214
-        y: 2
-        width: 16
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 306
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spritesheet_prinprin_11
+      name: 1
       rect:
         serializedVersion: 2
-        x: 232
-        y: 2
-        width: 16
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 9
+        y: 18
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 18
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: T
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Letters_yellow_0
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 19
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: '!'
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 18
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: G
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: M
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: V
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -36,3 +36,11 @@ MonoBehaviour:
     sprite: {fileID: 21300022, guid: a47a6bb8d8629bd42961ac9a33e3e7ae, type: 3}
   - character: 50
     sprite: {fileID: 21300024, guid: a47a6bb8d8629bd42961ac9a33e3e7ae, type: 3}
+  - character: 71
+    sprite: {fileID: 21300032, guid: a47a6bb8d8629bd42961ac9a33e3e7ae, type: 3}
+  - character: 77
+    sprite: {fileID: 21300034, guid: a47a6bb8d8629bd42961ac9a33e3e7ae, type: 3}
+  - character: 79
+    sprite: {fileID: 21300002, guid: a47a6bb8d8629bd42961ac9a33e3e7ae, type: 3}
+  - character: 86
+    sprite: {fileID: 21300036, guid: a47a6bb8d8629bd42961ac9a33e3e7ae, type: 3}

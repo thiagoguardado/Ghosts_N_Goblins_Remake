@@ -411,7 +411,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905705391459602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.89, y: -0.723, z: 0}
+  m_LocalPosition: {x: -17.041, y: -0.721, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4821338618724702}
@@ -631,6 +631,7 @@ MonoBehaviour:
   breakableArmor: {fileID: 114597777754878852}
   frogDuration: 5
   spriteDirection: {fileID: 114467915770609404}
+  invincibleHack: 0
 --- !u!114 &114467915770609404
 MonoBehaviour:
   m_ObjectHideFlags: 1
