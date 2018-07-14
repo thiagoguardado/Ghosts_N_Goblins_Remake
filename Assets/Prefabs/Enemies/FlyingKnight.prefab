@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114233548428989064}
   - component: {fileID: 114416894054036488}
   - component: {fileID: 114453445578630684}
+  - component: {fileID: 114709123853113410}
   m_Layer: 12
   m_Name: FlyingKnight
   m_TagString: Untagged
@@ -353,11 +354,6 @@ MonoBehaviour:
   displayScore: 0
   size: 1
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61481372832394030}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 114144234807581840, guid: fea66d8fe46ae494ebcb99ccfdca5998,
     type: 2}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
@@ -378,6 +374,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd81b93c1a17b4a71a471fbec1307704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114709123853113410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466036071909524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61481372832394030}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!212 &212418597781539272
 SpriteRenderer:
   m_ObjectHideFlags: 1

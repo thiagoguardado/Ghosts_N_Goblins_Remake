@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95963076143634960}
   - component: {fileID: 58852251503175544}
   - component: {fileID: 114563063410085240}
-  m_Layer: 12
+  m_Layer: 16
   m_Name: PlantProjectileSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,9 +39,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4454875466373190}
   - component: {fileID: 50816698523748408}
-  - component: {fileID: 114251931727813320}
   - component: {fileID: 114569887202841632}
-  m_Layer: 12
+  - component: {fileID: 114632948753322194}
+  - component: {fileID: 114120557927170018}
+  m_Layer: 16
   m_Name: PlantProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +128,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114251931727813320
+--- !u!114 &114120557927170018
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -135,24 +136,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1755424704620948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa0ae8ae3cd4e054e9bcba5f37953f5f, type: 3}
+  m_Script: {fileID: 11500000, guid: addfa6921b7e157488c5a935bc087503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteDirection: {fileID: 114563063410085240}
-  health: 999999
-  displayScore: 0
-  size: 2
-  damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 58852251503175544}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  hitSpriteAnimation: {fileID: 0}
-  destroySpriteAnimation: {fileID: 0}
-  dropPotProbability: 0
   speed: 0.8
-  direction: {x: 0, y: 0, z: 0}
+  spriteDirection: {fileID: 114563063410085240}
+  damageOnHit: 1
+  destroyWhenHit: 1
 --- !u!114 &114563063410085240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,6 +166,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f077afbd204d40a8b614ead8db8e65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114632948753322194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755424704620948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 58852251503175544}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 1
 --- !u!212 &212902199318848180
 SpriteRenderer:
   m_ObjectHideFlags: 1

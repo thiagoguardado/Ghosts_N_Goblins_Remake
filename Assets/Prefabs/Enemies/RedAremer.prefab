@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114408712744975600}
   - component: {fileID: 114181917733666184}
   - component: {fileID: 114630271372759102}
+  - component: {fileID: 114530381507371000}
   m_Layer: 12
   m_Name: RedAremer
   m_TagString: Untagged
@@ -229,6 +230,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 200
+--- !u!114 &114530381507371000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151066623856918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61302617322941162}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!114 &114630271372759102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,11 +275,6 @@ MonoBehaviour:
   displayScore: 0
   size: 1
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61302617322941162}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 114428617497553218, guid: 8dbbbd034176e9448b6da8a05fa153f9,
     type: 2}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,

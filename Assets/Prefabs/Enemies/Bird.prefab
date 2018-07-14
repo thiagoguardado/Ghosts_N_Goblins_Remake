@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114161604282047412}
   - component: {fileID: 114330246664252376}
   - component: {fileID: 114639780749441946}
+  - component: {fileID: 114292715521185808}
   m_Layer: 12
   m_Name: Bird
   m_TagString: Untagged
@@ -163,6 +164,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLookingDirection: 1
+--- !u!114 &114292715521185808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346112425454154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61125722369177434}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!114 &114310991074273822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,11 +196,6 @@ MonoBehaviour:
   displayScore: 0
   size: 2
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61125722369177434}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114534560851743402, guid: e19fca69d3dfd9643948ef7605304043,
     type: 2}

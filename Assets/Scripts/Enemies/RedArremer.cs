@@ -105,8 +105,6 @@ public class RedArremer : Enemy
         transform.position += direction * speed * Time.deltaTime;
     }
 
-
-
 	public override void Hit(int damageTaken, Vector2 hitPoint, LookingDirection hitDirection)
 	{
         base.Hit(damageTaken, hitPoint, hitDirection);

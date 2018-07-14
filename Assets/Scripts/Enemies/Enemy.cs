@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ObjectScore))]
+[RequireComponent(typeof(CheckEnemyOverlapCollision))]
 public class Enemy : MonoBehaviour, IWeaponHittable
 {
 
@@ -17,11 +18,13 @@ public class Enemy : MonoBehaviour, IWeaponHittable
 
     [Header("Check Overlapping Collision")]
     public int damageOnHit;
-    public int maxNumberOfCollisionsPerFrame = 10;
-    public Collider2D enemyCollider;
-    private Collider2D[] overlapingColliders;
-    private ContactFilter2D contactFilter;
-    public LayerMask overlappingCollidingLayers;
+    protected CheckEnemyOverlapCollision checkCollision;
+    //public int maxNumberOfCollisionsPerFrame = 10;
+    //public Collider2D enemyCollider;
+    //public LayerMask overlappingCollidingLayers;
+    //private Collider2D[] overlapingColliders;
+    //private ContactFilter2D contactFilter;
+
 
     [Header("VFX")]
     public VFXSpriteAnimation hitSpriteAnimation;
@@ -33,49 +36,33 @@ public class Enemy : MonoBehaviour, IWeaponHittable
 
     protected virtual void Awake()
     {
-        contactFilter = new ContactFilter2D();
-        contactFilter.useLayerMask = true;
-        contactFilter.layerMask = overlappingCollidingLayers;
+        checkCollision = GetComponent<CheckEnemyOverlapCollision>();
 
-        overlapingColliders = new Collider2D[maxNumberOfCollisionsPerFrame];
+        checkCollision.HitSomething += HitSomething;
+    }
+
+
+    protected virtual void OnDestroy()
+    {
+        checkCollision.HitSomething -= HitSomething;
     }
 
 
     protected virtual void Start()
     {
-
+        return;
     }
 
 
     protected virtual void Update()
     {
-
-        CheckCollidersOverlap();
-
-    }
-
-    private void CheckCollidersOverlap()
-    {
-        int collisionsCount = enemyCollider.OverlapCollider(contactFilter, overlapingColliders);
-        for (int i = 0; i < collisionsCount; i++)
-        {
-            if (overlapingColliders[i] != null)
-            {
-                IEnemyHittable enemyHittable = overlapingColliders[i].attachedRigidbody.GetComponent<IEnemyHittable>();
-                if (enemyHittable != null)
-                {
-                    enemyHittable.Hit(damageOnHit, transform.position);
-                    HitSomething();
-                }
-
-            }
-        }
-
-    }
-
-    protected virtual void HitSomething()
-    {
         return;
+    }
+
+
+    protected virtual void HitSomething(IEnemyHittable objectHit)
+    {
+        objectHit.Hit(damageOnHit, transform.position);
     }
 
     protected virtual void PlayHitAnimation(VFXSpriteAnimation hitAnimation, Vector2 hitPoint, Vector3 enemyPosition)
@@ -125,7 +112,7 @@ public class Enemy : MonoBehaviour, IWeaponHittable
         // add score to game controller
         if (displayScore)
         {
-            GetComponent<ObjectScore>().IncrementGameScore(enemyCollider.bounds.center);
+            GetComponent<ObjectScore>().IncrementGameScore(checkCollision.thisCollider.bounds.center);
         }
         else
         {

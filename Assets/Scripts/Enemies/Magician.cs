@@ -15,7 +15,7 @@ public class Magician : Enemy {
     {
         base.Awake();
 
-        enemyCollider.enabled = false;
+        checkCollision.thisCollider.enabled = false;
     }
 
     // Use this for initialization
@@ -38,7 +38,7 @@ public class Magician : Enemy {
         animator.SetTrigger("Open");
 
         // enable collider
-        enemyCollider.enabled = false;
+        checkCollision.thisCollider.enabled = false;
 
         // cast spell
         CastSpell();
@@ -50,7 +50,7 @@ public class Magician : Enemy {
 
     private void CastSpell()
     {
-        MagicianSpell spell = Instantiate(spellPrefab, enemyCollider.bounds.center, spellPrefab.transform.rotation);
+        MagicianSpell spell = Instantiate(spellPrefab, checkCollision.thisCollider.bounds.center, spellPrefab.transform.rotation);
         spell.spriteDirection.FaceDirection(spriteDirection.lookingDirection);
     }
 }

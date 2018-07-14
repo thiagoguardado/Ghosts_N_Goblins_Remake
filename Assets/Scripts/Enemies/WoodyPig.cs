@@ -15,7 +15,7 @@ public class WoodyPig : Enemy {
     public float turningYMovDuration;
 
     [Header("Throwing")]
-    public WoodyPigProjectile projectilePrefab;
+    public Projectile projectilePrefab;
     public Transform projectileShootingAnchor;
     private bool isPlayerUnder = false;
     public float rayCastLenght;
@@ -121,15 +121,16 @@ public class WoodyPig : Enemy {
 
     public void ShootHorizontal()
     {
-        WoodyPigProjectile projectil = Instantiate(projectilePrefab, projectileShootingAnchor.position, Quaternion.identity);
-        projectil.Init(spriteDirection.lookingDirection);
+        Projectile projectil = Instantiate(projectilePrefab, projectileShootingAnchor.position, Quaternion.identity);
+        projectil.Init(spriteDirection.WorldLookingDirection, spriteDirection.lookingDirection);
         animator.SetTrigger("Shoot");
     }
 
     public void ShootVertical()
     {
-        WoodyPigProjectile projectil = Instantiate(projectilePrefab, projectileShootingAnchor.position, Quaternion.identity);
-        projectil.Init(LookingDirection.Down);
+        Projectile projectil = Instantiate(projectilePrefab, projectileShootingAnchor.position, Quaternion.identity);
+        projectil.Init(Vector3.down, LookingDirection.Down);
+        projectil.transform.rotation = Quaternion.Euler(0, 0, 90);
         animator.SetTrigger("Shoot");
     }
 

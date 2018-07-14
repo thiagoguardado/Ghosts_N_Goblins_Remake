@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114291005595547018}
   - component: {fileID: 114728852476913098}
   - component: {fileID: 114341820069429964}
+  - component: {fileID: 114741898673496596}
   m_Layer: 12
   m_Name: WoodyPig
   m_TagString: Untagged
@@ -183,11 +184,6 @@ MonoBehaviour:
   displayScore: 0
   size: 1
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61835753240982174}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
     type: 2}
@@ -198,7 +194,7 @@ MonoBehaviour:
   turn: 0
   turningYMovSpeed: 0.2
   turningYMovDuration: 0.5
-  projectilePrefab: {fileID: 114757117422177518, guid: 5db6ebaa662d046bfa9ad610b93367ff,
+  projectilePrefab: {fileID: 114676979843080558, guid: 5db6ebaa662d046bfa9ad610b93367ff,
     type: 2}
   projectileShootingAnchor: {fileID: 4406637090284716}
   rayCastLenght: 1.28
@@ -227,6 +223,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4ac374ffaa34fc2af31344795a6d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114741898673496596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1081062317513812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61835753240982174}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!114 &114804860052526520
 MonoBehaviour:
   m_ObjectHideFlags: 1

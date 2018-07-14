@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 50453880854210698}
   - component: {fileID: 114050672132118910}
   - component: {fileID: 114342257465012292}
+  - component: {fileID: 114547926726554882}
   m_Layer: 12
   m_Name: Magician
   m_TagString: Untagged
@@ -154,11 +155,6 @@ MonoBehaviour:
   displayScore: 0
   size: 1
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61566705712122290}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
     type: 2}
@@ -204,6 +200,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteDirection: {fileID: 114227628532341264}
+--- !u!114 &114547926726554882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743546585456530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61566705712122290}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!212 &212258510240474388
 SpriteRenderer:
   m_ObjectHideFlags: 1

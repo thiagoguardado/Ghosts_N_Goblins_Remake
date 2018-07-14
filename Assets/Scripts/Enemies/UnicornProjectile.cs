@@ -1,5 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UnicornProjectile : Enemy
@@ -7,13 +5,6 @@ public class UnicornProjectile : Enemy
 
     public float speed;
     public Vector3 direction;
-
-    override protected void Start()
-    {
-        base.Start();
-
-        //spriteDirection.FaceDirection(LookAtPlayer);
-    }
 
     protected override void Update()
     {

@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114197990243439542}
   - component: {fileID: 114546873755062816}
   - component: {fileID: 114373563380165228}
+  - component: {fileID: 114992464268814770}
   m_Layer: 12
   m_Name: Plant
   m_TagString: Untagged
@@ -231,21 +232,32 @@ MonoBehaviour:
   displayScore: 0
   size: 1
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61866175863794590}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 6e14b566bb493154c90875ca3a0e87dc,
     type: 2}
   dropPotProbability: 0.2
   rangeRadious: 1.5
-  projectilePrefab: {fileID: 114251931727813320, guid: 87139a9fed2128b4bb0831b7cdeb3a24,
+  projectilePrefab: {fileID: 114120557927170018, guid: 87139a9fed2128b4bb0831b7cdeb3a24,
     type: 2}
   projectileInstantiationAnchor: {fileID: 4290973926885634}
   timeBetweenSpits: 3
   animator: {fileID: 95740494241400442}
+--- !u!114 &114992464268814770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949218409986668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61866175863794590}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!212 &212221896796272312
 SpriteRenderer:
   m_ObjectHideFlags: 1

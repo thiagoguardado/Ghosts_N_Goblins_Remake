@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class UnicornFSM : FSM<Unicorn> {
     {
 
         private float timer = 0f;
-        private bool spitted = false;
+        private bool alreadyShot = false;
 
         public Unicorn_Grounded(FSM<Unicorn> fsm, Unicorn fsm_holder) : base(fsm, fsm_holder)
         {
@@ -28,7 +28,6 @@ public class UnicornFSM : FSM<Unicorn> {
 
         public override void CheckTransition()
         {
-
             // if player far away : jump to player or dash
             if (Mathf.Abs(PlayerController.Instance.transform.position.x - fsm_holder.transform.position.x) > fsm_holder.minDistanceToDahsAndJump)
             {
@@ -56,8 +55,8 @@ public class UnicornFSM : FSM<Unicorn> {
         public override void DoBeforeEntering()
         {
             timer = 0f;
-            spitted = false;
-    }
+            alreadyShot = false;
+        }
 
         public override void DoBeforeLeave()
         {
@@ -70,10 +69,17 @@ public class UnicornFSM : FSM<Unicorn> {
 
             timer += Time.deltaTime;
 
-            if (timer >= fsm_holder.timeGroundedToShoot)
+            if (!alreadyShot && timer >= fsm_holder.timeGroundedToShoot)
             {
-                fsm_holder.Shoot();
+                alreadyShot = true;
+
+                if (Random.value < fsm_holder.shotProbability)
+                {
+                    fsm_holder.Shoot();
+                }
             }
+
+            fsm_holder.spriteDirection.TurnToPlayer();
 
         }
     }
@@ -90,6 +96,7 @@ public class UnicornFSM : FSM<Unicorn> {
         {
             if (fsm_holder.isGrounded && timer >= fsm_holder.minJumpDuration)
             {
+                fsm_holder.Ground(fsm_holder.groundedCheck.groundindPoint);
                 fsm.ChangeState(typeof(Unicorn_Grounded));
                 return;
             }
@@ -112,6 +119,8 @@ public class UnicornFSM : FSM<Unicorn> {
         public override void UpdateState()
         {
             timer += Time.deltaTime;
+
+            fsm_holder.AddGravity();
         }
     }
 
@@ -127,6 +136,7 @@ public class UnicornFSM : FSM<Unicorn> {
         {
             if (fsm_holder.isGrounded && timer >= fsm_holder.minJumpDuration)
             {
+                fsm_holder.Ground(fsm_holder.groundedCheck.groundindPoint);
                 fsm.ChangeState(typeof(Unicorn_Grounded));
                 return;
             }
@@ -149,6 +159,8 @@ public class UnicornFSM : FSM<Unicorn> {
         public override void UpdateState()
         {
             timer += Time.deltaTime;
+
+            fsm_holder.AddGravity();
         }
     }
 

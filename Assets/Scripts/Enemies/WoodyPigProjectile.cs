@@ -1,5 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WoodyPigProjectile : Enemy {
@@ -23,9 +21,9 @@ public class WoodyPigProjectile : Enemy {
         spriteDirection.FaceDirection(lookingDirection);
     }
 
-	protected override void HitSomething()
+	protected override void HitSomething(IEnemyHittable objectHit)
 	{
-		base.HitSomething();
+		base.HitSomething(objectHit);
 
         // kill object
         Destroy(gameObject);

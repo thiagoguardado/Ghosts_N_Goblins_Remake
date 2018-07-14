@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class Plant : Enemy
 
     [Header("Projectile")]
     public float rangeRadious;
-    public PlantProjectile projectilePrefab;
+    public Projectile projectilePrefab;
     public Transform projectileInstantiationAnchor;
     public float timeBetweenSpits;
     private float timer;
@@ -48,9 +48,9 @@ public class Plant : Enemy
 
     private void SpitProjectile()
     {
-        PlantProjectile projectile = Instantiate(projectilePrefab, projectileInstantiationAnchor.position, Quaternion.identity);
+        Projectile projectile = Instantiate(projectilePrefab, projectileInstantiationAnchor.position, Quaternion.identity);
         Vector2 shootDirection = playerInRange.bounds.center - projectileInstantiationAnchor.position;
-        projectile.Init(shootDirection);
+        projectile.Init(shootDirection, spriteDirection.lookingDirection);
 
         animator.SetTrigger("Spit");
     }

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114809428248723260}
   - component: {fileID: 114314757690846566}
   - component: {fileID: 114992136988260622}
+  - component: {fileID: 114297848325309156}
   m_Layer: 12
   m_Name: Unicorn
   m_TagString: Untagged
@@ -175,7 +176,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127533519724640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.633, y: -0.6867165, z: 0}
+  m_LocalPosition: {x: -15.352, y: -0.72699624, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4648321156313288}
@@ -203,7 +204,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127533519724640}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -270,6 +271,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLookingDirection: 1
+--- !u!114 &114297848325309156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127533519724640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61790108670562458}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!114 &114314757690846566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,29 +337,27 @@ MonoBehaviour:
   displayScore: 0
   size: 0
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61790108670562458}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 114428617497553218, guid: 8dbbbd034176e9448b6da8a05fa153f9,
     type: 2}
   destroySpriteAnimation: {fileID: 114419141850067080, guid: 9350d017e0e531a46b42f505eca0ca90,
     type: 2}
   dropPotProbability: 0.2
   walkingSpeed: 0.1
-  timeGroundedBeforeJump: 2.5
-  timeGroundedToShoot: 0
+  timeGroundedBeforeJump: 0.2
+  timeGroundedToShoot: 0.1
   shootPosition: {fileID: 4577554018654310}
-  projectile: {fileID: 114603848765742806, guid: 193f6da1ee6eeee498e1e25d7c3d7919,
+  projectile: {fileID: 114007438937160754, guid: 193f6da1ee6eeee498e1e25d7c3d7919,
     type: 2}
+  shotProbability: 0.2
   jumpForce: 3.5
   diagonalForceHorizontalDistanceFactor: 0.3
-  minJumpDuration: 0.5
+  minJumpDuration: 0.1
   jump: 0
-  dashSpeedMultiplier: 2
+  gravityForce: 8
+  dashSpeed: 2
+  dashAnimationSpeedMultiplier: 2
   dashMaxDuration: 1.25
-  minDistanceToDahsAndJump: 1.75
+  minDistanceToDahsAndJump: 1.55
   scoreAnchor: {fileID: 4780104753619662}
   animator: {fileID: 95760322502459426}
 --- !u!114 &114809428248723260

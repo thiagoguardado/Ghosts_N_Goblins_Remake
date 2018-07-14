@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -91,6 +91,12 @@ public class SpriteDirection : MonoBehaviour {
         }
 
     }
+
+    public void TurnToPlayer()
+    {
+        FaceDirection(LookAtPlayer.LookToPlayerDirection(transform.position));
+    }
+
 
     public void FlipDirectionY()
     {

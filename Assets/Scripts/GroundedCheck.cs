@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundedCheck : MonoBehaviour {
 
     // floor detection
-    private ContactFilter2D floorContactFilter;
+    private ContactFilter2D floorContactFilter = new ContactFilter2D();
     private Collider2D[] overlappingColliders;
     public bool isGrounded { get; private set; }
     public Collider2D objectCollider;
@@ -16,7 +16,6 @@ public class GroundedCheck : MonoBehaviour {
 
 	private void Awake()
 	{
-        floorContactFilter = new ContactFilter2D();
         floorContactFilter.layerMask = 1 << LayerMask.NameToLayer("Floor");
         overlappingColliders = new Collider2D[maxNumberOfOverlappingColliders];
 	}
@@ -39,6 +38,7 @@ public class GroundedCheck : MonoBehaviour {
 
 
         // check using overlapping boxes
+        overlappingColliders = new Collider2D[maxNumberOfOverlappingColliders];
         objectCollider.OverlapCollider(floorContactFilter, overlappingColliders);
 
         for (int i = 0; i < overlappingColliders.Length; i++)
@@ -51,6 +51,7 @@ public class GroundedCheck : MonoBehaviour {
             if (overlappingColliders[i].GetComponent<Floor>() != null)
             {
                 isGrounded = true;
+                groundindPoint = transform.position;
                 return;
             }
         }

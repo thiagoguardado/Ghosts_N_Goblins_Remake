@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114384480248026712}
   - component: {fileID: 114934739668792964}
   - component: {fileID: 114481447647661342}
+  - component: {fileID: 114234140912300758}
   m_Layer: 12
   m_Name: Zombie
   m_TagString: Untagged
@@ -180,6 +181,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLookingDirection: 1
+--- !u!114 &114234140912300758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637877261045534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004e290cd9ec9c44398fbd71c8169a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 61448312289218134}
+  overlappingCollidingLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  maxNumberOfCollisionsPerFrame: 2
 --- !u!114 &114347360259090158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,11 +213,6 @@ MonoBehaviour:
   displayScore: 0
   size: 1
   damageOnHit: 1
-  maxNumberOfCollisionsPerFrame: 5
-  enemyCollider: {fileID: 61448312289218134}
-  overlappingCollidingLayers:
-    serializedVersion: 2
-    m_Bits: 512
   hitSpriteAnimation: {fileID: 0}
   destroySpriteAnimation: {fileID: 114534560851743402, guid: e19fca69d3dfd9643948ef7605304043,
     type: 2}
