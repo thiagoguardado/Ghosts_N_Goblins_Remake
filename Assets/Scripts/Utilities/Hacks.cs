@@ -9,9 +9,11 @@ public class Hacks : MonoBehaviour {
     public Text textBox;
     public float timeDisplayed;
     public Animator canvasGroupAnimator;
+    public GameObject solidWaterObject;
 
     private Coroutine fadingCoroutine;
     private bool isInvincible = false;
+    private bool isWaterSolid = false;
 
     private void OnEnable()
     {
@@ -26,7 +28,7 @@ public class Hacks : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             if (LevelController.Instance.InLevel)
             {
@@ -34,7 +36,25 @@ public class Hacks : MonoBehaviour {
             }
         }
 
-	}
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (LevelController.Instance.InLevel)
+            {
+                TriggerSolidWater();
+            }
+        }
+
+    }
+
+    private void TriggerSolidWater()
+    {
+        isWaterSolid = !isWaterSolid;
+
+        SetSolidWater();
+
+        TriggerTextOnScreen("Solid Water: " + (isWaterSolid ? "ON" : "OFF"));
+    }
+
 
     private void TriggerInvincibleMode()
     {
@@ -72,4 +92,10 @@ public class Hacks : MonoBehaviour {
         PlayerController.Instance.invincibleHack = isInvincible;
 
     }
+
+    private void SetSolidWater()
+    {
+        solidWaterObject.SetActive(isWaterSolid);
+    }
+
 }

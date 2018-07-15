@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour {
 
     private const float waitTimeBeforeRetry = 5f;
     private const float waitTimeAfterDeath = 9f;
+    private const float waitTimeAfterWinToReturnToMenu = 4f;
 
     private void OnEnable()
     {
@@ -134,11 +135,11 @@ public class GameManager : MonoBehaviour {
         switch (currentGameMode)
         {
             case GameMode.SinglePlayer:
-                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnSinglePlayer, defaultNextExtraLives));
+                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnSinglePlayer-1, defaultNextExtraLives));
                 break;
             case GameMode.MultiPlayer:
-                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnMultiPlayer, defaultNextExtraLives));
-                players.Add(new Player(PlayerID.Player2, 0, initialLivesOnMultiPlayer, defaultNextExtraLives));
+                players.Add(new Player(PlayerID.Player1, 0, initialLivesOnMultiPlayer-1, defaultNextExtraLives));
+                players.Add(new Player(PlayerID.Player2, 0, initialLivesOnMultiPlayer-1, defaultNextExtraLives));
                 break;
             default:
                 break;
@@ -164,7 +165,7 @@ public class GameManager : MonoBehaviour {
         if (players.Count <= 0)
         {
             // end game
-            ReturnToMenu();
+            ReturnToMenu(waitTimeAfterWinToReturnToMenu);
             return;
         }
 
@@ -202,7 +203,7 @@ public class GameManager : MonoBehaviour {
         if (players.Count <= 0)
         {
             // end game
-            ReturnToMenu();
+            ReturnToMenu(waitTimeAfterDeath);
             return;
         }
 
@@ -224,9 +225,9 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    private void ReturnToMenu()
+    public void ReturnToMenu(float waitTime)
     {
-        MyExtensions.WaitAndAct(this, waitTimeAfterDeath, () => SceneManager.LoadScene("Menu"));
+        MyExtensions.WaitAndAct(this, waitTime, () => SceneManager.LoadScene("Menu"));
     }
 
     private IEnumerator StartLevel(string levelName)

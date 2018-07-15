@@ -12,6 +12,7 @@ public class LevelController: MonoBehaviour
 
     private bool finishedLevelLoading = true;
     private bool inLevel = false;
+    private bool isPaused = false;
 
     public bool FinishedLevelLoading
     {
@@ -96,10 +97,24 @@ public class LevelController: MonoBehaviour
         {
             CheckEnemyWinningCondition();
             CheckTimer();
+            CheckReturnToMenu();
         }
     }
 
- 
+    private void FixedUpdate()
+    {
+        
+    }
+
+    private void CheckReturnToMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EndLevel();
+            GameManager.Instance.ReturnToMenu(0f);
+        }
+    }
+
 
     private void CheckTimer()
     {

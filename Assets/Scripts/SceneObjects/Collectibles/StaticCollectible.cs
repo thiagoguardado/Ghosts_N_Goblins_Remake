@@ -11,7 +11,7 @@ public class StaticCollectible : MonoBehaviour, IPlayerTouchable {
     {
 
         // add score to game controller
-        GetComponent<ObjectScore>().IncrementGameScore(spriteTransform.position);
+        GetComponent<ObjectScore>().IncrementGameScore(spriteTransform.GetComponent<Collider2D>().bounds.center);
 
         // notify event
         GameEvents.Player.PlayerPickedTreasure.SafeCall();
