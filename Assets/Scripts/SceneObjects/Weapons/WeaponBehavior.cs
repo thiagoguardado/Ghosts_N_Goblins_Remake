@@ -16,13 +16,18 @@ public abstract class WeaponBehavior : MonoBehaviour
     protected abstract void Shoot(float shootSpeed, LookingDirection direction);
     protected abstract void CollidedWith(GameObject go, Vector2 onPoint, Vector2 normal);
     protected abstract void TriggeredWith(Collider2D collider);
-    protected abstract void Move();
 
     protected virtual void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         spriteDirection = GetComponentInChildren<SpriteDirection>();
     }
+
+    protected virtual void Update()
+    {
+        return;
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -35,10 +40,7 @@ public abstract class WeaponBehavior : MonoBehaviour
         TriggeredWith(collider);
     }
 
-    private void Update()
-    {
-        Move();
-    }
+
 
     public void Init(float shootSpeed, LookingDirection direction, PlayerController owner)
     {

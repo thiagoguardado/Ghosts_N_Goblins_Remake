@@ -13,8 +13,9 @@ public class GroundedCheck : MonoBehaviour {
     public float rayLenght;
     private RaycastHit2D raycastHit;
     public Vector2 groundindPoint { get; private set; }
+    public Transform groundTransform { get; private set; }
 
-	private void Awake()
+    private void Awake()
 	{
         floorContactFilter.layerMask = 1 << LayerMask.NameToLayer("Floor");
         overlappingColliders = new Collider2D[maxNumberOfOverlappingColliders];
@@ -33,6 +34,7 @@ public class GroundedCheck : MonoBehaviour {
         {
             isGrounded = true;
             groundindPoint = raycastHit.point;
+            groundTransform = raycastHit.transform;
             return;
         }
 
@@ -52,6 +54,7 @@ public class GroundedCheck : MonoBehaviour {
             {
                 isGrounded = true;
                 groundindPoint = transform.position;
+                groundTransform = overlappingColliders[i].transform;
                 return;
             }
         }

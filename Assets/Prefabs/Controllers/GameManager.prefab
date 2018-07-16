@@ -56,4 +56,4 @@ MonoBehaviour:
   defaultTopScore: 10000
   defaultNextExtraLives: 204e000070110100e022020050340300c045040030570500a0680600
   initialLivesOnSinglePlayer: 3
-  initialLivesOnMultiPlayer: 2
+  initialLivesOnMultiPlayer: 3

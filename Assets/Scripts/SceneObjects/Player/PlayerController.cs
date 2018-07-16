@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
 
     [Header("Weapon Throwing")]
+    public float inputPauseWhenThrow;
     [SerializeField] private PlayerWeapon currentWeapon;
     public PlayerWeapon CurrentWeapon
     {
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
 
     // control variables
+    private bool inputPaused = false;
     private bool wasUpdatingInput = false;
     private float horizontalAxis;
     private float verticalAxis;
@@ -69,6 +71,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
     private bool isOnVictoryPose = false;
     private bool isFrog = false;
     [HideInInspector] public bool invincibleHack = false;
+    
 
     // encapsulated variables
     public float HorizontalAxis
@@ -182,7 +185,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     private void ResolveInputs()
     {
-        if (LevelController.Instance.InLevel)
+        if (LevelController.Instance.InLevel && !inputPaused)
         {
             horizontalAxis = Input.GetAxisRaw("Horizontal");
             verticalAxis = Input.GetAxisRaw("Vertical");
@@ -190,7 +193,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
             jumpButton = Input.GetButtonDown("Jump");
             wasUpdatingInput = true;
         }
-        else if(wasUpdatingInput){
+        else if(wasUpdatingInput || inputPaused){
             wasUpdatingInput = false;
             ResetAxis();
             ResetButtons();
@@ -271,6 +274,9 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
         if (currentWeapon.maxWeaponsOnScreen > instantiatedWeapons.Count)
         {
+            //Pause Input briefly
+            inputPaused = true;
+            this.WaitAndAct(inputPauseWhenThrow, () => inputPaused = false);
 
             // notify event
             GameEvents.Player.PlayerShot.SafeCall();

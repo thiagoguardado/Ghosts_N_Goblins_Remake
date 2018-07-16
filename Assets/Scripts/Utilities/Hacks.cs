@@ -10,10 +10,12 @@ public class Hacks : MonoBehaviour {
     public float timeDisplayed;
     public Animator canvasGroupAnimator;
     public GameObject solidWaterObject;
+    public GameObject pauseFadeObject;
 
     private Coroutine fadingCoroutine;
     private bool isInvincible = false;
     private bool isWaterSolid = false;
+    private bool isPaused = false;
 
     private void OnEnable()
     {
@@ -44,6 +46,34 @@ public class Hacks : MonoBehaviour {
             }
         }
 
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (LevelController.Instance.InLevel)
+            {
+                Pause();
+            }
+        }
+
+    }
+
+    private void Pause()
+    {
+        if (!isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0f;
+            
+        }
+        else
+        {
+            isPaused = false;
+            Time.timeScale = 1f;
+        }
+
+        pauseFadeObject.SetActive(isPaused);
+
+        TriggerTextOnScreen("Paused: " + (isPaused ? "ON" : "OFF"));
     }
 
     private void TriggerSolidWater()
@@ -81,7 +111,7 @@ public class Hacks : MonoBehaviour {
 
     IEnumerator WaitAndAct(float duration, Action action)
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
 
         action.Invoke();
     }

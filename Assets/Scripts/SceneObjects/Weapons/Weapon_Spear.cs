@@ -32,12 +32,7 @@ public class Weapon_Spear : WeaponBehavior {
 
         Destroy(gameObject);
     }
-
-    protected override void Move()
-    {
-        return;
-        
-    }
+    
 
     protected override void TriggeredWith(Collider2D collider)
     {

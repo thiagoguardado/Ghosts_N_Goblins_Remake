@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CheckEnemyOverlapCollision))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour, IWeaponHittable {
 
     public float speed;
     private Vector3 moveDirection = Vector3.zero;
@@ -46,6 +46,9 @@ public class Projectile : MonoBehaviour {
             Destroy(gameObject);
     }
 
-
-
+    public void Hit(int damageTaken, Vector2 hitPoint, LookingDirection hitDirection)
+    {
+        if (destroyWhenHit)
+            Destroy(gameObject);
+    }
 }

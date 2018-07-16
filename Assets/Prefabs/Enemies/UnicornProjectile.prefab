@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114007438937160754}
   - component: {fileID: 114387035662567974}
   - component: {fileID: 114998248425956680}
-  m_Layer: 16
+  m_Layer: 18
   m_Name: UnicornProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 58841997423879130}
   - component: {fileID: 114536173383239392}
   - component: {fileID: 95916086854019280}
-  m_Layer: 16
+  m_Layer: 18
   m_Name: UnicornProjectileSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

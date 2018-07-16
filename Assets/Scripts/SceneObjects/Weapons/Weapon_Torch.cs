@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Weapon_Torch : WeaponBehavior {
 
     public float throwingAngle = 45f;
@@ -20,7 +21,9 @@ public class Weapon_Torch : WeaponBehavior {
 
         bigFire.SetActive(false);
         smallFire.SetActive(false);
+        
     }
+    
 
     protected override void Shoot(float shootSpeed, LookingDirection direction)
     {
@@ -46,13 +49,16 @@ public class Weapon_Torch : WeaponBehavior {
         if (go.layer == LayerMask.NameToLayer("Floor"))
         {
             transform.parent = go.transform;
+            transform.position = new Vector3(onPoint.x, onPoint.y, 0);
+            transform.rotation = Quaternion.identity;
             rigidbody2d.velocity = Vector2.zero;
+            rigidbody2d.angularVelocity = 0f;
             rigidbody2d.gravityScale = 0f;
             fireCoroutine = StartCoroutine(FloorFireCoroutine());
             return;
         }
 
-        if(fireCoroutine==null)
+        if (fireCoroutine == null)
             Destroy(gameObject);
 
     }
@@ -82,11 +88,6 @@ public class Weapon_Torch : WeaponBehavior {
             Destroy(gameObject);
         }
 
-    }
-
-    protected override void Move()
-    {
-        return;
     }
 
     protected override void TriggeredWith(Collider2D collider)

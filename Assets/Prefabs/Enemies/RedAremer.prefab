@@ -282,14 +282,14 @@ MonoBehaviour:
   dropPotProbability: 0.2
   animator: {fileID: 95637362851208436}
   maxHeightWhenAscending: 0.7
-  ascendingDescendingVerticalSpeed: 1.75
+  ascendingDescendingVerticalSpeed: 2.25
   ascendingDescendingHorizontalSpeed: 0.5
-  movingOnGroundSpeed: 0.3
+  movingOnGroundSpeed: 0.75
   distanceFromPlayerToStartMovement: 1.5
   timePreparingToFly: 0.25
-  timeFlying: 1
-  timeWalking: 0.3
-  timeGrounded: 2
+  timeFlying: 0.75
+  timeWalking: 0.25
+  timeGrounded: 0.75
   isFlying: 0
   isWalking: 0
 --- !u!212 &212708240953082844

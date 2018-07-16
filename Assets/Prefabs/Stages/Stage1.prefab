@@ -6521,8 +6521,8 @@ MonoBehaviour:
   objectPrefab: {fileID: 1637877261045534, guid: 0fb698408422e8e4aaee281edf21fd81,
     type: 2}
   thisCollider: {fileID: 61092748753458774}
-  minBetweenSpawnTime: 2
-  maxBetweenSpawnTime: 5
+  minBetweenSpawnTime: 1.5
+  maxBetweenSpawnTime: 3
 --- !u!114 &114560838731816098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6666,8 +6666,8 @@ MonoBehaviour:
   objectPrefab: {fileID: 1637877261045534, guid: 0fb698408422e8e4aaee281edf21fd81,
     type: 2}
   thisCollider: {fileID: 61001527353703174}
-  minBetweenSpawnTime: 1
-  maxBetweenSpawnTime: 2.5
+  minBetweenSpawnTime: 0.75
+  maxBetweenSpawnTime: 2
 --- !u!114 &114800089574314914
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114329957181488184}
   - component: {fileID: 114547532899246718}
   - component: {fileID: 114676979843080558}
-  m_Layer: 16
+  m_Layer: 18
   m_Name: WoodyPigProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 212403063713812576}
   - component: {fileID: 61543605639640052}
   - component: {fileID: 114098636224511588}
-  m_Layer: 16
+  m_Layer: 18
   m_Name: WoodyPigProjectileSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
