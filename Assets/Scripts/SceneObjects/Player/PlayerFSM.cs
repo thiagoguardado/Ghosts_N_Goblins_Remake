@@ -196,9 +196,6 @@ public class PlayerFSM : MonoBehaviour {
         FixedTranslate();
     }
 
-
-
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // check if enter ladder
@@ -223,10 +220,9 @@ public class PlayerFSM : MonoBehaviour {
 
     }
 
-
     private void FixedTranslate()
     {
-        if (isTranslating)
+        if (isTranslating && !playerController.movingPaused)
         {
             transform.localPosition += (fixedMoveAxis == TranslatingAxis.Horizontal ? Vector3.right : Vector3.up) * fixedMoveSpeed * Time.fixedDeltaTime;
             //transform.Translate((fixedMoveAxis==TranslatingAxis.Horizontal? Vector3.right:Vector3.up) * fixedMoveSpeed * Time.fixedDeltaTime);
@@ -250,10 +246,6 @@ public class PlayerFSM : MonoBehaviour {
         }
 
     }
-
-
-
-
 
     // walk
     private void TranslateIntention(TranslatingAxis axis, float speed)
@@ -300,15 +292,11 @@ public class PlayerFSM : MonoBehaviour {
     // Throw
     private void Throw(bool isCrouched)
     {
-
         bool shot = isCrouched ? playerController.ShootCrouched() : playerController.ShootStanding();
 
         // update animator
         if (shot)
             animationController.throwSomething = true;
-
-
-
     }
 
     // hit

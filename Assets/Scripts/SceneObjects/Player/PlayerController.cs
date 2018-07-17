@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
 
     // control variables
-    private bool inputPaused = false;
+    public bool movingPaused { get; private set;}
     private bool wasUpdatingInput = false;
     private float horizontalAxis;
     private float verticalAxis;
@@ -143,6 +143,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
         isReceivingDamage = true;
         isOnVictoryPose = false;
+	movingPaused = false;
+
     }
 
 
@@ -185,7 +187,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
 
     private void ResolveInputs()
     {
-        if (LevelController.Instance.InLevel && !inputPaused)
+        if (LevelController.Instance.InLevel)
         {
             horizontalAxis = Input.GetAxisRaw("Horizontal");
             verticalAxis = Input.GetAxisRaw("Vertical");
@@ -193,7 +195,7 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
             jumpButton = Input.GetButtonDown("Jump");
             wasUpdatingInput = true;
         }
-        else if(wasUpdatingInput || inputPaused){
+        else if(wasUpdatingInput){
             wasUpdatingInput = false;
             ResetAxis();
             ResetButtons();
@@ -275,8 +277,8 @@ public class PlayerController : MonoBehaviour, IEnemyHittable
         if (currentWeapon.maxWeaponsOnScreen > instantiatedWeapons.Count)
         {
             //Pause Input briefly
-            inputPaused = true;
-            this.WaitAndAct(inputPauseWhenThrow, () => inputPaused = false);
+            movingPaused = true;
+            this.WaitAndAct(inputPauseWhenThrow, () => movingPaused = false);
 
             // notify event
             GameEvents.Player.PlayerShot.SafeCall();
